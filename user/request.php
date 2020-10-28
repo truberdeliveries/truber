@@ -59,10 +59,56 @@ include 'includes/format.php';
 
                 <!-- Small boxes (Stat box) -->
                 <div class="row" style="padding-top: 50px">
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-lg-6 col-xs-6">
                         <!-- small box -->
                         <form class="form-signin" method="POST" action="verify.php">
-                        <div class="inputContainer">
+                            <div class="inputContainer">
+                                <i class="fa fa-money fa-2x icon"> </i>
+
+                            <select class="form-control Field" style="padding-left: 38%;" name="payment" required >
+                                <option value="" selected disabled>Choose Payment Type</option>
+                                <?php
+                                try{
+                                    $stmt = $conn->prepare("SELECT * FROM type ");
+                                    $stmt->execute();
+                                    foreach($stmt as $row){
+
+                                        echo "<option value=".$row['name'].">".$row['name']."</option>";
+                                    }
+                                }
+                                catch(PDOException $e){
+                                    echo $e->getMessage();
+                                }
+
+                                ?>
+                            </select>
+                            </div>
+                            <br/>
+
+                            <div class="inputContainer">
+                                <i class="fa fa-cab fa-2x icon"> </i>
+
+                                <select class="form-control Field" style="padding-left: 38%;" name="type" required >
+                                    <option value="" selected disabled>Choose Vehicle Type</option>
+                                    <?php
+                                    try{
+                                        $stmt = $conn->prepare("SELECT * FROM type ");
+                                        $stmt->execute();
+                                        foreach($stmt as $row){
+
+                                            echo "<option value=".$row['name'].">".$row['name']."</option>";
+                                        }
+                                    }
+                                    catch(PDOException $e){
+                                        echo $e->getMessage();
+                                    }
+
+                                    ?>
+                                </select>
+                            </div>
+                            <br/>
+
+                            <div class="inputContainer">
                             <i class="fa fa-street-view fa-2x icon"> </i>
                             <input class="form-control Field" type="email" id="inputEmail" required="" placeholder="Pick-Up Address" autofocus="" name="email">
                         </div>
@@ -76,12 +122,13 @@ include 'includes/format.php';
 
                     </div>
                     <!-- ./col -->
-
-                    <!-- ./col -->
                 </div>
+                <br/>
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-xs-12">
+                        <!-- Select vehicle -->
+
                     </div>
                 </div>
         </div>
@@ -117,7 +164,6 @@ include 'includes/format.php';
         text-align: left;
     }
     .Field {
-        padding: 10px;
         text-align: center;
     }
 </style>

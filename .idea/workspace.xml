@@ -26,15 +26,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ad21645-7334-41b1-a942-75d6cd024b1c" name="Default Changelist" comment="filr">
-      <change beforePath="$PROJECT_DIR$/admin/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/Google-Style-Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/Google-Style-Login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register_driver.php" beforeDir="false" afterPath="$PROJECT_DIR$/register_driver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/request.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/request.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
