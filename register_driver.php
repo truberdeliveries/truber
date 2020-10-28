@@ -56,9 +56,9 @@
                     <div class="form-group"><label for="email">Email&nbsp;</label><input class="form-control" type="email" id="email" name="email" onkeyup="emailValidate('register')" required></div>
                     <div class="form-group"><label for="contact">Contact</label><input class="form-control" type="text" id="contact" name="contact" onkeyup="ValueKeyPress('contact');" required></div>
                     <span id="verify"></span>
-                    <div class="form-group"><label for="password">Password&nbsp;</label><input class="form-control" type="password" id="password" name="password" onkeyup="CheckPassword()" required></div>
+                    <div class="form-group"><label for="password">Password&nbsp;</label><input class="form-control inputTxt" type="password" id="password" name="password" onkeyup="CheckPassword()" required><span class="fa fa-eye eyespan" style="margin-top: -30px;"></span></div>
                     <span class="tooltiptext"><label id="miniCharacters">* 8 Characters minimum</label><br><label id="special_character" >* Has special character</label><br><label id="lowercase" >* Has lowercase character</label><br><label id="uppercase" >* Has uppercase character</label><br><label id="hasNumber" >* Has a number</label></span>
-                    <div class="form-group"><label for="password-input">Confirm Password&nbsp;</label><input class="form-control" type="password" id="password-input" name="current_password" onkeyup="matchPassword()" required></div>
+                    <div class="form-group"><label for="password-input">Confirm Password&nbsp;</label><input class="form-control inputTxt" type="password" id="password-input" name="current_password" onkeyup="matchPassword()" required></div>
                     <span id="passwordMatch"></span>
                     <div class="form-group"><button class="btn btn-primary" name="signup_driver" type="submit">Register</button></div>
                 </form><a class="btn btn-link border-pretty" role="button" style="color: rgb(254,209,54);" href="index.php">Home&nbsp;<i class="icon ion-android-arrow-forward"></i></a></div>

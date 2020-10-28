@@ -68,7 +68,7 @@
             <div class="icon">
               <i class="fa fa-barcode"></i>
             </div>
-            <a href="#" class="small-box-footer">Place order <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="request.php" class="small-box-footer">Place order <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

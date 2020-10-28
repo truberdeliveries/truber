@@ -168,5 +168,15 @@ function sendForm(){
             return false;
         }
 
-
 }
+
+$('.eyespan').on('click', function (e){
+    let type = $('.inputTxt');
+    $('.fa-eye').toggleClass('fa-eye-slash');
+    if (type.attr('type') == 'text'){
+        type.attr({type:"password"});
+    }else{
+        type.attr({type:"text"});
+    }
+
+});

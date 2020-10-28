@@ -82,4 +82,14 @@
 .login-card .forgot-password:hover, .login-card .forgot-password:active, .login-card .forgot-password:focus {
   color: rgb(12, 97, 33);
 }
+.eyespan {
+  float: right;
+  margin-right: 6px;
+  margin-top: -40px;
+  position: relative;
+  z-index: 2;
+  color: black;
+  font-size: larger;
+}
+
 
