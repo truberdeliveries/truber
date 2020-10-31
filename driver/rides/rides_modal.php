@@ -66,13 +66,13 @@
               <h4 class="modal-title"><b>Take Job</b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="users_edit.php">
+              <form class="form-horizontal" method="POST" action="./rides_row.php">
                 <input type="hidden" class="userid" name="id">
                 <div class="form-group">
-                    <span class="fullname"></span>
+                    <strong class="fullname"></strong>
 
                     <div class="col-sm-9">
-
+                        <input name="book_id" id="book_id" hidden>
                     </div>
                 </div>
 
@@ -124,7 +124,7 @@
               <h4 class="modal-title"><b><span class="fullname"></span></b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="users_photo.php" enctype="multipart/form-data">
+              <form class="form-horizontal" method="POST" action="../rides_row.php" enctype="multipart/form-data">
                 <input type="hidden" class="userid" name="id">
                 <div class="form-group">
                     <label for="photo" class="col-sm-3 control-label">Photo</label>

@@ -154,8 +154,8 @@
             data: {id:id},
             dataType: 'json',
             success: function(response){
-
-                $('.fullname').html(response.start_address+' ----> '+response.end_address);
+                $('#book_id').val(response.book_id);
+                $('.fullname').html('Pick-Up Address: '+response.start_address+'<br/>Destination Address: '+response.end_address);
             }
         });
     }
