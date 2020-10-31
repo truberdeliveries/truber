@@ -23,11 +23,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
+        Available Requests
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Available Requests</li>
       </ol>
     </section>
 
@@ -57,7 +57,6 @@
       ?>
       <!-- Small boxes (Stat box) -->
       <div class="row">
-          <div class="col-lg-3 col-xs-15">
 
               <table id="example1" class="table table-bordered">
                   <thead>
@@ -65,35 +64,12 @@
                   <th>Customer Name</th>
                   <th>Pick-Up Address</th>
                   <th>Destination</th>
+                  <th>Action</th>
                   </thead>
-                  <tbody>
-              <?php
-                    try{
-                      $stmt = $conn->prepare("SELECT * FROM booking where booking_status=1 ");
-                      $stmt->execute();
-                      foreach($stmt as $row){
+                  <tbody class="rides-list">
 
-                        echo "
-                          <tr>
-                            <td>".$row['payment_type']."</td> 
-                            <td>".$row['customer_name']."</td>
-                            <td>".$row['start_address']."</td>
-                            <td>".$row['end_address']."</td>
-                            <td>
-                              <button class='btn btn-warning btn-sm view-ride btn-flat' id='".$row['book_id']."'><i class='fa fa-eye'></i> View</button>
-                            </td>
-                          </tr>
-                        ";
-                      }
-                    }
-                    catch(PDOException $e){
-                      echo $e->getMessage();
-                    }
-
-                  ?>
-              </tbody>
+                 </tbody>
               </table>
-          </div>
   
       </div>
 
@@ -118,32 +94,6 @@
             getRow(id);
         });
 
-        $(document).on('click', '.edit', function(e){
-            e.preventDefault();
-            $('#edit').modal('show');
-            var id = $(this).data('id');
-            getRow(id);
-        });
-
-        $(document).on('click', '.delete', function(e){
-            e.preventDefault();
-            $('#delete').modal('show');
-            var id = $(this).data('id');
-            getRow(id);
-        });
-
-        $(document).on('click', '.photo', function(e){
-            e.preventDefault();
-            var id = $(this).data('id');
-            getRow(id);
-        });
-
-        $(document).on('click', '.status', function(e){
-            e.preventDefault();
-            var id = $(this).data('id');
-            getRow(id);
-        });
-
     });
 
     function getRow(id){
@@ -165,7 +115,7 @@
 <!-- End Chart Data -->
 
 <?php $pdo->close(); ?>
-<?php include 'includes/scripts.php'; ?>
+
 <script>
 $(function(){
   var barChartCanvas = $('#barChart').get(0).getContext('2d')
@@ -227,6 +177,30 @@ $(function(){
     window.location.href = 'home.php?year='+$(this).val();
   });
 });
+
+var myVar = setInterval(checkStatus, 5000);
+
+function checkStatus(){
+    $.ajax({
+        type: 'POST',
+        url: 'get_rides.php',
+        data: {},
+        dataType: 'json',
+        success: function(response){
+            if(response.booking_status){
+
+            }
+            $('.rides-list').html(
+                '<td>'+response.payment_type+'</td>'+
+            '<td>'+response.customer_name+'</td>'+
+            '<td>'+response.start_address+'</td>'+
+            '<td>'+response.end_address+'</td>'+
+            '<td><button id="'+response.book_id+'" class="btn btn-warning view-ride"><i class="fa fa-eye"></i> View</button></td>'
+            );
+
+        }
+    });
+}
 </script>
 </body>
 </html>
