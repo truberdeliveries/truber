@@ -5,13 +5,14 @@
 	if(isset($_POST['login'])){
 		
 		$email = $_POST['email'];
+        $contact = $_POST['email'];
 		$password = $_POST['password'];
 
 		try{
 
 			
-			$stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM customer WHERE email=:email");
-			$stmt->execute(['email'=>$email]);
+			$stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM customer WHERE email=:email OR contact=:contact");
+			$stmt->execute(['email'=>$email,'contact'=>$contact]);
 			$row = $stmt->fetch();
 			if($row['numrows'] > 0){
 					if($password == $row['password'])
@@ -25,8 +26,8 @@
 			else
 			{
 
-				$stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows1 FROM administrator WHERE email = :email");
-				$stmt->execute(['email'=>$email]);
+				$stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows1 FROM administrator WHERE email = :email OR contact=:contact");
+				$stmt->execute(['email'=>$email,'contact'=>$contact]);
 				$row = $stmt->fetch();
 
 				if($row['numrows1'] > 0){
@@ -39,8 +40,8 @@
 				}
 				else
 				{
-					$stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows2 FROM driver WHERE email = :email");
-					$stmt->execute(['email'=>$email]);
+					$stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows2 FROM driver WHERE email = :email OR contact=:contact");
+					$stmt->execute(['email'=>$email,'contact'=>$contact]);
 					$row = $stmt->fetch();
 
 					if($row['numrows2'] > 0){

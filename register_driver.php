@@ -20,6 +20,7 @@
 </head>
 
 <body id="page-top">
+<?php include 'includes/session.php'; ?>
 <?php include 'includes/navbar.php';?>
 
 

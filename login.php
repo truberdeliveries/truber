@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="assets/css/Button-Outlines---Pretty.css">
     <link rel="stylesheet" href="assets/css/Google-Style-Login.css">
     <link rel="stylesheet" href="assets/css/top-alert-ie-E-Mail-Confirmation.css">
+    <link rel="apple-touch-icon" href="images/delivery-van.jpg">
 
 </head>
 
@@ -53,14 +54,24 @@
                         unset($_SESSION['success']);
                     }
                     ?>
+
                 <div class="intro-lead-in"></div>
                 <div class="login-card"><img class="profile-img-card" src="assets/img/avatar_2x.png">
                     <p class="profile-name-card"> </p>
-                    <form class="form-signin" method="POST" action="verify.php"><span class="reauth-email"> </span><input class="form-control" type="email" id="inputEmail" required="" placeholder="Email address" autofocus="" name="email"><input class="form-control inputTxt" type="password" id="inputPassword" required="" placeholder="Password" name="password">
-                        <span class="fa fa-eye eyespan"></span> <div class="checkbox">
-
-                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Remember me</label></div>
-                </div><button class="btn btn-primary btn-block btn-lg btn-signin" name="login" type="submit">Login</button></form><a class="forgot-password" href="#">Forgot your password?</a></div>
+                    <form class="form-signin" method="POST" action="verify.php"><span class="reauth-email"> </span>
+                        <input class="form-control" type="text" id="inputEmail" required="" placeholder="Email address / Contact Number" autofocus="" name="email">
+                        <input class="form-control inputTxt" type="password" id="inputPassword" required="" placeholder="Password" name="password">
+                        <span class="fa fa-eye eyespan"></span>
+                        <div class="checkbox">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="formCheck-2">
+                                <label class="form-check-label" for="formCheck-2">Remember me</label>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block btn-lg btn-signin" name="login" type="submit">Login</button>
+                    </form>
+                    <a class="forgot-password" href="#">Forgot your password?</a>
+                </div>
             <div class="intro-heading text-uppercase"></div>
         </div>
         </div>

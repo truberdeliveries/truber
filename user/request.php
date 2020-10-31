@@ -57,30 +57,36 @@ include 'includes/format.php';
                 }
                 ?>
 
-                <!-- Small boxes (Stat box) -->
+                <?php
+                try{
+                    $email = $admin['email'];
+                    $requested = null;
+                    $stmt = $conn->prepare("SELECT booking_status FROM booking WHERE customer_name =:email AND booking_status=0");
+                    $stmt->execute(['email'=>$email]);
+                    $row = $stmt->fetch();
+                    $requested = $row['booking_status'];
+
+                }
+                catch(PDOException $e){
+                    echo $e->getMessage();
+                }
+
+
+                if($requested == null){
+
+                echo '
+
                 <div class="row" style="padding-top: 50px">
                     <div class="col-lg-6 col-xs-6">
                         <!-- small box -->
-                        <form class="form-signin" method="POST" action="verify.php">
+                        <form class="form" method="POST" action="handle_requests.php">
                             <div class="inputContainer">
                                 <i class="fa fa-money fa-2x icon"> </i>
 
-                            <select class="form-control Field" style="padding-left: 38%;" name="payment" required >
-                                <option value="" selected disabled>Choose Payment Type</option>
-                                <?php
-                                try{
-                                    $stmt = $conn->prepare("SELECT * FROM type ");
-                                    $stmt->execute();
-                                    foreach($stmt as $row){
-
-                                        echo "<option value=".$row['name'].">".$row['name']."</option>";
-                                    }
-                                }
-                                catch(PDOException $e){
-                                    echo $e->getMessage();
-                                }
-
-                                ?>
+                            <select class="form-control Field" style="text-align-last:center;" name="payment" required >
+                                <option value="" selected disabled hidden>Choose Payment Type</option>
+                                <option value="cash">Cash</option>
+                                <option value="card">Card</option>
                             </select>
                             </div>
                             <br/>
@@ -88,9 +94,10 @@ include 'includes/format.php';
                             <div class="inputContainer">
                                 <i class="fa fa-cab fa-2x icon"> </i>
 
-                                <select class="form-control Field" style="padding-left: 38%;" name="type" required >
+                                <select class="form-control Field" style="text-align-last:center;" name="type" required >
                                     <option value="" selected disabled>Choose Vehicle Type</option>
-                                    <?php
+                   ';
+
                                     try{
                                         $stmt = $conn->prepare("SELECT * FROM type ");
                                         $stmt->execute();
@@ -103,24 +110,32 @@ include 'includes/format.php';
                                         echo $e->getMessage();
                                     }
 
-                                    ?>
+                                echo '
                                 </select>
                             </div>
                             <br/>
 
                             <div class="inputContainer">
                             <i class="fa fa-street-view fa-2x icon"> </i>
-                            <input class="form-control Field" type="email" id="inputEmail" required="" placeholder="Pick-Up Address" autofocus="" name="email">
+                            <input class="form-control Field" type="text" id="inputEmail" required="" placeholder="Pick-Up Address" autofocus="" name="start">
                         </div>
                             <br/>
                         <div class="inputContainer">
                             <i class="fa fa-map-marker fa-2x icon"> </i>
-                            <input class="form-control Field" type="email" id="inputEmail" required="" placeholder="Destination Address" autofocus="" name="email">
+                            <input class="form-control Field" type="text" id="inputEmail" required="" placeholder="Destination Address" autofocus="" name="destination">
                         </div>
-                            <button class="btn btn-primary btn-block btn-lg btn-signin" name="login" type="submit">Request</button>
+                            <button class="btn btn-primary btn-block btn-lg btn-signin" name="request" type="submit">Request</button>
                         </form>
 
                     </div>
+                ';
+                }
+                else{
+                    echo '
+                      <h3>Please wait while we look for your driver</h3>
+                      ';
+                }
+                ?>
                     <!-- ./col -->
                 </div>
                 <br/>
@@ -167,4 +182,6 @@ include 'includes/format.php';
         text-align: center;
     }
 </style>
+
+<script type="application/javascript" src="request.js"></script>
 

@@ -27,14 +27,23 @@
 		else{
 			$conn = $pdo->open();
 
-			$stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM customer WHERE email=:email");
-			$stmt->execute(['email'=>$email]);
-			$row = $stmt->fetch();
-			if($row['numrows'] > 0){
-				$_SESSION['error'] = 'Email already taken';
-				header('location: register.php');
-				exit();	
-			}
+            $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM driver,customer,administrator WHERE driver.email=:email OR customer.email=:email OR administrator.email=:email");
+            $stmt->execute(['email'=>$email]);
+            $row = $stmt->fetch();
+            if($row['numrows'] > 0){
+                $_SESSION['error'] = 'Email already taken';
+                header('location: register.php');
+                exit();
+            }
+
+            $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM driver,customer,administrator WHERE driver.contact=:contact OR customer.contact=:contact OR administrator.contact=:contact");
+            $stmt->execute(['contact'=>$contact]);
+            $row = $stmt->fetch();
+            if($row['numrows'] > 0){
+                $_SESSION['error'] = 'Contact number already taken';
+                header('location: register.php');
+                exit();
+            }
 			else{
 				
 				$now = date('Y-m-d');

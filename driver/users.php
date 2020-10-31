@@ -75,7 +75,7 @@
                     $conn = $pdo->open();
 
                     try{
-                      $stmt = $conn->prepare("SELECT * FROM users ");
+                      $stmt = $conn->prepare("SELECT * FROM customer ");
                       $stmt->execute();
                       foreach($stmt as $row){
 

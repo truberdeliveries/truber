@@ -1,6 +1,6 @@
 <?php 
-  include 'includes/session.php';
-  include 'includes/format.php'; 
+  include './includes/session.php';
+  include './includes/format.php';
 ?>
 <?php 
   $today = date('Y-m-d');
@@ -15,7 +15,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <?php include 'includes/navbar.php'; ?>
+  <?php include './includes/navbar.php'; ?>
   <?php include 'includes/menubar.php'; ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -58,61 +58,42 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
           <div class="col-lg-3 col-xs-15">
-            <!-- small box -->
-            <div class="small-box bg-green">
-              <div class="inner">
-            
-              
-                <p>Go Online</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-users"></i>
-              </div>
-              <a href="available_rides.php" class="small-box-footer">Go Online <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
 
+              <table id="example1" class="table table-bordered">
+                  <thead>
+                  <th>Payment Type</th>
+                  <th>Customer Name</th>
+                  <th>Pick-Up Address</th>
+                  <th>Destination</th>
+                  </thead>
+                  <tbody>
+              <?php
+                    try{
+                      $stmt = $conn->prepare("SELECT * FROM booking where booking_status=1 ");
+                      $stmt->execute();
+                      foreach($stmt as $row){
+
+                        echo "
+                          <tr>
+                            <td>".$row['payment_type']."</td> 
+                            <td>".$row['customer_name']."</td>
+                            <td>".$row['start_address']."</td>
+                            <td>".$row['end_address']."</td>
+                            <td>
+                              <button class='btn btn-warning btn-sm view-ride btn-flat' id='".$row['book_id']."'><i class='fa fa-eye'></i> View</button>
+                            </td>
+                          </tr>
+                        ";
+                      }
+                    }
+                    catch(PDOException $e){
+                      echo $e->getMessage();
+                    }
+
+                  ?>
+              </tbody>
+              </table>
           </div>
-       </div>
-
-       <div class="row">
-          <div class="col-lg-3 col-xs-15">
-            <!-- small box -->
-            <div class="small-box bg-yellow">
-              <div class="inner">
-            
-              
-                <p>View Vehicle</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-car"></i>
-              </div>
-              <a href="vehicles.php" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i>
-
-                <a href="#" class="small-box-footer addnew">Add <i class="fa fa-plus-square-o"></i></a></a>
-            </div>
-
-          </div>
-       </div>
-
-       <div class="row">
-          <div class="col-lg-3 col-xs-15">
-            <!-- small box -->
-            <div class="small-box bg-blue">
-              <div class="inner">
-            
-              
-                <p>View All Rides</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-search-plus"></i>
-              </div>
-              <a href="#" class="small-box-footer">View<i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-
-          </div>
-       </div>
-  
-  
   
       </div>
 
@@ -125,15 +106,15 @@
 <!-- ./wrapper -->
 
 <?php include 'includes/scripts.php'; ?>
-<?php include 'includes/vehicles_modal.php'; ?>
+<?php include 'rides/rides_modal.php'; ?>
 <script>
     $(function(){
 
-        $(document).on('click', '.addnew', function(e){
+        $(document).on('click', '.view-ride', function(e){
 
             e.preventDefault();
-            $('#addnew').modal('show');
-            var id = e.target.parentNode.id;
+            $('#view-ride').modal('show');
+            var id = this.id;
             getRow(id);
         });
 
@@ -166,20 +147,15 @@
     });
 
     function getRow(id){
+
         $.ajax({
             type: 'POST',
-            url: 'users_row.php',
+            url: 'rides_row.php',
             data: {id:id},
             dataType: 'json',
             success: function(response){
-                $('.userid').val(response.id);
-                $('#edit_email').val(response.email);
-                $('#edit_password').val(response.password);
-                $('#edit_firstname').val(response.firstname);
-                $('#edit_lastname').val(response.lastname);
-                $('#edit_address').val(response.address);
-                $('#edit_contact').val(response.contact_info);
-                $('.fullname').html(response.firstname+' '+response.lastname);
+
+                $('.fullname').html(response.start_address+' ----> '+response.end_address);
             }
         });
     }
