@@ -89,30 +89,45 @@
 </div>
 
 <!-- Delete -->
-<div class="modal fade" id="delete">
+<div class="modal fade" id="cancel">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Deleting...</b></h4>
+              <h4 class="modal-title"><b>Cancel Trip...</b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="users_delete.php">
-                <input type="hidden" class="userid" name="id">
+              <form class="form-horizontal" method="POST" action="./rides_row.php">
+
+                  <div class="form-group">
+
+                      <div class="col-sm-9">
+                          <input name="trip_id" id="trip_id" hidden>
+                      </div>
+                  </div>
                 <div class="text-center">
-                    <p>DELETE USER</p>
-                    <h2 class="bold fullname"></h2>
+                    <h2 class="">Are You Sure You Want To Cancel Trip?</h2>
+                    <label for="reason">Reason</label>
+                    <select name="reason" id="reason" required>
+                        <option value="" disabled selected>Why do you want to cancel?</option>
+                        <option value="Customer asked me to cancel.">Customer asked me to cancel.</option>
+                        <option value="Customer could not answer phone call.">Customer could not answer phone call.</option>
+                        <option value="Wrong address of customer.">Wrong address of customer.</option>
+                        <option value="Wrong truck requested.">Wrong truck requested.</option>
+                    </select>
                 </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-              <button type="submit" class="btn btn-danger btn-flat" name="delete"><i class="fa fa-trash"></i> Delete</button>
+              <button type="submit" class="btn btn-warning btn-flat" name="cancel"><i class="fa fa-check"></i> Confirm</button>
               </form>
             </div>
         </div>
     </div>
 </div>
+
+
 
 <!-- Update Photo -->
 <div class="modal fade" id="edit_photo">

@@ -9,6 +9,15 @@ include 'includes/format.php';
         $year = $_GET['year'];
     }
 
+$stmt = $conn->prepare("SELECT COUNT(*) AS num FROM booking where booking_status=1 AND customer_name=:email");
+$stmt->execute(['email'=>$admin['email']]);
+$rows = $stmt->fetch();
+
+
+if($rows['num']>0){
+    header('location: request_accepted.php');
+}
+
     $conn = $pdo->open();
 ?>
 <?php include 'includes/header.php'; ?>
@@ -132,7 +141,8 @@ include 'includes/format.php';
                 }
                 else{
                     echo '
-                      <h3>Please wait while we look for your driver</h3>
+                      <h3>Please wait while we look for your driver <i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i>
+                        <span class="sr-only">Loading...</span></h3>
                       ';
                 }
                 ?>
@@ -183,5 +193,21 @@ include 'includes/format.php';
     }
 </style>
 
-<script type="application/javascript" src="request.js"></script>
+<script type="application/javascript">
+    var myVar = setInterval(checkStatus, 5000);
+
+    function checkStatus(){
+        $.ajax({
+            type: 'POST',
+            url: 'booking_row.php',
+            data: {id_check:1},
+            dataType: 'json',
+            success: function(response){
+                if(response.booking_status){
+                    location = 'request_accepted.php';
+                }
+            }
+        });
+    }
+</script>
 

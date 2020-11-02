@@ -10,6 +10,15 @@
   }
 
   $conn = $pdo->open();
+
+    $stmt = $conn->prepare("SELECT COUNT(*) AS num FROM booking where booking_status=1 AND driver_name=:email");
+    $stmt->execute(['email'=>$admin['email']]);
+    $rows = $stmt->fetch();
+
+
+    if($rows['num']>0){
+        header('location: accepted_ride.php');
+    }
 ?>
 <?php include 'includes/header.php'; ?>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -66,8 +75,32 @@
                   <th>Destination</th>
                   <th>Action</th>
                   </thead>
-                  <tbody class="rides-list">
+                  <tbody id="rides-list" class="rides-list">
+                  <?php
 
+                  try{
+
+                      $stmt = $conn->prepare("SELECT * FROM booking where booking_status=0 ");
+                      $stmt->execute();
+
+                      foreach($stmt as $row){
+
+                          echo "
+                          <tr>
+                            <td>".$row['payment_type']."</td>
+                            <td>".$row['customer_name']."</td>
+                            <td>".$row['start_address']."</td>
+                            <td>".$row['end_address']."</td>
+                            <td><button id=".$row['book_id']." class='btn btn-warning view-ride'><i class='fa fa-eye'></i> View</button></td>
+                          </tr>
+                        ";
+                      }
+                  }
+                  catch(PDOException $e){
+                      echo $e->getMessage();
+                  }
+
+                  ?>
                  </tbody>
               </table>
   
@@ -187,16 +220,11 @@ function checkStatus(){
         data: {},
         dataType: 'json',
         success: function(response){
-            if(response.booking_status){
-
+          //  console.log(response.num +'--'+$('#example1_info').text()[18])
+            if(response.num !== $('#example1_info').text()[18]){
+               // $('.rides-list').load('.rides-list');
+               window.location.reload();
             }
-            $('.rides-list').html(
-                '<td>'+response.payment_type+'</td>'+
-            '<td>'+response.customer_name+'</td>'+
-            '<td>'+response.start_address+'</td>'+
-            '<td>'+response.end_address+'</td>'+
-            '<td><button id="'+response.book_id+'" class="btn btn-warning view-ride"><i class="fa fa-eye"></i> View</button></td>'
-            );
 
         }
     });

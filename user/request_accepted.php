@@ -64,13 +64,13 @@ $conn = $pdo->open();
                     <!-- small box -->
                     <?php
                     try{
-                        $stmt = $conn->prepare("SELECT driver_name FROM booking WHERE booking_status=1 ");
-                        $stmt->execute();
+                        $stmt = $conn->prepare("SELECT * FROM booking WHERE booking_status=1 AND customer_name=:name ");
+                        $stmt->execute(['name'=>$admin['email']]);
                         $drName = $stmt->fetch();
-                        $drName =$drName['driver_name'];
+
 
                         $stmt = $conn->prepare("SELECT firstname,lastname,contact FROM driver WHERE email=:email");
-                        $stmt->execute(['email'=>$drName]);
+                        $stmt->execute(['email'=>$drName['driver_name']]);
                         $row = $stmt->fetch();
 
                         echo "<h2 style='color: green'> Your driver is ".$row['firstname'].' '.$row['lastname']."</h2>";
@@ -81,8 +81,21 @@ $conn = $pdo->open();
                         echo $e->getMessage();
                     }
                     ?>
+                    <span id="mm">
+                    <h3><strong id="ride-status" style="color: orange">Driver Is Heading Your Way ...</strong></h3><br/>
+                    <button class="btn btn-primary" onclick="location.href='tel: <?php echo $row['contact']?>'"><i class="fa fa-phone"></i>  Call</button><br/><br/>
+                    <button class="btn btn-danger" id="<?php echo $drName['book_id']?>" ><i class="fa fa-close"></i>  Cancel</button>
+                    <button class="look-up" id="<?php echo $drName['book_id']?>"  style="display: none">stats</button>
+                    </span>
+                    <span id="mm2">
+                        <u><h3><i>Ride History</i></h3></u>
+                        <strong><i>From: <?php echo $drName['start_address']?></i></strong><br/>
+                        <strong><i>To: <?php echo $drName['end_address']?></i></strong><br/>
+                        <strong class="duration"></strong><br/>
+                        <span class="total">Total Amount: R255</span><br/>
+                        <button class="btn btn-success" onclick="clearSession();"><i class="fa fa-check-circle-o"></i> Done</button>
+                    </span>
 
-                 <button class="btn btn-primary" onclick="location.href='tel: <?php echo $row['contact']?>'"><i class="fa fa-phone"></i>  Call</button>
                 </div>
                 <!-- ./col -->
             </div>
@@ -100,10 +113,100 @@ $conn = $pdo->open();
 <!-- right col -->
 </div>
 <?php include 'includes/footer.php'; ?>
+<?php include 'includes/users_modal.php'; ?>
+<?php include 'includes/scripts.php'; ?>
 
 </div>
 <!-- ./wrapper -->
 
+<script>
+    $(function() {
+
+        $(document).on('click', '.btn-danger', function(e){
+
+            e.preventDefault();
+            $('#cancel').modal('show');
+            var id = this.id;
+             getRow(id);
+        });
+
+        $(document).on('click', '.look-up', function(e) {
+            $.ajax({
+                type: 'POST',
+                url: 'booking_row.php',
+                data: {booking_id:this.id,
+                    ride_check:1},
+                dataType: 'json',
+                success: function(response){
+
+                    if(response.booking_status ==4){
+                        $('#mm').html('<h3 style="color: red">Ride Cancelled, Redirecting to Home Page <i class="fa fa-spinner fa-spin"></i></h3>');
+                        setTimeout(function (e){
+                            location='home.php';
+                        },5000);
+                    }
+                    if(response.start_time !== '00:00:00'){
+                        $('#ride-status').html('Driving To Destination ...');
+                        $('.btn-danger').hide();
+                        sessionStorage.setItem('start_time',1);
+                    }
+
+
+                    if(response.booking_status ==3){
+                       finishedRide(response.book_id);
+                    }
+                }
+            });
+
+        });
+
+    });
+
+    function clearSession(){
+        sessionStorage.clear();
+        location='home.php';
+    }
+
+    function finishedRide(id){
+        $.ajax({
+            type: 'POST',
+            url: 'booking_row.php',
+            data: {finish_id:id},
+            dataType: 'json',
+            success: function(data){
+
+                sessionStorage.setItem('total_time',data.total_time);
+                $('#mm').hide();
+                $('.duration').html('Duration: '+sessionStorage.getItem('total_time'));
+                $('#mm2').show();
+
+            }
+        });
+    }
+
+    function getRow(id){
+
+        $.ajax({
+            type: 'POST',
+            url: 'booking_row.php',
+            data: {id:id},
+            dataType: 'json',
+            success: function(response){
+                $('#trip_id').val( response.book_id);
+            }
+        });
+    }
+
+    var myVar = setInterval(checkStatus, 5000);
+
+    function checkStatus(){
+        $('.look-up').click();
+    }
+    if(sessionStorage.getItem('start_time') ==1){
+        $('#ride-status').html('Driving To Destination ...');
+        $('.btn-danger').hide();
+    }
+</script>
 <!-- Chart Data -->
 
 <!-- End Chart Data -->

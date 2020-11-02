@@ -79,5 +79,8 @@
         height: 100%;
        /* border-radius: 5px;*/
       }
+        .rideBtn, #mm2{
+            display: none;;
+        }
   	</style>
 </head>

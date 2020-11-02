@@ -7,7 +7,6 @@
         $type = $_POST['type'];
         $name = $_POST['name'];
         $model = $_POST['model'];
-        $password = $_POST['password'];
         //$driverID = $_POST['id'];
 
 		$conn = $pdo->open();
