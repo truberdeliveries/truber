@@ -86,16 +86,38 @@ if($rows['num']>0){
                 echo '
 
                 <div class="row" style="padding-top: 50px">
-                    <div class="col-lg-6 col-xs-6">
+                    <div class="col-lg-6 col-xs-6 adjust">
                         <!-- small box -->
                         <form class="form" method="POST" action="handle_requests.php">
                             <div class="inputContainer">
                                 <i class="fa fa-money fa-2x icon"> </i>
 
-                            <select class="form-control Field" style="text-align-last:center;" name="payment" required >
+                            <select class="form-control Field" style="text-align-last:center;" name="payment" onchange="selectCard(this.value);"  required >
                                 <option value="" selected disabled hidden>Choose Payment Type</option>
                                 <option value="cash">Cash</option>
-                                <option value="card">Card</option>
+                                
+                                ';
+
+                                    try{
+                                        $stmts = $conn->prepare("SELECT * FROM card WHERE id=:id");
+                                        $stmts->execute(['id'=>$admin['id']]);
+
+                                        if(empty($stmts)){
+                                            echo' <option value="card">Card</option>';
+                                        }else{
+                                            foreach($stmts as $row){
+
+                                                echo "<option style='background:lightgrey' value=".$row['cardnumber'].">".$row['cardnumber']."</option>";
+                                            }
+                                            echo' <option value="card"></i>Add New Card</option>';
+                                        }
+                                    }
+                                    catch(PDOException $e){
+                                        echo $e->getMessage();
+                                    }
+
+                                echo'
+                               
                             </select>
                             </div>
                             <br/>
@@ -103,7 +125,7 @@ if($rows['num']>0){
                             <div class="inputContainer">
                                 <i class="fa fa-cab fa-2x icon"> </i>
 
-                                <select class="form-control Field" style="text-align-last:center;" name="type" required >
+                                <select class="form-control Field" style="text-align-last:center;" name="type" onchange="selectVehicle(this.value);" required >
                                     <option value="" selected disabled>Choose Vehicle Type</option>
                    ';
 
@@ -112,7 +134,7 @@ if($rows['num']>0){
                                         $stmt->execute();
                                         foreach($stmt as $row){
 
-                                            echo "<option value=".$row['name'].">".$row['name']."</option>";
+                                            echo "<option value=".$row['image'].">".$row['name']."</option>";
                                         }
                                     }
                                     catch(PDOException $e){
@@ -120,19 +142,23 @@ if($rows['num']>0){
                                     }
 
                                 echo '
-                                </select>
+                                </select><br/>
+                                <img name="vehicles" width="250" hidden>
                             </div>
                             <br/>
 
                             <div class="inputContainer">
                             <i class="fa fa-street-view fa-2x icon"> </i>
-                            <input class="form-control Field" type="text" id="inputEmail" required="" placeholder="Pick-Up Address" autofocus="" name="start">
+                            <input class="form-control Field" type="text" id="inputEmail" required="" placeholder="Pick-Up Address" autofocus="" name="start" onkeydown="getMap()">
+                             <table class="all-info"></table>
                         </div>
                             <br/>
                         <div class="inputContainer">
                             <i class="fa fa-map-marker fa-2x icon"> </i>
-                            <input class="form-control Field" type="text" id="inputEmail" required="" placeholder="Destination Address" autofocus="" name="destination">
+                            <input class="form-control Field" type="text" id="inputEmail" required="" placeholder="Destination Address" autofocus="" name="destination" onkeydown="getMap2()">
+                               <table class="all-info2"></table>
                         </div>
+                       <input name="cord" hidden> 
                             <button class="btn btn-primary btn-block btn-lg btn-signin" name="request" type="submit">Request</button>
                         </form>
 
@@ -151,8 +177,11 @@ if($rows['num']>0){
                 <br/>
                 <!-- /.row -->
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 adjust">
                         <!-- Select vehicle -->
+                        <div id="maps">
+                         <iframe width="100%" height="300" frameborder="0" style="border:5px"></iframe>
+                        </div>
 
                     </div>
                 </div>
@@ -164,8 +193,49 @@ if($rows['num']>0){
 <?php include 'includes/footer.php'; ?>
 
     </div>
-    <!-- ./wrapper -->
+    <!-- Modal -->
+<!-- Activate -->
+<div class="modal fade" id="addcard">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Add Bank Card...</b></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="POST" action="booking_row.php" onsubmit="return validateCard();">
+                    <input type="hidden" class="userid" name="banking-details" hidden>
 
+                    <div class="text-center">
+                        <label for="card-number">Card Number</label>
+                        <input  class="form-control" name="card-number" id="card-number" onkeypress="return /[0-9]/i.test(event.key);" onkeyup="enterCard()" required>
+                        <span id="card-error" style="color: red"></span>
+                    </div><br/>
+                    <div class="text-center">
+                        <label for="name">Bank Name</label>
+                        <select class="form-control" name="name" id="bank" onchange="setBranch(this.id);enterCard()" required>
+                            <option value="" disabled selected hidden>Select Bank</option>
+                            <option id="470010" value="capitec">Capitec</option>
+                            <option id="250655" value="fnb">FNB</option>
+                            <option id="632005" value="absa">ABSA</option>
+                            <option id="051001" value="standard-bank">Standard Bank</option>
+                            <option id="198765" value="nedbank">Nedbank</option>
+                        </select>
+                    </div><br/>
+                    <div class="text-center">
+                        <label for="branch">Branch Code</label>
+                        <input class="form-control" name="branch" id="branch" onkeypress="return /[0-9]/i.test(event.key)" required>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                <button type="submit" class="btn btn-success btn-flat" name="activate"><i class="fa fa-check"></i> Add Card</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- Chart Data -->
 
     <!-- End Chart Data -->
@@ -209,5 +279,54 @@ if($rows['num']>0){
             }
         });
     }
+
+    function selectVehicle(name){
+        $('img[name=vehicles]').attr('src','./../assets/img/vehicles/'+name);
+        $('img[name=vehicles]').show();
+    }
+
+    function selectCard(name){
+
+        if(name =='card')
+        {
+            $('#addcard').modal('show');
+        }
+    }
+    function setBranch(){
+
+        $('#branch').val($('#bank option:selected').attr('id'));
+       // $('#branch').attr('disabled','disabled');
+    }
+
+    function enterCard(){
+
+        var num = $('#card-number').val();
+        var bank = $('#bank').val();
+        $.ajax({
+            type: 'POST',
+            url: 'booking_row.php',
+            data: {check_card:num,
+            bank:bank},
+            dataType: 'json',
+            success: function(response){
+                if(response !=false){
+                    $('#card-error').html('Card Already Exists !!!');
+                }
+                else{
+                    $('#card-error').html('');
+                }
+            }
+        });
+    }
+
+    function validateCard(){
+        if($('#card-error').html !='' ){
+            $('#card-number').focus();
+            return false;
+        }
+        return true;
+    }
 </script>
+
+<script src="./../assets/js/maps.js"></script>
 

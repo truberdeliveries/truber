@@ -10,6 +10,7 @@ if(isset($_POST['request'])){
     $payment = $_POST['payment'];
     $type= $_POST['type'];
     $start = $_POST['start'];
+    $coordinates = $_POST['cord'];
     $destination = $_POST['destination'];
 
     $conn = $pdo->open();
@@ -18,9 +19,9 @@ if(isset($_POST['request'])){
 
     try{
 
-        $stmt = $conn->prepare("INSERT INTO booking (start_address,end_address,date,customer_name,payment_type,vehicle_type,booking_status) 
-        VALUES (:start_address,:end_address, :date, :customer_name, :payment_type, :vehicle_type, :booking_status)");
-        $stmt->execute(['start_address'=>$start, 'end_address'=>$destination, 'date'=>$now,
+        $stmt = $conn->prepare("INSERT INTO booking (start_address,end_address,coordinates,date,customer_name,payment_type,vehicle_type,booking_status) 
+        VALUES (:start_address,:end_address,:coordinates, :date, :customer_name, :payment_type, :vehicle_type, :booking_status)");
+        $stmt->execute(['start_address'=>$start, 'end_address'=>$destination,'coordinates'=>$coordinates, 'date'=>$now,
                         'customer_name'=>$firstname, 'payment_type'=>$payment, 'vehicle_type'=>$type,'booking_status'=>0]);
 
         $userid = $conn->lastInsertId();

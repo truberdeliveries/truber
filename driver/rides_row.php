@@ -10,6 +10,16 @@ if(isset($_POST['id'])){
 
     echo json_encode($row);
 }
+
+if(isset($_POST['map_id'])){
+
+    $stmt = $conn->prepare("SELECT * FROM booking WHERE book_id=:id");
+    $stmt->execute(['id'=>$admin['']]);
+    $row = $stmt->fetch();
+
+    echo json_encode($row);
+}
+
 if(isset($_POST['book_id'])){
     $email = $admin['email'];
     $book_id = $_POST['book_id'];

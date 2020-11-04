@@ -82,5 +82,28 @@
         .rideBtn, #mm2{
             display: none;;
         }
+        .all-info, .all-info2{
+            position: absolute;
+            display: none;
+            z-index: 1;
+            background: white;
+            width: 93%;
+            font-size: large;
+        }
+        .address-select:hover ,.address-select2:hover{
+            text-decoration:none;
+            text-shadow: 1px 1px 1px #555;
+        }
+        .address-select,.address-select2 {
+            cursor:pointer;
+        }
+        @media (max-width: 1200px) {
+            .adjust{
+                width: 100% !important;
+            }
+        }
+
+
+
   	</style>
 </head>

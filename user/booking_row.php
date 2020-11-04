@@ -41,6 +41,30 @@ if(isset($_POST['type'])) {
 
     echo json_encode($row);
 }
+if(isset($_POST['banking-details'])){
+
+    $id = $admin['id'];
+    $date_created = date('Y-m-d');
+    $bankname = $_POST['name'];
+    $cardnumber= $_POST['card-number'];
+    $branch = $_POST['branch'];
+
+    $stmt = $conn->prepare("INSERT INTO card VALUES (:id, :bankname,:cardnumber,:branch,:date_created)");
+    $stmt->execute(['id'=>$id,'bankname'=>$bankname,'cardnumber'=>$cardnumber,'branch'=>$branch,'date_created'=>$date_created]);
+
+    header('location: request.php');
+}
+if(isset($_POST['check_card'])){
+
+    $cardnumber = $_POST['check_card'];
+    $bankname = $_POST['bank'];
+
+    $stmts = $conn->prepare("SELECT * FROM card WHERE cardnumber=:cardnumber AND bankname=:bankname AND id=:id");
+    $stmts->execute(['id'=>$admin['id'],'bankname'=>$bankname,'cardnumber'=>$cardnumber]);
+    $row = $stmts->fetch();
+
+    echo json_encode($row);
+}
 
 if(isset($_POST['trip_id'])){
 

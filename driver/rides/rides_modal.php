@@ -71,8 +71,9 @@
                 <div class="form-group">
                     <strong class="fullname"></strong>
 
-                    <div class="col-sm-9">
+                    <div class="">
                         <input name="book_id" id="book_id" hidden>
+                        <iframe id="maps-view" width="100%" height="350"></iframe>
                     </div>
                 </div>
 

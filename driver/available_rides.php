@@ -139,6 +139,17 @@
             success: function(response){
                 $('#book_id').val(response.book_id);
                 $('.fullname').html('Pick-Up Address: '+response.start_address+'<br/>Destination Address: '+response.end_address);
+
+                var setAdr = response.coordinates;
+                setAdr = setAdr.substr(0,setAdr.indexOf('|'));
+                var latitude = setAdr.substr(0, setAdr.indexOf(','));
+                var longitude = setAdr.replace(latitude, '');
+                longitude = longitude.replace(',', '');
+                console.log(latitude);
+                console.log(longitude);
+
+                $('#maps-view').attr('src','https://maps.google.com/maps?q='+latitude+','+longitude+'&z=15&output=embed');
+
             }
         });
     }

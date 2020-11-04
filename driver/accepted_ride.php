@@ -97,7 +97,30 @@ $conn = $pdo->open();
                     </span>
                     <span id="mm3"></span>
                 </div>
+                <input name="book_id" id="book_id" hidden>
+            </div><br/>
+            <div class="row">
+                   <?php
 
+                   try {
+                       $stmt = $conn->prepare("SELECT * FROM booking WHERE booking_status=1 AND driver_name=:name");
+                       $stmt->execute(['name'=>$admin['email']]);
+                       $row = $stmt->fetch();
+                       $row = $row["coordinates"];
+                       $row1 = substr($row, 0, strpos($row,'|'));
+                       $lat = substr($row1,0,strpos($row1,','));
+                       $long = substr($row1, strpos($row1,',')+1);
+
+                       $row2 = substr($row, strpos($row,'|'));
+                       $lat2 = substr($row2,1,strpos($row2,',')-1);
+                       $long2 = substr($row2, strpos($row2,',')+1);
+
+                   } catch (PDOException $e) {
+                       echo $e->getMessage();
+                   }
+                   ?>
+                    <iframe id="maps-view" src="https://maps.google.com/maps?q=<?php echo $lat.','.$long ?>&z=15&output=embed" width="100%" height="350"></iframe>
+                    <iframe id="maps-view2" src="https://maps.google.com/maps?q=<?php echo $lat2.','.$long2 ?>&z=15&output=embed" width="100%" height="350" style="display: none"></iframe>
             </div>
 
         </section>
@@ -119,6 +142,8 @@ $conn = $pdo->open();
 
             var id = this.id;
             updateRecord(id);
+            changeMaps();
+
         });
         $(document).on('click', '.rideBtn', function(e){
 
@@ -249,6 +274,14 @@ $conn = $pdo->open();
     }
 
     getStart();
+
+    function changeMaps() {
+        if (sessionStorage.getItem('start_time') == 1) {
+            $('#maps-view').hide();
+            $('#maps-view2').show();
+        }
+    }
+    changeMaps();
 </script>
 <!-- Chart Data -->
 

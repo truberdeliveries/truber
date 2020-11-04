@@ -102,10 +102,27 @@ $conn = $pdo->open();
             <br/>
             <!-- /.row -->
             <div class="row">
-                <div class="col-xs-12">
-                    <!-- Select vehicle -->
+                <?php
 
-                </div>
+                try {
+                    $stmt = $conn->prepare("SELECT * FROM booking WHERE booking_status=1 AND customer_name=:name");
+                    $stmt->execute(['name'=>$admin['email']]);
+                    $row = $stmt->fetch();
+                    $row = $row["coordinates"];
+                    $row1 = substr($row, 0, strpos($row,'|'));
+                    $lat = substr($row1,0,strpos($row1,','));
+                    $long = substr($row1, strpos($row1,',')+1);
+
+                    $row2 = substr($row, strpos($row,'|'));
+                    $lat2 = substr($row2,1,strpos($row2,',')-1);
+                    $long2 = substr($row2, strpos($row2,',')+1);
+
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
+                ?>
+                <iframe id="maps-view" src="https://maps.google.com/maps?q=<?php echo $lat.','.$long ?>&z=15&output=embed" width="100%" height="350"></iframe>
+                <iframe id="maps-view2" src="https://maps.google.com/maps?q=<?php echo $lat2.','.$long2 ?>&z=15&output=embed" width="100%" height="350" style="display: none"></iframe>
             </div>
     </div>
 
@@ -149,6 +166,7 @@ $conn = $pdo->open();
                         $('#ride-status').html('Driving To Destination ...');
                         $('.btn-danger').hide();
                         sessionStorage.setItem('start_time',1);
+                        changeMaps();
                     }
 
 
@@ -206,6 +224,14 @@ $conn = $pdo->open();
         $('#ride-status').html('Driving To Destination ...');
         $('.btn-danger').hide();
     }
+
+    function changeMaps() {
+        if (sessionStorage.getItem('start_time') == 1) {
+            $('#maps-view').hide();
+            $('#maps-view2').show();
+        }
+    }
+    changeMaps();
 </script>
 <!-- Chart Data -->
 
