@@ -17,182 +17,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ad21645-7334-41b1-a942-75d6cd024b1c" name="Default Changelist" comment="save all files">
-      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/detailed_report.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/detailed_report.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/drivers.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/drivers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/includes/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/navbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/includes/vehicles_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/vehicles_modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/reports.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/reports.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/vehicles.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/vehicles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/bootstrap/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/bootstrap/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/ionicons.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fonts/ionicons.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fonts/ionicons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fonts/ionicons.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/Flot/examples/axes-time-zones/tz/asia" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/Flot/examples/axes-time-zones/tz/asia" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/Flot/examples/axes-time-zones/tz/australasia" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/Flot/examples/axes-time-zones/tz/australasia" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/Flot/examples/axes-time-zones/tz/northamerica" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/Flot/examples/axes-time-zones/tz/northamerica" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/Flot/examples/axes-time-zones/tz/southamerica" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/Flot/examples/axes-time-zones/tz/southamerica" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/Ionicons/cheatsheet.html" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/Ionicons/cheatsheet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/Ionicons/css/ionicons.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/Ionicons/css/ionicons.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/Ionicons/css/ionicons.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/Ionicons/css/ionicons.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/Ionicons/fonts/ionicons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/Ionicons/fonts/ionicons.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/Ionicons/less/_ionicons-icons.less" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/Ionicons/less/_ionicons-icons.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/Ionicons/less/_ionicons-variables.less" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/Ionicons/less/_ionicons-variables.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/Ionicons/scss/_ionicons-icons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/Ionicons/scss/_ionicons-icons.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/Ionicons/scss/_ionicons-variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/Ionicons/scss/_ionicons-variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/Ionicons/scss/ionicons.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/Ionicons/scss/ionicons.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/bootstrap-datepicker/CODE_OF_CONDUCT.md" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/bootstrap-datepicker/CODE_OF_CONDUCT.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/ckeditor/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/ckeditor/LICENSE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/ckeditor/ckeditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/ckeditor/ckeditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/datatables.net/js/jquery.dataTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/datatables.net/js/jquery.dataTables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-sparkline/dist/jquery.sparkline.js" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-sparkline/dist/jquery.sparkline.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-sparkline/src/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-sparkline/src/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/jquery-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/jquery-ui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/jquery-ui.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/base/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/base/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/base/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/base/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/base/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/base/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/black-tie/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/black-tie/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/black-tie/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/black-tie/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/black-tie/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/black-tie/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/blitzer/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/blitzer/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/blitzer/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/blitzer/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/blitzer/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/blitzer/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/cupertino/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/cupertino/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/cupertino/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/cupertino/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/cupertino/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/cupertino/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/dark-hive/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/dark-hive/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/dark-hive/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/dark-hive/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/dark-hive/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/dark-hive/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/dot-luv/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/dot-luv/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/dot-luv/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/dot-luv/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/dot-luv/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/dot-luv/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/eggplant/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/eggplant/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/eggplant/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/eggplant/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/eggplant/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/eggplant/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/excite-bike/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/excite-bike/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/excite-bike/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/excite-bike/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/excite-bike/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/excite-bike/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/flick/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/flick/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/flick/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/flick/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/flick/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/flick/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/hot-sneaks/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/hot-sneaks/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/hot-sneaks/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/hot-sneaks/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/hot-sneaks/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/hot-sneaks/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/humanity/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/humanity/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/humanity/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/humanity/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/humanity/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/humanity/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/le-frog/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/le-frog/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/le-frog/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/le-frog/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/le-frog/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/le-frog/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/mint-choc/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/mint-choc/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/mint-choc/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/mint-choc/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/mint-choc/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/mint-choc/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/overcast/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/overcast/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/overcast/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/overcast/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/overcast/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/overcast/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/pepper-grinder/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/pepper-grinder/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/pepper-grinder/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/pepper-grinder/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/pepper-grinder/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/pepper-grinder/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/redmond/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/redmond/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/redmond/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/redmond/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/redmond/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/redmond/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/smoothness/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/smoothness/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/smoothness/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/smoothness/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/smoothness/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/smoothness/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/south-street/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/south-street/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/south-street/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/south-street/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/south-street/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/south-street/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/start/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/start/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/start/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/start/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/start/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/start/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/sunny/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/sunny/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/sunny/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/sunny/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/sunny/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/sunny/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/swanky-purse/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/swanky-purse/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/swanky-purse/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/swanky-purse/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/swanky-purse/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/swanky-purse/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/trontastic/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/trontastic/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/trontastic/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/trontastic/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/trontastic/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/trontastic/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/ui-darkness/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/ui-darkness/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/ui-darkness/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/ui-darkness/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/ui-darkness/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/ui-darkness/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/ui-lightness/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/ui-lightness/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/ui-lightness/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/ui-lightness/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/ui-lightness/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/ui-lightness/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/vader/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/vader/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/vader/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/vader/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/vader/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/themes/vader/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/ui/minified/sortable.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/ui/minified/sortable.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery-ui/ui/sortable.js" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery-ui/ui/sortable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jquery/AUTHORS.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jquery/AUTHORS.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/jvectormap/LICENSE-AGPL" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/jvectormap/LICENSE-AGPL" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/morris.js/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/morris.js/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bower_components copy/select2/.github/CONTRIBUTING.md" beforeDir="false" afterPath="$PROJECT_DIR$/bower_components copy/select2/.github/CONTRIBUTING.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/js/DirectChat.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/js/DirectChat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/less/direct-chat.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/less/direct-chat.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/css/AdminLTE.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/css/AdminLTE.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/css/AdminLTE.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/css/AdminLTE.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/css/alt/AdminLTE-without-plugins.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/css/alt/AdminLTE-without-plugins.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/css/alt/AdminLTE-without-plugins.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/css/alt/AdminLTE-without-plugins.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/js/adminlte.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/js/adminlte.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/js/adminlte.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/js/adminlte.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/accepted_ride.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/accepted_ride.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/includes/profile_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/includes/profile_modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/includes/users_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/includes/users_modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/includes/vehicles_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/includes/vehicles_modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/profile_update.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/profile_update.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/search_keyword.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/search_keyword.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/users_print.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/users_print.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/vacancies.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/vacancies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/vehicles.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/vehicles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/navbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/jQueryUI/jquery-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/jQueryUI/jquery-ui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/jQueryUI/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/jQueryUI/jquery-ui.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register_driver.php" beforeDir="false" afterPath="$PROJECT_DIR$/register_driver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/signup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup_driver.php" beforeDir="false" afterPath="$PROJECT_DIR$/signup_driver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcpdf/fonts/ae_fonts_2.0/COPYING" beforeDir="false" afterPath="$PROJECT_DIR$/tcpdf/fonts/ae_fonts_2.0/COPYING" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcpdf/fonts/dejavu-fonts-ttf-2.33/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/tcpdf/fonts/dejavu-fonts-ttf-2.33/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcpdf/fonts/dejavu-fonts-ttf-2.34/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/tcpdf/fonts/dejavu-fonts-ttf-2.34/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcpdf/fonts/freefont-20100919/COPYING" beforeDir="false" afterPath="$PROJECT_DIR$/tcpdf/fonts/freefont-20100919/COPYING" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcpdf/fonts/freefont-20100919/CREDITS" beforeDir="false" afterPath="$PROJECT_DIR$/tcpdf/fonts/freefont-20100919/CREDITS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcpdf/fonts/freefont-20100919/ChangeLog" beforeDir="false" afterPath="$PROJECT_DIR$/tcpdf/fonts/freefont-20100919/ChangeLog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcpdf/fonts/freefont-20120503/COPYING" beforeDir="false" afterPath="$PROJECT_DIR$/tcpdf/fonts/freefont-20120503/COPYING" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcpdf/fonts/freefont-20120503/CREDITS" beforeDir="false" afterPath="$PROJECT_DIR$/tcpdf/fonts/freefont-20120503/CREDITS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcpdf/fonts/freefont-20120503/ChangeLog" beforeDir="false" afterPath="$PROJECT_DIR$/tcpdf/fonts/freefont-20120503/ChangeLog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcpdf/fonts/freefont-20120503/ChangeLog.10070.BAK" beforeDir="false" afterPath="$PROJECT_DIR$/tcpdf/fonts/freefont-20120503/ChangeLog.10070.BAK" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcpdf/tcpdf.php" beforeDir="false" afterPath="$PROJECT_DIR$/tcpdf/tcpdf.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/truber.sql" beforeDir="false" afterPath="$PROJECT_DIR$/truber.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/includes/profile_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/includes/profile_modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/profile_update.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/profile_update.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/request_accepted.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/request_accepted.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/users_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/users_edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/LICENSE.TXT" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/LICENSE.TXT" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/examples/example_052.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/examples/example_052.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/ae_fonts_2.0/COPYING" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/ae_fonts_2.0/COPYING" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/dejavu-fonts-ttf-2.33/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/dejavu-fonts-ttf-2.33/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/dejavu-fonts-ttf-2.34/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/dejavu-fonts-ttf-2.34/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/freefont-20100919/COPYING" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/freefont-20100919/COPYING" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/freefont-20100919/CREDITS" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/freefont-20100919/CREDITS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/freefont-20100919/ChangeLog" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/freefont-20100919/ChangeLog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/freefont-20120503/COPYING" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/freefont-20120503/COPYING" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/freefont-20120503/CREDITS" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/freefont-20120503/CREDITS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/freefont-20120503/ChangeLog" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/freefont-20120503/ChangeLog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/freefont-20120503/ChangeLog.10070.BAK" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/fonts/freefont-20120503/ChangeLog.10070.BAK" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/tcpdf.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/vendor/tecnickcom/tcpdf/tcpdf.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-vi.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpmailer/phpmailer/language/phpmailer.lang-vi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/verify.php" beforeDir="false" afterPath="$PROJECT_DIR$/verify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/vehicles/1.5ton.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/vehicles/1ton.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/vehicles/8ton.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/4ton.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/vehicles/minivan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/vehicles/test.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,21 +43,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/img/vehicles" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="copyright.filetypes.HTML" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Truber\assets\img" />
+      <recent name="C:\xampp\htdocs\Truber\driver" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Truber\assets\img\vehicles" />
       <recent name="C:\xampp\htdocs\Truber\driver\rides" />
       <recent name="C:\xampp\htdocs\Truber\images" />
       <recent name="C:\xampp\htdocs\Truber\user\files\images" />
       <recent name="C:\xampp\htdocs\Truber\user" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Truber\driver" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -243,7 +73,7 @@
       <workItem from="1603690784293" duration="44111000" />
       <workItem from="1603955720699" duration="83424000" />
       <workItem from="1604374143975" duration="60514000" />
-      <workItem from="1604579999012" duration="1700000" />
+      <workItem from="1604579999012" duration="3778000" />
     </task>
     <task id="LOCAL-00001" summary="filr">
       <created>1603690906013</created>
@@ -317,6 +147,10 @@
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/-1920.-94.1920.1040@0.0.1536.824" timestamp="1604057643551" />
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604510337256" />
+    <state x="407" y="174" key="MultipleFileMergeDialog" timestamp="1604581972189">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1604581972189" />
     <state x="587" y="133" key="RollbackChangesDialog" timestamp="1603691736318">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -341,10 +175,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="601" y="146" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1536.824@0.0.1536.824" timestamp="1603691955735" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604322936835">
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604581966499">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1604322936835" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1604581966499" />
     <state x="478" y="145" width="579" height="624" key="find.popup" timestamp="1604580012356">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
