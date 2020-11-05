@@ -13885,7 +13885,7 @@ var sortable = $.widget("ui.sortable", $.ui.mouse, {
 		}
 
 		//Post events to containers
-		this._contactContainers(event);
+		this._mobileContainers(event);
 
 		//Interconnect with droppables
 		if($.ui.ddmanager) {
@@ -14312,7 +14312,7 @@ var sortable = $.widget("ui.sortable", $.ui.mouse, {
 		});
 	},
 
-	_contactContainers: function(event) {
+	_mobileContainers: function(event) {
 		var i, j, dist, itemWithLeastDistance, posProperty, sizeProperty, cur, nearBottom, floating, axis,
 			innermostContainer = null,
 			innermostIndex = null;

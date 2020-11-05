@@ -10,7 +10,7 @@
     padding: 0;
   }
   &.chat-pane-open {
-    .direct-chat-contacts {
+    .direct-chat-mobiles {
       .translate(0, 0);
     }
   }
@@ -34,7 +34,7 @@
 }
 
 .direct-chat-messages,
-.direct-chat-contacts {
+.direct-chat-mobiles {
   .transition-transform(.5s ease-in-out);
 }
 
@@ -106,14 +106,14 @@
   color: #999;
 }
 
-//Direct chat contacts pane
-.direct-chat-contacts-open {
-  .direct-chat-contacts {
+//Direct chat mobiles pane
+.direct-chat-mobiles-open {
+  .direct-chat-mobiles {
     .translate(0, 0);
   }
 }
 
-.direct-chat-contacts {
+.direct-chat-mobiles {
   .translate(101%, 0);
   position: absolute;
   top: 0;
@@ -125,8 +125,8 @@
   overflow: auto;
 }
 
-//Contacts list -- for displaying contacts in direct chat contacts pane
-.contacts-list {
+//mobiles list -- for displaying mobiles in direct chat mobiles pane
+.mobiles-list {
   &:extend(.list-unstyled);
   > li {
     .clearfix();
@@ -139,36 +139,36 @@
   }
 }
 
-.contacts-list-img {
+.mobiles-list-img {
   .border-radius(50%);
   width: 40px;
   float: left;
 }
 
-.contacts-list-info {
+.mobiles-list-info {
   margin-left: 45px;
   color: #fff;
 }
 
-.contacts-list-name,
-.contacts-list-status {
+.mobiles-list-name,
+.mobiles-list-status {
   display: block;
 }
 
-.contacts-list-name {
+.mobiles-list-name {
   font-weight: 600;
 }
 
-.contacts-list-status {
+.mobiles-list-status {
   font-size: 12px;
 }
 
-.contacts-list-date {
+.mobiles-list-date {
   color: #aaa;
   font-weight: normal;
 }
 
-.contacts-list-msg {
+.mobiles-list-msg {
   color: #999;
 }
 

@@ -79,6 +79,6 @@ TCPDF includes the sRGB.icc profile from the icc-profiles-free Debian package:
 https://packages.debian.org/source/stable/icc-profiles-free
 
 
-## Developer(s) Contact
+## Developer(s) mobile
 
 * Nicola Asuni <info@tecnick.com>

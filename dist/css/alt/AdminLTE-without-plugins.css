@@ -2705,7 +2705,7 @@ table.text-center th {
   overflow-x: hidden;
   padding: 0;
 }
-.direct-chat.chat-pane-open .direct-chat-contacts {
+.direct-chat.chat-pane-open .direct-chat-mobiles {
   -webkit-transform: translate(0, 0);
   -ms-transform: translate(0, 0);
   -o-transform: translate(0, 0);
@@ -2736,7 +2736,7 @@ table.text-center th {
   clear: both;
 }
 .direct-chat-messages,
-.direct-chat-contacts {
+.direct-chat-mobiles {
   -webkit-transition: -webkit-transform 0.5s ease-in-out;
   -moz-transition: -moz-transform 0.5s ease-in-out;
   -o-transition: -o-transform 0.5s ease-in-out;
@@ -2802,13 +2802,13 @@ table.text-center th {
 .direct-chat-timestamp {
   color: #999;
 }
-.direct-chat-contacts-open .direct-chat-contacts {
+.direct-chat-mobiles-open .direct-chat-mobiles {
   -webkit-transform: translate(0, 0);
   -ms-transform: translate(0, 0);
   -o-transform: translate(0, 0);
   transform: translate(0, 0);
 }
-.direct-chat-contacts {
+.direct-chat-mobiles {
   -webkit-transform: translate(101%, 0);
   -ms-transform: translate(101%, 0);
   -o-transform: translate(101%, 0);
@@ -2822,46 +2822,46 @@ table.text-center th {
   color: #fff;
   overflow: auto;
 }
-.contacts-list > li {
+.mobiles-list > li {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 10px;
   margin: 0;
 }
-.contacts-list > li:before,
-.contacts-list > li:after {
+.mobiles-list > li:before,
+.mobiles-list > li:after {
   content: " ";
   display: table;
 }
-.contacts-list > li:after {
+.mobiles-list > li:after {
   clear: both;
 }
-.contacts-list > li:last-of-type {
+.mobiles-list > li:last-of-type {
   border-bottom: none;
 }
-.contacts-list-img {
+.mobiles-list-img {
   border-radius: 50%;
   width: 40px;
   float: left;
 }
-.contacts-list-info {
+.mobiles-list-info {
   margin-left: 45px;
   color: #fff;
 }
-.contacts-list-name,
-.contacts-list-status {
+.mobiles-list-name,
+.mobiles-list-status {
   display: block;
 }
-.contacts-list-name {
+.mobiles-list-name {
   font-weight: 600;
 }
-.contacts-list-status {
+.mobiles-list-status {
   font-size: 12px;
 }
-.contacts-list-date {
+.mobiles-list-date {
   color: #aaa;
   font-weight: normal;
 }
-.contacts-list-msg {
+.mobiles-list-msg {
   color: #999;
 }
 .direct-chat-danger .right > .direct-chat-text {
@@ -3677,7 +3677,7 @@ table.text-center th {
 }
 .list-unstyled,
 .chart-legend,
-.contacts-list,
+.mobiles-list,
 .users-list,
 .mailbox-attachments {
   list-style: none;

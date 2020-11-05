@@ -38,8 +38,8 @@
 			$conn = $pdo->open();
 
 			try{
-				$stmt = $conn->prepare("UPDATE driver SET email=:email, password=:password, firstname=:firstname, lastname=:lastname, contact=:contact WHERE id=:id");
-				$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'contact'=>$contact, 'id'=>$admin['id']]);
+				$stmt = $conn->prepare("UPDATE driver SET email=:email, password=:password, firstname=:firstname, lastname=:lastname, mobile=:mobile WHERE id=:id");
+				$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'mobile'=>$mobile, 'id'=>$admin['id']]);
 
 				$_SESSION['success'] = 'Account updated successfully';
 			}

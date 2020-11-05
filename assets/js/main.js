@@ -1,5 +1,5 @@
 let Validation = false;
-let contactValidated = false;
+let mobileValidated = false;
 let emailvalidation = false;
 let validatedpassword = false;
 let strongpassword = false;
@@ -7,29 +7,29 @@ let strongpassword = false;
 
 function ValueKeyPress(trigger) {
 
-    if (trigger === 'contact') {
-        var contact = $('input[name=contact]').val();
+    if (trigger === 'mobile') {
+        var mobile = $('input[name=mobile]').val();
 
-        if (contact.length === 0) {
+        if (mobile.length === 0) {
             $('#verify').html('');
         }
 
-        if (contact.length < 10) {
+        if (mobile.length < 10) {
             $('#verify').css('color', 'red').html('<i>**the number is invalid!**</i>');
-            contactValidated = false;
+            mobileValidated = false;
         }
 
-        if ((contact.length === 10 && contact[0] === "0" && (contact[1] === "6" || contact[1] === "7" || contact[1] === "8"))
-            || (contact.length === 11 && contact[0] === "2" && contact[1] === "7")) {
+        if ((mobile.length === 10 && mobile[0] === "0" && (mobile[1] === "6" || mobile[1] === "7" || mobile[1] === "8"))
+            || (mobile.length === 11 && mobile[0] === "2" && mobile[1] === "7")) {
             $('#verify').css('color', 'Green').html(' <i>the number is valid</i>');
-            contactValidated = true;
-        } else if (contact.length > 10) {
+            mobileValidated = true;
+        } else if (mobile.length > 10) {
             $('#verify').css('color', 'red').html('<i>**the number is invalid!**</i>');
-            contactValidated = true;
+            mobileValidated = true;
         }
         else {
             $('#verify').css('color', 'red').html('<i>**the number is invalid!**</i>');
-            contactValidated = false;
+            mobileValidated = false;
         }
     }
 }
@@ -146,13 +146,13 @@ function matchPassword(){
 }
 
 function sendForm(){
-    if (contactValidated && validatedpassword && emailvalidation && strongpassword){
+    if (mobileValidated && validatedpassword && emailvalidation && strongpassword){
         Validation = true;
         return true;
     }
 
-        if (!contactValidated){
-            $('#contact').focus();
+        if (!mobileValidated){
+            $('#mobile').focus();
             return false;
         }
         if (!validatedpassword){

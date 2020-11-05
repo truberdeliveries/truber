@@ -59,7 +59,7 @@
                 <div class="login-card"><img class="profile-img-card" src="assets/img/avatar_2x.png">
                     <p class="profile-name-card"> </p>
                     <form class="form-signin" method="POST" action="verify.php"><span class="reauth-email"> </span>
-                        <input class="form-control" type="text" id="inputEmail" required="" placeholder="Email address / Contact Number" autofocus="" name="email">
+                        <input class="form-control" type="text" id="inputEmail" required="" placeholder="Email address / Mobile Number" autofocus="" name="email">
                         <input class="form-control inputTxt" type="password" id="inputPassword" required="" placeholder="Password" name="password">
                         <span class="fa fa-eye eyespan"></span>
                         <div class="checkbox">

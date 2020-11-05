@@ -130,7 +130,7 @@
 //                            <td>".$row['id']."</td>
 //                            <td>".$row['firstname'].' '.$row['lastname']."</td>
 //                            <td>".$row['email']."</td>
-//                            <td>".$row['contact']."</td>
+//                            <td>".$row['mobile']."</td>
 //                            <td>".date('M d, Y', strtotime($row['date_registered']))."</td>
 //                            <td>Completed</td>
 //                            </tr>

@@ -9,7 +9,7 @@ if(isset($_POST['signup_driver'])){
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
-    $contact = $_POST['contact'];
+    $mobile = $_POST['mobile'];
     $password = $_POST['password'];
     $repassword = $_POST['current_password'];
 
@@ -35,11 +35,11 @@ if(isset($_POST['signup_driver'])){
             exit();
         }
 
-        $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM driver,customer,administrator WHERE driver.contact=:contact OR customer.contact=:contact OR administrator.contact=:contact");
-        $stmt->execute(['contact'=>$contact]);
+        $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM driver,customer,administrator WHERE driver.mobile=:mobile OR customer.mobile=:mobile OR administrator.mobile=:mobile");
+        $stmt->execute(['mobile'=>$mobile]);
         $row = $stmt->fetch();
         if($row['numrows'] > 0){
-            $_SESSION['error'] = 'Contact number already taken';
+            $_SESSION['error'] = 'mobile number already taken';
             header('location: register_driver.php');
             exit();
         }
@@ -49,8 +49,8 @@ if(isset($_POST['signup_driver'])){
 
             try{
 
-                $stmt = $conn->prepare("INSERT INTO driver (firstname, lastname, email, contact, password, date_registered) VALUES (:firstname, :lastname, :email, :contact, :password, :now)");
-                $stmt->execute(['firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email, 'contact'=>$contact, 'password'=>$password, 'now'=>$now]);
+                $stmt = $conn->prepare("INSERT INTO driver (firstname, lastname, email, mobile, password, date_registered) VALUES (:firstname, :lastname, :email, :mobile, :password, :now)");
+                $stmt->execute(['firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email, 'mobile'=>$mobile, 'password'=>$password, 'now'=>$now]);
                 $userid = $conn->lastInsertId();
 
                 // $message = "

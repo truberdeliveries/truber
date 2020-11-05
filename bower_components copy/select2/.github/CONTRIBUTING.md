@@ -52,7 +52,7 @@ Requesting features in Select2
 Select2 is a large library that carries with it a lot of functionality. Because
 of this, many feature requests will not be implemented in the core library.
 
-Before starting work on a major feature for Select2, **contact the
+Before starting work on a major feature for Select2, **mobile the
 [community][community] first** or you may risk spending a considerable amount of
 time on something which the project developers are not interested in bringing
 into the project.

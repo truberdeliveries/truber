@@ -461,7 +461,7 @@ throw new Error('AdminLTE requires jQuery')
   }
 
   var ClassName = {
-    open: 'direct-chat-contacts-open'
+    open: 'direct-chat-mobiles-open'
   }
 
   // DirectChat Class Definition

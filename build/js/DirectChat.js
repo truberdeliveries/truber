@@ -16,7 +16,7 @@
   }
 
   var ClassName = {
-    open: 'direct-chat-contacts-open'
+    open: 'direct-chat-mobiles-open'
   }
 
   // DirectChat Class Definition

@@ -109,10 +109,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="edit_contact" class="col-sm-3 control-label">Contact Info</label>
+                    <label for="edit_mobile" class="col-sm-3 control-label">mobile Info</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="edit_contact" name="contact">
+                      <input type="text" class="form-control" id="edit_mobile" name="mobile">
                     </div>
                 </div>
             </div>

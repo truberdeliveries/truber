@@ -58,7 +58,7 @@
                   <th>id</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Contact</th>
+                  <th>mobile</th>
                   <th>Date Added</th>
                   <th>Action</th>
                 </thead>
@@ -76,7 +76,7 @@
                             <td>".$row['id']."</td> 
                             <td>".$row['firstname'].' '.$row['lastname']."</td>
                             <td>".$row['email']."</td>
-                            <td>".$row['contact']."</td>
+                            <td>".$row['mobile']."</td>
                             <td>".date('M d, Y', strtotime($row['date_created']))."</td>
                             <td id=".$row['id']."><i class='fa fa-plus-square addnew'></i><i class='fa fa-edit edit'></i><i class='fa fa-trash-o delete'></i></td>
                           </tr>
@@ -158,7 +158,7 @@ function getRow(id){
       $('#edit_firstname').val(response.firstname);
       $('#edit_lastname').val(response.lastname);
       $('#edit_address').val(response.address);
-      $('#edit_contact').val(response.contact_info);
+      $('#edit_mobile').val(response.mobile_info);
       $('.fullname').html(response.firstname+' '+response.lastname);
     }
   });

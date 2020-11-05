@@ -38,10 +38,10 @@
                   	</div>
                 </div>
                 <div class="form-group">
-                  	<label for="lastname" class="col-sm-3 control-label">Contact</label>
+                  	<label for="lastname" class="col-sm-3 control-label">mobile</label>
 
                   	<div class="col-sm-9">
-                    	<input type="text" class="form-control" id="lastname" name="contact" value="<?php echo $admin['contact']; ?>" required>
+                    	<input type="text" class="form-control" id="lastname" name="mobile" value="<?php echo $admin['mobile']; ?>" required>
                   	</div>
                 </div>
 				

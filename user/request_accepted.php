@@ -69,7 +69,7 @@ $conn = $pdo->open();
                         $drName = $stmt->fetch();
 
 
-                        $stmt = $conn->prepare("SELECT firstname,lastname,contact FROM driver WHERE email=:email");
+                        $stmt = $conn->prepare("SELECT firstname,lastname,mobile FROM driver WHERE email=:email");
                         $stmt->execute(['email'=>$drName['driver_name']]);
                         $row = $stmt->fetch();
 
@@ -83,7 +83,7 @@ $conn = $pdo->open();
                     ?>
                     <span id="mm">
                     <h3><strong id="ride-status" style="color: orange">Driver Is Heading Your Way ...</strong></h3><br/>
-                    <button class="btn btn-primary" onclick="location.href='tel: <?php echo $row['contact']?>'"><i class="fa fa-phone"></i>  Call</button><br/><br/>
+                    <button class="btn btn-primary" onclick="location.href='tel: <?php echo $row['mobile']?>'"><i class="fa fa-phone"></i>  Call</button><br/><br/>
                     <button class="btn btn-danger" id="<?php echo $drName['book_id']?>" ><i class="fa fa-close"></i>  Cancel</button>
                     <button class="look-up" id="<?php echo $drName['book_id']?>"  style="display: none">stats</button>
                     </span>

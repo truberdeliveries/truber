@@ -66,8 +66,8 @@
 .ion-android-cloud-outline:before,
 .ion-android-color-palette:before,
 .ion-android-compass:before,
-.ion-android-contact:before,
-.ion-android-contacts:before,
+.ion-android-mobile:before,
+.ion-android-mobiles:before,
 .ion-android-contract:before,
 .ion-android-create:before,
 .ion-android-delete:before,
@@ -356,8 +356,8 @@
 .ion-ios-color-wand-outline:before,
 .ion-ios-compose:before,
 .ion-ios-compose-outline:before,
-.ion-ios-contact:before,
-.ion-ios-contact-outline:before,
+.ion-ios-mobile:before,
+.ion-ios-mobile-outline:before,
 .ion-ios-copy:before,
 .ion-ios-copy-outline:before,
 .ion-ios-crop:before,
@@ -953,11 +953,11 @@
   content: "";
 }
 
-.ion-android-contact:before {
+.ion-android-mobile:before {
   content: "";
 }
 
-.ion-android-contacts:before {
+.ion-android-mobiles:before {
   content: "";
 }
 
@@ -2113,11 +2113,11 @@
   content: "";
 }
 
-.ion-ios-contact:before {
+.ion-ios-mobile:before {
   content: "";
 }
 
-.ion-ios-contact-outline:before {
+.ion-ios-mobile-outline:before {
   content: "";
 }
 

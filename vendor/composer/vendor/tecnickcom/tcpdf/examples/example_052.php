@@ -81,7 +81,7 @@ $info = array(
 	'Name' => 'TCPDF',
 	'Location' => 'Office',
 	'Reason' => 'Testing TCPDF',
-	'ContactInfo' => 'http://www.tcpdf.org',
+	'mobileInfo' => 'http://www.tcpdf.org',
 	);
 
 // set document signature

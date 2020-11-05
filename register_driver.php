@@ -55,7 +55,7 @@
                     <div class="form-group"><label for="firstname">Firstname</label><input class="form-control" type="text" id="firstname" name="firstname" onkeypress="return /[a-z]/i.test(event.key)" required></div>
                     <div class="form-group"><label for="lastname">Lastname</label><input class="form-control" type="text" id="lastname" name="lastname" onkeypress="return /[a-z]/i.test(event.key)" required></div>
                     <div class="form-group"><label for="email">Email&nbsp;</label><input class="form-control" type="email" id="email" name="email" onkeyup="emailValidate('register')" required></div>
-                    <div class="form-group"><label for="contact">Contact</label><input class="form-control" type="text" id="contact" name="contact" onkeyup="ValueKeyPress('contact');" required></div>
+                    <div class="form-group"><label for="mobile">mobile</label><input class="form-control" type="text" id="mobile" name="mobile" onkeyup="ValueKeyPress('mobile');" required></div>
                     <span id="verify"></span>
                     <div class="form-group"><label for="password">Password&nbsp;</label><input class="form-control inputTxt" type="password" id="password" name="password" onkeyup="CheckPassword()" required><span class="fa fa-eye eyespan" style="margin-top: -30px;"></span></div>
                     <span class="tooltiptext"><label id="miniCharacters">* 8 Characters minimum</label><br><label id="special_character" >* Has special character</label><br><label id="lowercase" >* Has lowercase character</label><br><label id="uppercase" >* Has uppercase character</label><br><label id="hasNumber" >* Has a number</label></span>

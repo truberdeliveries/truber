@@ -13,7 +13,7 @@
 			<tr>
 				<td>'.date('M d, Y', strtotime($row['created_on'])).'</td>
 				<td>'.$row['firstname'].' '.$row['lastname'].'</td>
-				<td>'.$row['contact_info'].'</td>
+				<td>'.$row['mobile_info'].'</td>
 			</tr>
 			';
 		}
@@ -59,7 +59,7 @@
 	           <tr>  
 	           		<th width="15%" align="center"><b>Date</b></th>
 	                <th width="30%" align="center"><b>User Name</b></th>
-					<th width="40%" align="center"><b>Contacts</b></th> 
+					<th width="40%" align="center"><b>mobiles</b></th> 
 	           </tr>  
 	      ';  
 	    $content .= generateRow($from, $to, $conn);  

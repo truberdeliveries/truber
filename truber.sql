@@ -55,7 +55,7 @@ CREATE TABLE `customer` (
   `firstname` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `contact` varchar(20) NOT NULL,
+  `mobile` varchar(20) NOT NULL,
   `password` varchar(100) NOT NULL,
   `date_created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -64,7 +64,7 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `firstname`, `lastname`, `email`, `contact`, `password`, `date_created`) VALUES
+INSERT INTO `customer` (`id`, `firstname`, `lastname`, `email`, `mobile`, `password`, `date_created`) VALUES
 (2, 'George', 'Mahlangu', 'given@gmail.com', '0823207253', 'password', '2020-02-25'),
 (5, 'Kabelo', 'Letsoalo', 'kabelo2@gmail.com', '0715268899', 'password', '2020-02-26');
 
@@ -79,7 +79,7 @@ CREATE TABLE `driver` (
   `firstname` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `contact` varchar(50) NOT NULL,
+  `mobile` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
   `date_registered` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -88,7 +88,7 @@ CREATE TABLE `driver` (
 -- Dumping data for table `driver`
 --
 
-INSERT INTO `driver` (`id`, `firstname`, `lastname`, `email`, `contact`, `password`, `date_registered`) VALUES
+INSERT INTO `driver` (`id`, `firstname`, `lastname`, `email`, `mobile`, `password`, `date_registered`) VALUES
 (2, 'Erick', 'Gumede', 'sipho@gmail.com', '0856521123', 'password', '2020-02-25');
 
 -- --------------------------------------------------------

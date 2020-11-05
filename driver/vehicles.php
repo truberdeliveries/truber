@@ -158,7 +158,7 @@
                 $('#edit_firstname').val(response.firstname);
                 $('#edit_lastname').val(response.lastname);
                 $('#edit_address').val(response.address);
-                $('#edit_contact').val(response.contact_info);
+                $('#edit_mobile').val(response.mobile_info);
                 $('.fullname').html(response.firstname+' '+response.lastname);
             }
         });

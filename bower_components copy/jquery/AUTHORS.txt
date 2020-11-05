@@ -59,7 +59,7 @@ temp01 <temp01irc@gmail.com>
 Heungsub Lee <h@subl.ee>
 Colin Snover <github.com@zetafleet.com>
 Ryan W Tenney <ryan@10e.us>
-Pinhook <contact@pinhooklabs.com>
+Pinhook <mobile@pinhooklabs.com>
 Ron Otten <r.j.g.otten@gmail.com>
 Jephte Clain <Jephte.Clain@univ-reunion.fr>
 Anton Matzneller <obhvsbypqghgc@gmail.com>
@@ -230,7 +230,7 @@ Aurelio De Rosa <aurelioderosa@gmail.com>
 Nazar Mokrynskyi <nazar@mokrynskyi.com>
 Amit Merchant <bullredeyes@gmail.com>
 Jason Bedard <jason+github@jbedard.ca>
-Arthur Verschaeve <contact@arthurverschaeve.be>
+Arthur Verschaeve <mobile@arthurverschaeve.be>
 Dan Hart <danhart@notonthehighstreet.com>
 Bin Xin <rhyzix@gmail.com>
 David Corbacho <davidcorbacho@gmail.com>
@@ -240,7 +240,7 @@ Frederic Hemberger <mail@frederic-hemberger.de>
 Ben Toews <mastahyeti@gmail.com>
 Aditya Raghavan <araghavan3@gmail.com>
 Victor Homyakov <vkhomyackov@gmail.com>
-Shivaji Varma <contact@shivajivarma.com>
+Shivaji Varma <mobile@shivajivarma.com>
 Nicolas HENRY <icewil@gmail.com>
 Anne-Gaelle Colom <coloma@westminster.ac.uk>
 George Mauer <gmauer@gmail.com>

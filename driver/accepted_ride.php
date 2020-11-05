@@ -67,7 +67,7 @@ $conn = $pdo->open();
                         $stmt->execute(['driver_name'=>$admin['email']]);
                         $cName = $stmt->fetch();
 
-                        $stmt = $conn->prepare("SELECT firstname,lastname,contact FROM customer WHERE email=:email");
+                        $stmt = $conn->prepare("SELECT firstname,lastname,mobile FROM customer WHERE email=:email");
                         $stmt->execute(['email'=>$cName['customer_name']]);
                         $row = $stmt->fetch();
 
@@ -82,7 +82,7 @@ $conn = $pdo->open();
                     ?>
                     <span id="mm">
                     <h3><strong id="ride-status" style="color: orange">Picking Up Customer ...</strong></h3><br/>
-                    <button class="btn btn-primary" onclick="location.href='tel: <?php echo $row['contact']?>'"><i class="fa fa-phone"></i>  Call</button><br/><br/>
+                    <button class="btn btn-primary" onclick="location.href='tel: <?php echo $row['mobile']?>'"><i class="fa fa-phone"></i>  Call</button><br/><br/>
                     <button class="btn btn-warning start" id="<?php echo $cName['book_id']?>" ><i class="fa fa-street-view"></i>  Picked-Up</button>
                     <button class="btn btn-success rideBtn" id="<?php echo $cName['book_id']?>"><i class="fa fa-check"></i>  Finished</button>
                     <button class="btn btn-danger" id="<?php echo $cName['book_id']?>" ><i class="fa fa-close"></i>  Cancel</button>

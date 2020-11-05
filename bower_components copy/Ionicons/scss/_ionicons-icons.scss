@@ -49,8 +49,8 @@
 .#{$ionicons-prefix}android-cloud-outline:before,
 .#{$ionicons-prefix}android-color-palette:before,
 .#{$ionicons-prefix}android-compass:before,
-.#{$ionicons-prefix}android-contact:before,
-.#{$ionicons-prefix}android-contacts:before,
+.#{$ionicons-prefix}android-mobile:before,
+.#{$ionicons-prefix}android-mobiles:before,
 .#{$ionicons-prefix}android-contract:before,
 .#{$ionicons-prefix}android-create:before,
 .#{$ionicons-prefix}android-delete:before,
@@ -339,8 +339,8 @@
 .#{$ionicons-prefix}ios-color-wand-outline:before,
 .#{$ionicons-prefix}ios-compose:before,
 .#{$ionicons-prefix}ios-compose-outline:before,
-.#{$ionicons-prefix}ios-contact:before,
-.#{$ionicons-prefix}ios-contact-outline:before,
+.#{$ionicons-prefix}ios-mobile:before,
+.#{$ionicons-prefix}ios-mobile-outline:before,
 .#{$ionicons-prefix}ios-copy:before,
 .#{$ionicons-prefix}ios-copy-outline:before,
 .#{$ionicons-prefix}ios-crop:before,
@@ -785,8 +785,8 @@
 .#{$ionicons-prefix}android-cloud-outline:before { content: $ionicon-var-android-cloud-outline; }
 .#{$ionicons-prefix}android-color-palette:before { content: $ionicon-var-android-color-palette; }
 .#{$ionicons-prefix}android-compass:before { content: $ionicon-var-android-compass; }
-.#{$ionicons-prefix}android-contact:before { content: $ionicon-var-android-contact; }
-.#{$ionicons-prefix}android-contacts:before { content: $ionicon-var-android-contacts; }
+.#{$ionicons-prefix}android-mobile:before { content: $ionicon-var-android-mobile; }
+.#{$ionicons-prefix}android-mobiles:before { content: $ionicon-var-android-mobiles; }
 .#{$ionicons-prefix}android-contract:before { content: $ionicon-var-android-contract; }
 .#{$ionicons-prefix}android-create:before { content: $ionicon-var-android-create; }
 .#{$ionicons-prefix}android-delete:before { content: $ionicon-var-android-delete; }
@@ -1075,8 +1075,8 @@
 .#{$ionicons-prefix}ios-color-wand-outline:before { content: $ionicon-var-ios-color-wand-outline; }
 .#{$ionicons-prefix}ios-compose:before { content: $ionicon-var-ios-compose; }
 .#{$ionicons-prefix}ios-compose-outline:before { content: $ionicon-var-ios-compose-outline; }
-.#{$ionicons-prefix}ios-contact:before { content: $ionicon-var-ios-contact; }
-.#{$ionicons-prefix}ios-contact-outline:before { content: $ionicon-var-ios-contact-outline; }
+.#{$ionicons-prefix}ios-mobile:before { content: $ionicon-var-ios-mobile; }
+.#{$ionicons-prefix}ios-mobile-outline:before { content: $ionicon-var-ios-mobile-outline; }
 .#{$ionicons-prefix}ios-copy:before { content: $ionicon-var-ios-copy; }
 .#{$ionicons-prefix}ios-copy-outline:before { content: $ionicon-var-ios-copy-outline; }
 .#{$ionicons-prefix}ios-crop:before { content: $ionicon-var-ios-crop; }
