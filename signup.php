@@ -1,7 +1,7 @@
 <?php
 
 	include 'includes/session.php';
-
+$conn = $pdo->open();
 	if(isset($_POST['signup'])){
 
 
@@ -25,7 +25,7 @@
 			exit();	
 		}
 		else{
-			$conn = $pdo->open();
+
 
             $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM driver,customer,administrator WHERE driver.email=:email OR customer.email=:email OR administrator.email=:email");
             $stmt->execute(['email'=>$email]);
@@ -73,7 +73,7 @@
 					header('location: register.php');
 				}
 
-				$pdo->close();
+
 
 			}
 
@@ -87,4 +87,6 @@
 
 
 
+
+$pdo->close();
 ?>

@@ -21,7 +21,6 @@ if($rows['num']>0){
     $conn = $pdo->open();
 ?>
 <?php include 'includes/header.php'; ?>
-
     <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
 
@@ -31,7 +30,7 @@ if($rows['num']>0){
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <section class="content-header">
+            <section class="content-header" style="z-index: 9;background: #ecf0f5">
                 <h1>
                     Request Truber
                 </h1>
@@ -42,7 +41,7 @@ if($rows['num']>0){
             </section>
 
             <!-- Main content -->
-            <section class="content">
+            <section class="content" style="padding-top: 0">
                 <?php
                 if(isset($_SESSION['error'])){
                     echo "
@@ -85,7 +84,7 @@ if($rows['num']>0){
 
                 echo '
 
-                <div class="row" style="padding-top: 50px">
+                <div class="row">
                     <div class="col-lg-6 col-xs-6 adjust">
                         <!-- small box -->
                         <form class="form" method="POST" action="handle_requests.php">
@@ -177,11 +176,13 @@ if($rows['num']>0){
                 <br/>
                 <!-- /.row -->
                 <div class="row">
-                    <div class="col-xs-12 adjust">
-                        <!-- Select vehicle -->
-                        <div id="maps">
-                         <iframe width="100%" height="300" frameborder="0" style="border:5px"></iframe>
-                        </div>
+                    <div class="col-xs-12">
+
+                        <div id="map" class="map"></div>
+                        <script src="../maps/js/leaflet.js"></script>
+                        <script src="../maps/js/leaflet-routing-machine.js"></script>
+                        <script src="../maps/js/index.js"></script>
+                        <script src='../maps/js/turf.min.js'></script>
 
                     </div>
                 </div>

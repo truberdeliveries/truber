@@ -102,7 +102,7 @@
 
 </div>
 <!-- ./wrapper -->
-
+<?php include 'includes/menubar.php'; ?>
 <!-- Chart Data -->
 
 <!-- End Chart Data -->

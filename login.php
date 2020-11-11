@@ -70,7 +70,7 @@
                         </div>
                         <button class="btn btn-primary btn-block btn-lg btn-signin" name="login" type="submit">Login</button>
                     </form>
-                    <a class="forgot-password" href="#">Forgot your password?</a>
+                    <a class="forgot-password" href="recover_password.php">Forgot your password?</a>
                 </div>
             <div class="intro-heading text-uppercase"></div>
         </div>

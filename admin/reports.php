@@ -57,18 +57,76 @@
                       <div class="col-sm-9">
                           <select name="type" id="type" class="form-control" required>
                               <option selected disabled>Select report type</option>
-                              <option value="Veh">Vehicle</option>
-                              <option value="cust">Customers</option>
-                              <option value="driv">Drivers</option>
+                              <option value="Vehicles">Vehicle</option>
+                              <option value="customers">Customers</option>
+                              <option value="drivers">Drivers</option>
                               <option value="trips">Trips</option>
-                              <option value="members">New Members</option>
+                              <option value="members">All Members</option>
                           </select>
                       </div>
                   </div>
 
               </div>
             </div>
+              <?php
+             // echo uniqid(rand(),true);
 
+            //  function distance($lat1, $lon1, $lat2, $lon2) {
+
+//                  $pi80 = M_PI / 180;
+//                  $lat1 *= $pi80;
+//                  $lon1 *= $pi80;
+//                  $lat2 *= $pi80;
+//                  $lon2 *= $pi80;
+//
+//                  $r = 6372.797; // mean radius of Earth in km
+//                  $dlat = $lat2 - $lat1;
+//                  $dlon = $lon2 - $lon1;
+//                  $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlon / 2) * sin($dlon / 2);
+//                  $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+//                  $km = $r * $c;
+//
+//                  //echo '<br/>'.$km;
+//                  return $km;
+//              }
+//              echo distance(-25.7530,28.1942,-26.235119, 27.906766);
+              ?>
+<script>
+
+    function distance(lat1, lon1, lat2, lon2, unit) {
+        var radlat1 = Math.PI * lat1/180
+        var radlat2 = Math.PI * lat2/180
+        var radlon1 = Math.PI * lon1/180
+        var radlon2 = Math.PI * lon2/180
+        var theta = lon1-lon2
+        var radtheta = Math.PI * theta/180
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        dist = Math.acos(dist)
+        dist = dist * 180/Math.PI
+        dist = dist * 60 * 1.1515
+        if (unit=="K") { dist = dist * 1.609344 }
+        if (unit=="N") { dist = dist * 0.8684 }
+        return dist
+    }
+
+    var distance = distance(-25.7530,28.1942,-25.750319, 28.195769, 'K');
+    //round to 3 decimal places
+    console.log((Math.floor(distance*1000)/1000)*4.2);  //displays 343.548
+   //
+   //
+   // // console.log(geoDistance(-25.7530,28.1942,-26.235119, 27.906766));
+   //  function distance(lat1, lon1, lat2, lon2) {
+   //      var p = 0.017453292519943295;    // Math.PI / 180
+   //      var c = Math.cos;
+   //      var a = 0.5 - c((lat2 - lat1) * p)/2 +
+   //          c(lat1 * p) * c(lat2 * p) *
+   //          (1 - c((lon2 - lon1) * p))/2;
+   //
+   //      return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+   //  }
+   //  console.log(distance(-25.7530,28.1942,-26.235119, 27.906766));
+
+</script>
 
               <div style="padding-left: 30%;">
                   <div class="input-group">
