@@ -14,7 +14,7 @@
         Customers
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="./home.php"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Customers</li>
       </ol>
     </section>

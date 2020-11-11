@@ -64,6 +64,12 @@
         -o-transition: background-color 200ms ease-in-out;
         transition: background-color 200ms ease-in-out;
       }
+      .back-btn{
+          position: fixed;
+          z-index: 999;
+          padding: 5px;
+          color: antiquewhite;
+      }
 
       #legend li span {
         display: block;

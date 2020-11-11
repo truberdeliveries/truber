@@ -35,6 +35,8 @@
     <!-- Google Recaptcha -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
 
+<!--    Maps  -->
+
   	<!-- Custom CSS -->
     <style type="text/css">
     /* Small devices (tablets, 768px and up) */

@@ -32,6 +32,12 @@
   	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   	<![endif]-->
+
+    <link rel="stylesheet" href="../maps/dist/leaflet.css" />
+    <link rel="stylesheet" href="../maps/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="../maps/dist/index.css" />
+
+<!--    MaPS-->
   
     <link rel="stylesheet" href="../assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="../assets/css/beautiful-dismissable-alert.css">
@@ -97,9 +103,29 @@
         .address-select,.address-select2 {
             cursor:pointer;
         }
+        .content-wrapper{
+            /*background: transparent !important;*/
+        }
+        .adjust{
+            z-index: 9;
+            position: relative;
+            background: #ecf0f5;
+            padding: 40px;
+        }
+        .back-btn{
+            position: fixed;
+            z-index: 999;
+            padding: 5px;
+            color: antiquewhite;
+        }
         @media (max-width: 1200px) {
             .adjust{
                 width: 100% !important;
+                padding: 2px;
+            }
+
+            form .fa{
+                font-size: larger;
             }
         }
 

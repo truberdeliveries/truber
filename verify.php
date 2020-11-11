@@ -69,9 +69,42 @@
 		}
 
 	}
-	else{
-		$_SESSION['error'] = 'Input login credentails first';
-	}
+
+if(isset($_POST['remember'])){
+
+    $email = $_POST['email'];
+    $stmt = $conn->prepare("SELECT *,COUNT(*) AS numrows FROM driver,customer,administrator WHERE driver.email=:email OR customer.email=:email OR administrator.email=:email ");
+    $stmt->execute(['email'=>$email]);
+    $row = $stmt->fetch();
+    if($row['numrows'] > 0){
+
+        $to_email = $email;
+        $subject = 'Password Recovery';
+        $body = '
+                <p>Hi '.$row['firstname'].' '.$row['lastname'].'</p>
+                <br/>
+                <p>Your Passowrd Is: '.$row['password'].'</p>
+                <br/>
+                <p>From <a href="http://127.0.0.1/truber/" style="color: #fed136;font-family: Kaushan Script,Helvetica Neue,Helvetica,Arial,cursive;">Truber</a> 
+                Family</p> 
+                ';
+        $header = 'From: truber@gmail.com' . "\r\n" .
+            'MIME-Version: 1.0' . "\r\n" .
+            'Content-type: text/html; charset=utf-8';
+
+        if(mail($to_email,$subject,$body,$header)){
+            $_SESSION['success'] = 'Password Has Been Sent To The Email: '.$email;
+        }else{
+            $_SESSION['error'] = 'Failed to send email...';
+        }
+
+    }else{
+        $_SESSION['error'] = 'Email Does Not Exist';
+    }
+
+    header('location: recover_password.php');
+    exit(0);
+}
 
 	$pdo->close();
 

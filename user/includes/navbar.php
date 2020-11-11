@@ -1,5 +1,7 @@
 <header class="main-header">
   <!-- Logo -->
+    <a class="back-btn" href="<?php echo $_SERVER['HTTP_REFERER'];?>">
+        <i class="fa fa-arrow-circle-left"></i> Back</a>
   <a href="#" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b>Q</b>P</span>
@@ -19,7 +21,7 @@
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <img src="<?php echo (!empty($admin['photo'])) ? '../images/'.$admin['photo'] : '../images/profile.png'; ?>" class="user-image" >
-            <span class="hidden-xs"><?php echo $admin['firstname'].' '.$admin['lastname']; ?></span>
+            <span class="hidden-xs"><?php echo $admin['firstname'].' '.$admin['lastname']; ?><i>  [ Customer ]</i></span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->

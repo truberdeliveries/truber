@@ -13,7 +13,25 @@ $(document).on('click', '.address-select', function(e){
 
     $('input[name=cord]').val(setAdr);
 
-    $('#maps > iframe').attr('src','https://maps.google.com/maps?q='+latitude+','+longitude+'&z=15&output=embed');
+
+    if (sessionStorage.getItem('latitude') ==null && sessionStorage.getItem('longitude') ==null){
+        setValues([latitude,longitude],[0,0]);
+        sessionStorage.clear();
+        sessionStorage.setItem('latitude',latitude);
+        sessionStorage.setItem('longitude',longitude);
+    }else {
+        setValues([latitude,longitude],[sessionStorage.getItem('latitude'), sessionStorage.getItem('longitude')]);
+
+    }
+
+    //Distance Calculations
+    // var from = turf.point([-25.754264,28.195877]);
+    // var to = turf.point([-25.74868, 28.19539]);
+    // var options = {units: 'kilometers'};
+    //
+    // var distance = turf.distance(from, to, options);
+    // console.log(distance);
+
 
 });
 
@@ -30,7 +48,25 @@ $(document).on('click', '.address-select2', function(e){
     var concat = $('input[name=cord]').val()+'|'+setAdr;
     $('input[name=cord]').val(concat);
 
-    $('#maps > iframe').attr('src','https://maps.google.com/maps?q='+latitude+','+longitude+'&z=15&output=embed');
+
+    if (sessionStorage.getItem('latitude') ==null && sessionStorage.getItem('longitude') ==null){
+        setValues([0, 0],[latitude,longitude]);
+        sessionStorage.clear();
+        sessionStorage.setItem('latitude',latitude);
+        sessionStorage.setItem('longitude',longitude);
+    }else {
+        setValues([sessionStorage.getItem('latitude'), sessionStorage.getItem('longitude')],[latitude,longitude]);
+
+    }
+
+    //Distance Calculations
+    // var from = turf.point([-25.754264,28.195877]);
+    // var to = turf.point([-25.74868, 28.19539]);
+    // var options = {units: 'kilometers'};
+    //
+    // var distance = turf.distance(from, to, options);
+    // console.log(distance);
+
 
 });
 

@@ -14,7 +14,7 @@
           Reports
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="./home.php"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Reports</li>
       </ol>
     </section>
@@ -57,11 +57,11 @@
                       <div class="col-sm-9">
                           <select name="type" id="type" class="form-control" required>
                               <option selected disabled>Select report type</option>
-                              <option value="Veh">Vehicle</option>
-                              <option value="cust">Customers</option>
-                              <option value="driv">Drivers</option>
+                              <option value="Vehicles">Vehicle</option>
+                              <option value="customers">Customers</option>
+                              <option value="drivers">Drivers</option>
                               <option value="trips">Trips</option>
-                              <option value="members">New Members</option>
+                              <option value="members">All Members</option>
                           </select>
                       </div>
                   </div>
