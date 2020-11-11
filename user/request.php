@@ -87,7 +87,7 @@ if($rows['num']>0){
                 <div class="row">
                     <div class="col-lg-6 col-xs-6 adjust">
                         <!-- small box -->
-                        <form class="form" method="POST" action="handle_requests.php">
+                        <form id="book-form" class="form" method="POST" action="handle_requests.phps" onsubmit="return request_confirmed();">
                             <div class="inputContainer">
                                 <i class="fa fa-money fa-2x icon"> </i>
 
@@ -146,22 +146,28 @@ if($rows['num']>0){
                             </div>
                             <br/>
 
-                            <div class="inputContainer">
+
+                        <strong class="error-adr" style="color: red"></strong><br/>
+                        <div class="inputContainer">
                             <i class="fa fa-street-view fa-2x icon"> </i>
-                            <input class="form-control Field" type="text" id="inputEmail" required="" placeholder="Pick-Up Address" autofocus="" name="start" onkeydown="getMap()">
+                            <input class="form-control Field" type="text" required="" placeholder="Pick-Up Address" autocomplete="off" name="start" onkeydown="getMap()">
                              <table class="all-info"></table>
                         </div>
                             <br/>
                         <div class="inputContainer">
                             <i class="fa fa-map-marker fa-2x icon"> </i>
-                            <input class="form-control Field" type="text" id="inputEmail" required="" placeholder="Destination Address" autofocus="" name="destination" onkeydown="getMap2()">
+                            <input class="form-control Field" type="text" required="" placeholder="Destination Address" autocomplete="off" name="destination" onkeydown="getMap2()" disabled>
                                <table class="all-info2"></table>
                         </div>
-                       <input name="cord" hidden> 
-                            <button class="btn btn-primary btn-block btn-lg btn-signin" name="request" type="submit">Request</button>
+                       
+                            <button class="btn btn-primary btn-block btn-lg btn-signin" name="push-req" type="submit">Request</button>
                         </form>
+                        <br/>
+                        
+                        <input class="trip-stats" hidden>
+                        <input name="cord" hidden> 
 
-                    </div>
+                    </input>
                 ';
                 }
                 else{
@@ -238,7 +244,30 @@ if($rows['num']>0){
     </div>
 </div>
     <!-- Chart Data -->
+<div class="modal fade" id="booking-confirm">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Confirm Booking <i class="fa fa-hand-o-up"></i>...</b></h4>
+            </div>
+            <div class="modal-body">
 
+                    <input type="hidden" name="booking_confirm" hidden>
+
+                    <div class="text-center book-div">
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+                <button type="button" class="btn btn-success btn-flat send-form-to" data-dismiss="modal"><i class="fa fa-check"></i> Confirm</button>
+
+            </div>
+        </div>
+    </div>
+</div>
     <!-- End Chart Data -->
 
 <?php $pdo->close(); ?>
@@ -327,6 +356,37 @@ if($rows['num']>0){
         }
         return true;
     }
+
+    function requestBalance(){
+
+        var payment  = $('input[name=payment]').val();
+        var type =     $('input[name=payment]').val();
+
+        $.ajax({
+            type: 'POST',
+            url: 'booking_row.php',
+            data: {trip_bal:1,
+                payment_bal:payment,
+                type_bal:type},
+            dataType: 'json',
+            success: function(response){
+
+                console.log(response);
+                // if(response !=false){
+                //     $('#card-error').html('Card Already Exists !!!');
+                // }
+                // else{
+                //     $('#card-error').html('');
+                // }
+            }
+        });
+    }
+
+    $('.send-form-to').on('click', function (e){
+        $('#book-form').removeAttr('onsubmit');
+        $('#book-form').submit();
+    });
+
 </script>
 
 <script src="./../assets/js/maps.js"></script>

@@ -66,6 +66,18 @@ if(isset($_POST['check_card'])){
     echo json_encode($row);
 }
 
+if(isset($_POST['trip_bal'])){
+
+    $payment = $_POST['payment_bal'];
+    $type = $_POST['type_bal'];
+
+    $stmts = $conn->prepare("SELECT * FROM card WHERE cardnumber=:cardnumber AND bankname=:bankname AND id=:id");
+    $stmts->execute(['id'=>$admin['id'],'bankname'=>$bankname,'cardnumber'=>$cardnumber]);
+    $row = $stmts->fetch();
+
+    echo json_encode($row);
+}
+
 if(isset($_POST['trip_id'])){
 
     $book_id = $_POST['trip_id'];

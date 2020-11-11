@@ -18,22 +18,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1ad21645-7334-41b1-a942-75d6cd024b1c" name="Default Changelist" comment="save all files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/includes/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/navbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/reports.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/reports.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/vehicles.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/vehicles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/maps.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/maps.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/includes/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/includes/navbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/signup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/includes/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/includes/navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/booking_row.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/booking_row.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/request.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/request.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/verify.php" beforeDir="false" afterPath="$PROJECT_DIR$/verify.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +87,7 @@
       <workItem from="1604672651572" duration="5806000" />
       <workItem from="1604865858893" duration="10698000" />
       <workItem from="1605013701186" duration="20542000" />
+      <workItem from="1605104333051" duration="13751000" />
     </task>
     <task id="LOCAL-00001" summary="filr">
       <created>1603690906013</created>

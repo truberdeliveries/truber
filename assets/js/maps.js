@@ -13,26 +13,10 @@ $(document).on('click', '.address-select', function(e){
 
     $('input[name=cord]').val(setAdr);
 
+    sessionStorage.setItem('latitude',latitude);
+    sessionStorage.setItem('longitude',longitude);
 
-    if (sessionStorage.getItem('latitude') ==null && sessionStorage.getItem('longitude') ==null){
-        setValues([latitude,longitude],[0,0]);
-        sessionStorage.clear();
-        sessionStorage.setItem('latitude',latitude);
-        sessionStorage.setItem('longitude',longitude);
-    }else {
-        setValues([latitude,longitude],[sessionStorage.getItem('latitude'), sessionStorage.getItem('longitude')]);
-
-    }
-
-    //Distance Calculations
-    // var from = turf.point([-25.754264,28.195877]);
-    // var to = turf.point([-25.74868, 28.19539]);
-    // var options = {units: 'kilometers'};
-    //
-    // var distance = turf.distance(from, to, options);
-    // console.log(distance);
-
-
+    $('input[name=destination]').attr('disabled',false);
 });
 
 $(document).on('click', '.address-select2', function(e){
@@ -44,31 +28,21 @@ $(document).on('click', '.address-select2', function(e){
     var longitude = setAdr.replace(latitude, '');
     longitude = longitude.replace(',', '');
 
-
     var concat = $('input[name=cord]').val()+'|'+setAdr;
     $('input[name=cord]').val(concat);
 
-
     if (sessionStorage.getItem('latitude') ==null && sessionStorage.getItem('longitude') ==null){
-        setValues([0, 0],[latitude,longitude]);
-        sessionStorage.clear();
+        clearSession();
         sessionStorage.setItem('latitude',latitude);
         sessionStorage.setItem('longitude',longitude);
     }else {
         setValues([sessionStorage.getItem('latitude'), sessionStorage.getItem('longitude')],[latitude,longitude]);
-
+        //Distance Calculations
+        getDistance([sessionStorage.getItem('latitude'), sessionStorage.getItem('longitude')],[latitude,longitude]);
     }
 
-    //Distance Calculations
-    // var from = turf.point([-25.754264,28.195877]);
-    // var to = turf.point([-25.74868, 28.19539]);
-    // var options = {units: 'kilometers'};
-    //
-    // var distance = turf.distance(from, to, options);
-    // console.log(distance);
-
-
 });
+
 
 function getMap() {
 
@@ -134,3 +108,39 @@ function setCoordinates2() {
     }
 
 }
+
+function request_confirmed(){
+
+    var input = $('input[name=cord]').val();
+    if(!input || input.indexOf('|') == -1){
+       $('.error-adr').html('Ensure both addresses are valid ...');
+       return false;
+    }
+
+    requestBlalance();
+   // $('#booking-confirm').modal('show');
+    return false;
+}
+function getDistance(dFrom,dTo){
+
+    var total;
+    var from = turf.point([dFrom[0],dFrom[1]]);
+    var to = turf.point([dTo[0], dTo[1]]);
+    var options = {units: 'kilometers'};
+
+    var distance = turf.distance(from, to, options);
+
+    if(distance < 1){
+        total = Math.round((distance * 1000))+' meter(s)';
+    }else{
+        total = distance.toFixed(1)+' kilometer(s)';
+    }
+
+    $('.trip-stats').val(total);
+
+}
+
+function clearSession(){
+    sessionStorage.clear();
+}
+clearSession();
