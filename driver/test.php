@@ -28,9 +28,9 @@ $conn = $pdo->open();
     <?php include 'includes/menubar.php'; ?>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper" style="background: #ecf0f5; z-index: 9;">
+    <div class="content-wrapper" style="background: none">
         <!-- Content Header (Page header) -->
-        <section class="content-header" style="background: #ecf0f5;z-index: 9">
+        <section class="content-header">
             <h1>
                 Accepted Ride
             </h1>
@@ -66,7 +66,7 @@ $conn = $pdo->open();
             ?>
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-lg-13 " style="padding: 10px;">
+                <div class="col-lg-13">
 
                     <img src="./../images/profile.png" width="300px" height="300px">
                     <!-- small box -->
@@ -97,17 +97,12 @@ $conn = $pdo->open();
                     <button class="btn btn-danger" id="<?php echo $cName['book_id']?>" ><i class="fa fa-close"></i>  Cancel</button>
                     </span>
                     <span id="mm2">
-
                         <u><h3><i>Ride History</i></h3></u>
                         <strong><i>From: <?php echo $cName['start_address']?></i></strong><br/>
                         <strong><i>To: <?php echo $cName['end_address']?></i></strong><br/>
                         <strong class="duration"></strong><br/>
-                        <span class="total">Total Amount:
-                            <?php
-
-                            ?></span><br/>
+                        <span class="total">Total Amount: R255</span><br/>
                         <button class="btn btn-success" onclick="clearSession();"><i class="fa fa-check-circle-o"></i> Done</button>
-
                     </span>
                     <span id="mm3"></span>
                 </div>
@@ -145,7 +140,16 @@ $conn = $pdo->open();
             <script src="./rides/maps/js/leaflet.js"></script>
             <script src="./rides/maps/js/leaflet-routing-machine.js"></script>
             <script src="./rides/maps/js/index.js"></script>
+            <script src='./rides/maps/js/turf.min.js'></script>
+            <script>
+                var from = turf.point([-25.754264,28.195877]);
+                var to = turf.point([-25.74868, 28.19539]);
+                var options = {units: 'kilometers'};
 
+                var distance = turf.distance(from, to, options);
+                //console.log(callValues());
+                setValues([-25.754264,28.195877],[-25.74868, 28.195804]);
+            </script>
     </div>
 
 </div>
@@ -294,10 +298,7 @@ $conn = $pdo->open();
 
     }
 
-    var myVar = setInterval(function() {
-        checkStatus();
-        getLocation();
-    }, 5000);
+    var myVar = setInterval(checkStatus, 5000);
 
     function checkStatus(){
         $('.look-up').click();
@@ -305,46 +306,51 @@ $conn = $pdo->open();
 
     getStart();
 
+    function changeMaps() {
+        if (sessionStorage.getItem('start_time') == 1) {
+            $('#maps-view').hide();
+            $('#maps-view2').show();
+        }
+    }
+    changeMaps();
+</script>
+<!-- Chart Data -->
 
+<!-- End Chart Data -->
+
+<?php $pdo->close(); ?>
+
+<script>
     $(function(){
         $('#select_year').change(function(){
             window.location.href = 'home.php?year='+$(this).val();
         });
     });
 
-
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            alert("Geolocation is not supported by this browser.");
-        }
-    }
-
-    function showPosition(position) {
-        var lat = $('.Fst1').val();
-        var long = $('.Fst2').val();
-        var lat2 = $('.Sst1').val();
-        var long2 = $('.Sst2').val();
-
-        var values = position.coords.latitude+','+position.coords.longitude;
-        $.ajax({
-            type: 'POST',
-            url: 'rides_row.php',
-            data: {map_id:1,
-                values:values},
-            dataType: 'json',
-            success: function(response){
-            }
-        });
-        setValues([position.coords.latitude,position.coords.longitude],[lat,long],[lat2,long2]);
-    }
-
-    getLocation();
-
-
+    // function loadMap()
+    // {
+    //     var lat = $('.Fst1').val();
+    //     var long = $('.Fst2').val();
+    //     var lat2 = $('.Sst1').val();
+    //     var long2 = $('.Sst2').val();
+    //
+    //     function getLocation() {
+    //         if (navigator.geolocation) {
+    //             navigator.geolocation.getCurrentPosition(showPosition);
+    //         } else {
+    //             alert("Geolocation is not supported by this browser.");
+    //         }
+    //     }
+    //
+    //     function showPosition(position) {
+    //         setValues([position.coords.latitude,position.coords.longitude],[lat,long],[lat2,long2]);
+    //     }
+    //
+    //     getLocation();
+    //
+    // }
+    // loadMap();
 
 </script>
-<?php $pdo->close(); ?>
 </body>
 </html>

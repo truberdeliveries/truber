@@ -15,7 +15,7 @@
       <span class="sr-only">Toggle navigation</span>
     </a>
 
-    <div class="navbar-custom-menu">
+    <div class="navbar-custom-menu" onclick="shows();">
       <ul class="nav navbar-nav">
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
@@ -23,7 +23,7 @@
             <img src="<?php echo (!empty($admin['photo'])) ? '../images/'.$admin['photo'] : '../images/profile.png'; ?>" class="user-image" >
             <span class="hidden-xs"><?php echo $admin['firstname'].' '.$admin['lastname']; ?><i>  [ Driver ]</i></span>
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" id="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
 
@@ -46,4 +46,20 @@
     </div>
   </nav>
 </header>
+
+<script>
+    function shows()
+    {
+        var x = document.getElementById("dropdown-menu");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+
+</script>
+
 <?php include 'includes/profile_modal.php'; ?>
+

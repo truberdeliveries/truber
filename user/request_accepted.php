@@ -22,7 +22,7 @@ $conn = $pdo->open();
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
+        <section class="content-header" style="z-index: 9;background: #ecf0f5;">
             <h1>
                 Request Truber
             </h1>
@@ -33,7 +33,7 @@ $conn = $pdo->open();
         </section>
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content" style="padding-top: 0;">
             <?php
             if(isset($_SESSION['error'])){
                 echo "
@@ -58,8 +58,9 @@ $conn = $pdo->open();
             ?>
 
             <!-- Small boxes (Stat box) -->
-            <div class="row" style="padding-top: 50px">
-                <div class="col-lg-6 col-xs-6">
+            <div class="row adjust" style="width: fit-content;">
+                <div class="detail-head">
+<!--                    <button onclick="$('.adjust').">Hide</button>-->
                     <img src="files/images/drive.png" width="300px" height="300px">
                     <!-- small box -->
                     <?php
@@ -83,7 +84,7 @@ $conn = $pdo->open();
                     ?>
                     <span id="mm">
                     <h3><strong id="ride-status" style="color: orange">Driver Is Heading Your Way ...</strong></h3><br/>
-                    <button class="btn btn-primary" onclick="location.href='tel: <?php echo $row['mobile']?>'"><i class="fa fa-phone"></i>  Call</button><br/><br/>
+                    <button class="btn btn-primary" onclick="location.href='tel: <?php echo $row['mobile']?>'"><i class="fa fa-phone"></i>  Call</button>
                     <button class="btn btn-danger" id="<?php echo $drName['book_id']?>" ><i class="fa fa-close"></i>  Cancel</button>
                     <button class="look-up" id="<?php echo $drName['book_id']?>"  style="display: none">stats</button>
                     </span>
@@ -99,9 +100,7 @@ $conn = $pdo->open();
                 </div>
                 <!-- ./col -->
             </div>
-            <br/>
             <!-- /.row -->
-            <div class="row">
                 <?php
 
                 try {
@@ -121,8 +120,19 @@ $conn = $pdo->open();
                     echo $e->getMessage();
                 }
                 ?>
-                <iframe id="maps-view" src="https://maps.google.com/maps?q=<?php echo $lat.','.$long ?>&z=15&output=embed" width="100%" height="350"></iframe>
-                <iframe id="maps-view2" src="https://maps.google.com/maps?q=<?php echo $lat2.','.$long2 ?>&z=15&output=embed" width="100%" height="350" style="display: none"></iframe>
+
+            <input class="Fst1" value="<?php echo $lat;?>" hidden><input class="Fst2" value="<?php echo $long;?>" hidden>
+            <input class="Sst1" value="<?php echo $lat2;?>" hidden><input class="Sst2" value="<?php echo $long2;?>" hidden>
+
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <div id="map" class="map"></div>
+                    <script src="../maps/js/leaflet.js"></script>
+                    <script src="../maps/js/leaflet-routing-machine.js"></script>
+                    <script src="../maps/js/driverJs.js"></script>
+
+                </div>
             </div>
     </div>
 
@@ -192,11 +202,24 @@ $conn = $pdo->open();
             data: {finish_id:id},
             dataType: 'json',
             success: function(data){
-
+                paid();
                 sessionStorage.setItem('total_time',data.total_time);
                 $('#mm').hide();
                 $('.duration').html('Duration: '+sessionStorage.getItem('total_time'));
                 $('#mm2').show();
+
+            }
+        });
+    }
+
+    function paid(){
+
+        $.ajax({
+            type: 'POST',
+            url: 'booking_row.php',
+            data: {paid:1},
+            dataType: 'json',
+            success: function(response){
 
             }
         });
@@ -215,7 +238,34 @@ $conn = $pdo->open();
         });
     }
 
-    var myVar = setInterval(checkStatus, 5000);
+    var myVar = setInterval(function() {
+        checkStatus();
+        checkLocation();
+    }, 5000);
+
+
+    function checkLocation(){
+        $.ajax({
+            type: 'POST',
+            url: 'booking_row.php',
+            data: {id_check:1},
+            dataType: 'json',
+            success: function(response){
+                var coord = response.driver_coord;
+                var lat = coord.substr(0,coord.indexOf(','));
+                coord = coord.replace(coord.substr(0,coord.indexOf(',')+1),'');
+                var long = coord;
+
+                var lat1 = $('.Fst1').val();
+                var long1 = $('.Fst2').val();
+                var lat2 = $('.Sst1').val();
+                var long2 = $('.Sst2').val();
+
+                setValues([lat,long],[lat1,long1],[lat2,long2]);
+
+            }
+        });
+    }
 
     function checkStatus(){
         $('.look-up').click();
@@ -225,20 +275,13 @@ $conn = $pdo->open();
         $('.btn-danger').hide();
     }
 
-    function changeMaps() {
-        if (sessionStorage.getItem('start_time') == 1) {
-            $('#maps-view').hide();
-            $('#maps-view2').show();
-        }
-    }
-    changeMaps();
+
 </script>
 <!-- Chart Data -->
 
 <!-- End Chart Data -->
 
 <?php $pdo->close(); ?>
-<?php include 'includes/scripts.php'; ?>
 
 <style>
     .inputContainer i {

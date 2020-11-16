@@ -81,5 +81,8 @@
       .rideBtn, #mm2{
           display: none;;
       }
+      .leaflet-routing-alt{
+          display: none;
+      }
   	</style>
 </head>

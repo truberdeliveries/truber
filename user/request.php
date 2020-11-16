@@ -124,7 +124,7 @@ if($rows['num']>0){
                             <div class="inputContainer">
                                 <i class="fa fa-cab fa-2x icon"> </i>
 
-                                <select class="form-control Field" style="text-align-last:center;" name="type" onchange="selectVehicle(this.value);" required >
+                                <select class="form-control Field" style="text-align-last:center;" name="type" onchange=" selectVehicle(this.value);" required >
                                     <option value="" selected disabled>Choose Vehicle Type</option>
                    ';
 
@@ -133,7 +133,7 @@ if($rows['num']>0){
                                         $stmt->execute();
                                         foreach($stmt as $row){
 
-                                            echo "<option value=".$row['image'].">".$row['name']."</option>";
+                                            echo "<option id=".$row['id']." value=".$row['image'].">".$row['name']."</option>";
                                         }
                                     }
                                     catch(PDOException $e){
@@ -164,7 +164,7 @@ if($rows['num']>0){
                         </form>
                         <br/>
                         
-                        <input class="trip-stats" hidden>
+                        <input class="trip-distance" hidden>
                         <input name="cord" hidden> 
 
                     </input>
@@ -177,6 +177,8 @@ if($rows['num']>0){
                       ';
                 }
                 ?>
+
+                <button onclick="getMe()">asas</button>
                     <!-- ./col -->
                 </div>
                 <br/>
@@ -269,6 +271,61 @@ if($rows['num']>0){
     </div>
 </div>
     <!-- End Chart Data -->
+<script>
+    function selectVehicle(name){
+        $('img[name=vehicles]').attr('src','./../assets/img/vehicles/'+name);
+        $('img[name=vehicles]').show();
+    }
+
+    function selectCard(name){
+
+        if(name =='card')
+        {
+            $('#addcard').modal('show');
+        }
+    }
+    function setBranch(){
+
+        $('#branch').val($('#bank option:selected').attr('id'));
+        // $('#branch').attr('disabled','disabled');
+    }
+
+    function validateCard(){
+        if($('#card-error').html !='' ){
+            $('#card-number').focus();
+            return false;
+        }
+        return true;
+    }
+
+    function getMe(){
+
+        var name =     $('select[name=type]').val();
+
+        $.ajax({
+            type: 'POST',
+            url: 'booking_row.php',
+            data: {names_bal:name},
+            dataType: 'json',
+            success: function(response){
+
+                console.log(response);
+                // var base_price = response.base_price;
+                // var price_per_km  = response.price_per_km;
+                // var total = Math.floor(base_price + (price_per_km*distance));
+                //
+                // $('.book-div').html(
+                //     '<strong>From : <i>'+from+'</i></strong><br/>'+
+                //     '<strong>To : <i>'+to+'</i></strong><br/>'+
+                //     '<strong>Distance : <i>'+distance+'</i></strong><br/>'+
+                //     '<strong>Payment Type : <i>'+payment+'</i></strong><br/>'+
+                //     '<strong>Vehicle Type : <i>'+type+'</i></strong><br/>'+
+                //     '<strong>Total Amount : <i>'+total+'</i></strong><br/>'+
+            );
+        }
+    });
+    }
+</script>
 
 <?php $pdo->close(); ?>
 <?php include 'includes/scripts.php'; ?>
@@ -294,6 +351,9 @@ if($rows['num']>0){
 </style>
 
 <script type="application/javascript">
+
+
+
     var myVar = setInterval(checkStatus, 5000);
 
     function checkStatus(){
@@ -310,23 +370,6 @@ if($rows['num']>0){
         });
     }
 
-    function selectVehicle(name){
-        $('img[name=vehicles]').attr('src','./../assets/img/vehicles/'+name);
-        $('img[name=vehicles]').show();
-    }
-
-    function selectCard(name){
-
-        if(name =='card')
-        {
-            $('#addcard').modal('show');
-        }
-    }
-    function setBranch(){
-
-        $('#branch').val($('#bank option:selected').attr('id'));
-       // $('#branch').attr('disabled','disabled');
-    }
 
     function enterCard(){
 
@@ -349,37 +392,40 @@ if($rows['num']>0){
         });
     }
 
-    function validateCard(){
-        if($('#card-error').html !='' ){
-            $('#card-number').focus();
-            return false;
-        }
-        return true;
-    }
 
     function requestBalance(){
 
-        var payment  = $('input[name=payment]').val();
-        var type =     $('input[name=payment]').val();
+        var from =$('input[name=start]').val();
+        var to =$('input[name=destination]').val();
+        var payment  = $('select[name=payment]').val();
+        var name =     $('select[name=type]').val();
+        var distance = $('.trip-distance').val();
 
         $.ajax({
             type: 'POST',
             url: 'booking_row.php',
-            data: {trip_bal:1,
-                payment_bal:payment,
-                type_bal:type},
+            data: {name_bal:name},
             dataType: 'json',
             success: function(response){
 
                 console.log(response);
-                // if(response !=false){
-                //     $('#card-error').html('Card Already Exists !!!');
-                // }
-                // else{
-                //     $('#card-error').html('');
-                // }
+                // var base_price = response.base_price;
+                // var price_per_km  = response.price_per_km;
+                // var total = Math.floor(base_price + (price_per_km*distance));
+                //
+                // $('.book-div').html(
+                //     '<strong>From : <i>'+from+'</i></strong><br/>'+
+                //     '<strong>To : <i>'+to+'</i></strong><br/>'+
+                //     '<strong>Distance : <i>'+distance+'</i></strong><br/>'+
+                //     '<strong>Payment Type : <i>'+payment+'</i></strong><br/>'+
+                //     '<strong>Vehicle Type : <i>'+type+'</i></strong><br/>'+
+                //     '<strong>Total Amount : <i>'+total+'</i></strong><br/>'+
+                );
             }
         });
+
+        $('#booking-confirm').modal('show');
+
     }
 
     $('.send-form-to').on('click', function (e){

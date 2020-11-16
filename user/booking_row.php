@@ -54,6 +54,41 @@ if(isset($_POST['banking-details'])){
 
     header('location: request.php');
 }
+
+if(isset($_POST['paid'])){
+
+    $stmt = $conn->prepare("SELECT * FROM booking WHERE customer_name =:email");
+    $stmt->execute(['email' => $admin['email']]);
+    $row = $stmt->fetch();
+
+    $cemail =  $row['customer_name'];
+    $demail =  $row['driver_name'];
+    $v_type =  $row['vehicle_type'];
+
+    $stmt = $conn->prepare("SELECT id FROM customer WHERE email =:email");
+    $stmt->execute(['email' => $cemail]);
+    $row = $stmt->fetch();
+
+    $customer_id= $row['id'];
+
+    $stmt = $conn->prepare("SELECT id FROM driver WHERE email =:email");
+    $stmt->execute(['email' => $demail]);
+    $row = $stmt->fetch();
+
+    $driver_id= $row['id'];
+
+    $date_created = date('Y-m-d');
+    $amount= $_POST['amount'];
+    $distance= $_POST['distance'];
+    $date_created = date('Y-m-d');
+
+    $stmt = $conn->prepare("INSERT INTO invoice VALUES (:date_created,:customer_id,:driver_id,:amount,:distance_km,:vehicle_type)");
+    $stmt->execute(['date_created'=>$date_created,'customer_id'=>$customer_id,'driver_id'=>$driver_id,'amount'=>$amount,'distance_km'=>$distance,'vehicle_type'=>$v_type]);
+    $row = $stmt->fetch();
+
+    echo json_encode($row);
+}
+
 if(isset($_POST['check_card'])){
 
     $cardnumber = $_POST['check_card'];
@@ -66,13 +101,12 @@ if(isset($_POST['check_card'])){
     echo json_encode($row);
 }
 
-if(isset($_POST['trip_bal'])){
+if(isset($_POST['names_bal'])){
 
-    $payment = $_POST['payment_bal'];
-    $type = $_POST['type_bal'];
+    $image = $_POST['names_bal'];
 
-    $stmts = $conn->prepare("SELECT * FROM card WHERE cardnumber=:cardnumber AND bankname=:bankname AND id=:id");
-    $stmts->execute(['id'=>$admin['id'],'bankname'=>$bankname,'cardnumber'=>$cardnumber]);
+    $stmts = $conn->prepare("SELECT * FROM type");
+    $stmts->execute();
     $row = $stmts->fetch();
 
     echo json_encode($row);

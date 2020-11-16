@@ -117,27 +117,22 @@ function request_confirmed(){
        return false;
     }
 
-    requestBlalance();
+    requestBalance();
    // $('#booking-confirm').modal('show');
     return false;
 }
 function getDistance(dFrom,dTo){
 
-    var total;
     var from = turf.point([dFrom[0],dFrom[1]]);
     var to = turf.point([dTo[0], dTo[1]]);
     var options = {units: 'kilometers'};
 
     var distance = turf.distance(from, to, options);
 
-    if(distance < 1){
-        total = Math.round((distance * 1000))+' meter(s)';
-    }else{
-        total = distance.toFixed(1)+' kilometer(s)';
-    }
+    distance= distance+0.45;
+    distance = distance.toFixed(1);
 
-    $('.trip-stats').val(total);
-
+    $('.trip-distance').val(distance);
 }
 
 function clearSession(){

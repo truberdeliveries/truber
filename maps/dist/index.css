@@ -21,7 +21,10 @@ html {
     height: 480px;
     overflow-y: scroll;
 }
-.leaflet-marker-icon, .leaflet-right{
+.leaflet-right{
+    display: none;
+}
+.leaflet-marker-icon{
     display: none;
 }
 path.leaflet-interactive.animate {

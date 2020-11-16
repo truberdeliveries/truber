@@ -13,8 +13,9 @@ if(isset($_POST['id'])){
 
 if(isset($_POST['map_id'])){
 
-    $stmt = $conn->prepare("SELECT * FROM booking WHERE book_id=:id");
-    $stmt->execute(['id'=>$admin['']]);
+    $coord = $_POST['values'];
+    $stmt = $conn->prepare("UPDATE booking SET driver_coord=:driver_coord WHERE booking_status=:1 AND driver_name=:email");
+    $stmt->execute(['driver_coord'=>$coord,'email'=>$admin['email']]);
     $row = $stmt->fetch();
 
     echo json_encode($row);
