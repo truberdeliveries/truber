@@ -10,6 +10,15 @@ if(isset($_GET['year'])){
 }
 
 $conn = $pdo->open();
+
+$stmt = $conn->prepare("SELECT COUNT(*) AS num FROM booking where booking_status IN (3,4) AND cust_id=:cust_id");
+$stmt->execute(['cust_id'=>$admin['id']]);
+$rows = $stmt->fetch();
+
+
+if($rows['num']>0){
+    header('location: home.php');
+}
 ?>
 <?php include 'includes/header.php'; ?>
 
@@ -24,11 +33,11 @@ $conn = $pdo->open();
         <!-- Content Header (Page header) -->
         <section class="content-header" style="z-index: 9;background: #ecf0f5;">
             <h1>
-                Request Truber
+                Accepted Ride
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Request Truber</li>
+                <li><a href="./home.php"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Accepted Ride</li>
             </ol>
         </section>
 
@@ -65,13 +74,12 @@ $conn = $pdo->open();
                     <!-- small box -->
                     <?php
                     try{
-                        $stmt = $conn->prepare("SELECT * FROM booking WHERE booking_status=1 AND customer_name=:name ");
-                        $stmt->execute(['name'=>$admin['email']]);
+                        $stmt = $conn->prepare("SELECT * FROM booking WHERE booking_status=1 AND cust_id=:cust_id ");
+                        $stmt->execute(['cust_id'=>$admin['id']]);
                         $drName = $stmt->fetch();
 
-
-                        $stmt = $conn->prepare("SELECT firstname,lastname,mobile FROM driver WHERE email=:email");
-                        $stmt->execute(['email'=>$drName['driver_name']]);
+                        $stmt = $conn->prepare("SELECT firstname,lastname,mobile FROM driver WHERE id=:driver_id");
+                        $stmt->execute(['driver_id'=>$drName['driver_id']]);
                         $row = $stmt->fetch();
 
                         echo "<h2 style='color: green'> Your driver is ".$row['firstname'].' '.$row['lastname']."</h2>";
@@ -93,8 +101,15 @@ $conn = $pdo->open();
                         <strong><i>From: <?php echo $drName['start_address']?></i></strong><br/>
                         <strong><i>To: <?php echo $drName['end_address']?></i></strong><br/>
                         <strong class="duration"></strong><br/>
-                        <span class="total">Total Amount: R255</span><br/>
-                        <button class="btn btn-success" onclick="clearSession();"><i class="fa fa-check-circle-o"></i> Done</button>
+                        <span class="total-amount">
+                            <?php
+                            $stmt = $conn->prepare("SELECT * FROM invoice WHERE customer_id=:id");
+                            $stmt->execute(['id'=>$admin['id']]);
+                            $row = $stmt->fetch();
+                            echo 'Total Amount: R'. $row['amount'];
+                            ?>
+                        </span><br/>
+                        <button class="btn btn-success done" onclick="clearSession();"><i class="fa fa-check-circle-o"></i> Done</button>
                     </span>
 
                 </div>
@@ -104,8 +119,8 @@ $conn = $pdo->open();
                 <?php
 
                 try {
-                    $stmt = $conn->prepare("SELECT * FROM booking WHERE booking_status=1 AND customer_name=:name");
-                    $stmt->execute(['name'=>$admin['email']]);
+                    $stmt = $conn->prepare("SELECT * FROM booking WHERE booking_status=1 AND cust_id=:id");
+                    $stmt->execute(['id'=>$admin['id']]);
                     $row = $stmt->fetch();
                     $row = $row["coordinates"];
                     $row1 = substr($row, 0, strpos($row,'|'));
@@ -139,7 +154,7 @@ $conn = $pdo->open();
 </body>
 <!-- right col -->
 </div>
-<?php include 'includes/footer.php'; ?>
+<?php include 'includes/footer.php';  ?>
 <?php include 'includes/users_modal.php'; ?>
 <?php include 'includes/scripts.php'; ?>
 
@@ -176,7 +191,7 @@ $conn = $pdo->open();
                         $('#ride-status').html('Driving To Destination ...');
                         $('.btn-danger').hide();
                         sessionStorage.setItem('start_time',1);
-                        changeMaps();
+
                     }
 
 
@@ -202,7 +217,7 @@ $conn = $pdo->open();
             data: {finish_id:id},
             dataType: 'json',
             success: function(data){
-                paid();
+               // paid();
                 sessionStorage.setItem('total_time',data.total_time);
                 $('#mm').hide();
                 $('.duration').html('Duration: '+sessionStorage.getItem('total_time'));
@@ -241,6 +256,7 @@ $conn = $pdo->open();
     var myVar = setInterval(function() {
         checkStatus();
         checkLocation();
+
     }, 5000);
 
 
@@ -262,6 +278,7 @@ $conn = $pdo->open();
                 var long2 = $('.Sst2').val();
 
                 setValues([lat,long],[lat1,long1],[lat2,long2]);
+                $('.leaflet-shadow-pane img:first-child').attr('src','./../assets/img/truck.png');
 
             }
         });
@@ -275,6 +292,10 @@ $conn = $pdo->open();
         $('.btn-danger').hide();
     }
 
+
+    if(sessionStorage.getItem('total_time')){
+         $('.done').click();
+    }
 
 </script>
 <!-- Chart Data -->

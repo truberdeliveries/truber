@@ -2,11 +2,9 @@
 
 include 'includes/session.php';
 
-if(isset($_POST['request'])){
+if(isset($_POST['cord'])){
 
-
-
-    $firstname = $admin['email'];
+    $cust_id = $admin['id'];
     $payment = $_POST['payment'];
     $type= $_POST['type'];
     $start = $_POST['start'];
@@ -19,10 +17,10 @@ if(isset($_POST['request'])){
 
     try{
 
-        $stmt = $conn->prepare("INSERT INTO booking (start_address,end_address,coordinates,date,customer_name,payment_type,vehicle_type,booking_status) 
-        VALUES (:start_address,:end_address,:coordinates, :date, :customer_name, :payment_type, :vehicle_type, :booking_status)");
+        $stmt = $conn->prepare("INSERT INTO booking (start_address,end_address,coordinates,date,cust_id,payment_type,vehicle_type,booking_status) 
+        VALUES (:start_address,:end_address,:coordinates, :date, :cust_id, :payment_type, :vehicle_type, :booking_status)");
         $stmt->execute(['start_address'=>$start, 'end_address'=>$destination,'coordinates'=>$coordinates, 'date'=>$now,
-                        'customer_name'=>$firstname, 'payment_type'=>$payment, 'vehicle_type'=>$type,'booking_status'=>0]);
+                        'cust_id'=>$cust_id, 'payment_type'=>$payment, 'vehicle_type'=>$type,'booking_status'=>0]);
 
         $userid = $conn->lastInsertId();
 
@@ -33,7 +31,8 @@ if(isset($_POST['request'])){
     }
     catch(PDOException $e){
         $_SESSION['error'] = $e->getMessage();
-        header('location: request.php');
+        echo $e->getMessage();
+       // header('location: request.php');
     }
 
     $pdo->close();

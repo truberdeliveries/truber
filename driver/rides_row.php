@@ -11,23 +11,49 @@ if(isset($_POST['id'])){
     echo json_encode($row);
 }
 
+if(isset($_POST['totals'])){
+    $id = $_POST['totals'];
+
+    $stmt = $conn->prepare("SELECT * FROM booking,type WHERE booking.book_id=:id AND booking.booking_status=3 AND type.image=booking.vehicle_type");
+    $stmt->execute(['id'=>$id]);
+    $row = $stmt->fetch();
+
+    echo json_encode($row);
+}
+
+if(isset($_POST['invoice'])){
+
+    $customer_id = $_POST['customer_id'];
+    $driver_id = $_POST['driver_id'];
+    $amount = $_POST['amount'];
+    $distance = $_POST['distance'];
+    $vehicle_type = $_POST['vehicle_type'];
+    $date_created = date('Y-m-d');
+
+    $stmt = $conn->prepare("INSERT INTO invoice(date_created,customer_id,driver_id,amount,distance_km,vehicle_type) 
+                                     VALUES (:date_created,:customer_id,:driver_id,:amount,:distance_km,:vehicle_type)");
+    $stmt->execute(['customer_id'=>$customer_id,'driver_id'=>$driver_id,'amount'=>$amount,'distance_km'=>$distance,'date_created'=>$date_created,'vehicle_type'=>$vehicle_type]);
+
+    header('location: '.$_SERVER['HTTP_REFERER']);
+}
+
 if(isset($_POST['map_id'])){
 
     $coord = $_POST['values'];
-    $stmt = $conn->prepare("UPDATE booking SET driver_coord=:driver_coord WHERE booking_status=:1 AND driver_name=:email");
-    $stmt->execute(['driver_coord'=>$coord,'email'=>$admin['email']]);
+    $stmt = $conn->prepare("UPDATE booking SET driver_coord=:driver_coord WHERE booking_status=1 AND driver_id=:id");
+    $stmt->execute(['driver_coord'=>$coord,'id'=>$admin['id']]);
     $row = $stmt->fetch();
 
     echo json_encode($row);
 }
 
 if(isset($_POST['book_id'])){
-    $email = $admin['email'];
+    $id = $_SESSION['driver'];
     $book_id = $_POST['book_id'];
     //$start_time = date('H:i:s');
 
-    $stmt = $conn->prepare("UPDATE booking SET driver_name=:driver_name, booking_status=1 WHERE book_id=:book_id");
-    $stmt->execute(['book_id'=>$book_id,'driver_name'=>$email]);
+    $stmt = $conn->prepare("UPDATE booking SET driver_id=:driver_id, booking_status=1 WHERE book_id=:book_id");
+    $stmt->execute(['book_id'=>$book_id,'driver_id'=>$id]);
 
     header('location: accepted_ride.php');
 }

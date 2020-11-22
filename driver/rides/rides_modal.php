@@ -67,13 +67,11 @@
             </div>
             <div class="modal-body">
               <form class="form-horizontal" method="POST" action="./rides_row.php">
-                <input type="hidden" class="userid" name="id">
+                <input type="hidden" class="book_id" name="book_id">
                 <div class="form-group">
                     <strong class="fullname"></strong>
 
-                    <div class="">
-                        <input name="book_id" id="book_id" hidden>
-                        <iframe id="maps-view" width="100%" height="350"></iframe>
+                    <div class="book-div" style="padding: 10px">
                     </div>
                 </div>
 

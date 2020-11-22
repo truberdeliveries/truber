@@ -173,7 +173,6 @@ $conn = $pdo->open();
 
             var id = this.id;
             updateRecord(id);
-            changeMaps();
 
         });
         $(document).on('click', '.rideBtn', function(e){
@@ -306,13 +305,6 @@ $conn = $pdo->open();
 
     getStart();
 
-    function changeMaps() {
-        if (sessionStorage.getItem('start_time') == 1) {
-            $('#maps-view').hide();
-            $('#maps-view2').show();
-        }
-    }
-    changeMaps();
 </script>
 <!-- Chart Data -->
 

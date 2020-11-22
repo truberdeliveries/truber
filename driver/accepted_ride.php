@@ -11,6 +11,15 @@ if(isset($_GET['year'])){
 }
 
 $conn = $pdo->open();
+
+$stmt = $conn->prepare("SELECT COUNT(*) AS num FROM booking where booking_status IN (3,4) AND driver_id=:driver_id");
+$stmt->execute(['driver_id'=>$admin['id']]);
+$rows = $stmt->fetch();
+
+
+if($rows['num']>0){
+    header('location: available_rides.php');
+}
 ?>
 <?php include 'includes/header.php'; ?>
 <link rel="stylesheet" href="./rides/maps/dist/leaflet.css" />
@@ -72,12 +81,12 @@ $conn = $pdo->open();
                     <!-- small box -->
                     <?php
                     try{
-                        $stmt = $conn->prepare("SELECT * FROM booking WHERE driver_name=:driver_name AND booking_status=1");
-                        $stmt->execute(['driver_name'=>$admin['email']]);
+                        $stmt = $conn->prepare("SELECT * FROM booking WHERE driver_id=:driver_id AND booking_status=1");
+                        $stmt->execute(['driver_id'=>$_SESSION['driver']]);
                         $cName = $stmt->fetch();
 
-                        $stmt = $conn->prepare("SELECT firstname,lastname,mobile FROM customer WHERE email=:email");
-                        $stmt->execute(['email'=>$cName['customer_name']]);
+                        $stmt = $conn->prepare("SELECT * FROM customer WHERE id=:id");
+                        $stmt->execute(['id'=>$cName['cust_id']]);
                         $row = $stmt->fetch();
 
                         echo "<h2 style='color: green'>Customer name is ".$row['firstname'].' '.$row['lastname']."</h2>";
@@ -102,11 +111,14 @@ $conn = $pdo->open();
                         <strong><i>From: <?php echo $cName['start_address']?></i></strong><br/>
                         <strong><i>To: <?php echo $cName['end_address']?></i></strong><br/>
                         <strong class="duration"></strong><br/>
-                        <span class="total">Total Amount:
+                        <span class="total">
                             <?php
-
+                            $stmt = $conn->prepare("SELECT * FROM invoice WHERE driver_id=:id");
+                            $stmt->execute(['id'=>$admin['id']]);
+                            $row = $stmt->fetch();
+                            echo 'Total Amount: R'. $row['amount'];
                             ?></span><br/>
-                        <button class="btn btn-success" onclick="clearSession();"><i class="fa fa-check-circle-o"></i> Done</button>
+                        <button class="btn btn-success done" onclick="clearSession();"><i class="fa fa-check-circle-o"></i> Done</button>
 
                     </span>
                     <span id="mm3"></span>
@@ -119,8 +131,8 @@ $conn = $pdo->open();
                 <?php
 
                 try {
-                    $stmt = $conn->prepare("SELECT * FROM booking WHERE booking_status=1 AND driver_name=:name");
-                    $stmt->execute(['name'=>$admin['email']]);
+                    $stmt = $conn->prepare("SELECT * FROM booking WHERE booking_status=1 AND driver_id=:id");
+                    $stmt->execute(['id'=>$_SESSION['driver']]);
                     $row = $stmt->fetch();
                     $row = $row["coordinates"];
                     $row1 = substr($row, 0, strpos($row,'|'));
@@ -142,9 +154,9 @@ $conn = $pdo->open();
             <input class="Sst1" value="<?php echo $lat2;?>" hidden><input class="Sst2" value="<?php echo $long2;?>" hidden>
 
             <div id="map" class="map"></div>
-            <script src="./rides/maps/js/leaflet.js"></script>
-            <script src="./rides/maps/js/leaflet-routing-machine.js"></script>
-            <script src="./rides/maps/js/index.js"></script>
+            <script src="./../maps/js/leaflet.js"></script>
+            <script src="./../maps/js/leaflet-routing-machine.js"></script>
+            <script src="./../maps/js/driverJs.js"></script>
 
     </div>
 
@@ -169,7 +181,6 @@ $conn = $pdo->open();
 
             var id = this.id;
             updateRecord(id);
-            changeMaps();
 
         });
         $(document).on('click', '.rideBtn', function(e){
@@ -271,8 +282,10 @@ $conn = $pdo->open();
                 sessionStorage.setItem('total_time',response.total_time);
 
                 getStart();
+                totals(id);
             }
         });
+
 
     }
     function cancelRecord(id){
@@ -287,11 +300,77 @@ $conn = $pdo->open();
             }
         });
 
-        // $('#mm3').html('<h3 style="color: red">Ride Cancelled, Redirecting to Available Rides <i class="fa fa-spinner fa-spin"></i></h3>');
-        // setTimeout(function (e){
-        //     location='available_rides.php';
-        // },5000);
+    }
 
+    function totals(id){
+
+        $.ajax({
+            type: 'POST',
+            url: 'rides_row.php',
+            data: {totals:id},
+            dataType: 'json',
+            success: function(response){
+
+                var setAdr = response.coordinates;
+                var first = setAdr.substr(0,setAdr.indexOf('|'));
+                var latitude = first.substr(0, first.indexOf(','));
+                var longitude = first.replace(latitude, '');
+                longitude = longitude.replace(',', '');
+
+                setAdr= setAdr.replace(setAdr.substr(0,setAdr.indexOf('|')+1),'');
+                var latitude1 = setAdr.substr(0, setAdr.indexOf(','));
+                var longitude1 = setAdr.replace(latitude1, '');
+                longitude1 = longitude1.replace(',', '');
+
+                var distance = getDistance([latitude,longitude],[latitude1,longitude1]);
+                var base_price = response.base_price;
+                var price_per_km  = response.price_per_km;
+                var total;
+                if(distance < 1){
+                    total = Math.floor(base_price);
+                }else{
+                    total = Math.floor(parseFloat(base_price) + parseFloat((price_per_km*distance)));
+                }
+
+                response['amount'] = total;
+                response['distance'] = distance;
+                invoice(response);
+            }
+        });
+
+    }
+
+    function invoice(total){
+
+        $.ajax({
+            type: 'POST',
+            url: 'rides_row.php',
+            data: {invoice:total,
+            customer_id:total.cust_id,
+            driver_id:total.driver_id,
+            amount:total.amount,
+            distance:total.distance,
+            vehicle_type:total.name},
+            dataType: 'json',
+            success: function(response){
+
+            }
+        });
+
+    }
+
+    function getDistance(dFrom,dTo){
+
+        var from = turf.point([dFrom[0],dFrom[1]]);
+        var to = turf.point([dTo[0], dTo[1]]);
+        var options = {units: 'kilometers'};
+
+        var distance = turf.distance(from, to, options);
+
+        distance= distance+0.45;
+        distance = distance.toFixed(1);
+
+        return distance;
     }
 
     var myVar = setInterval(function() {
@@ -337,14 +416,20 @@ $conn = $pdo->open();
             success: function(response){
             }
         });
+
         setValues([position.coords.latitude,position.coords.longitude],[lat,long],[lat2,long2]);
+        $('.leaflet-shadow-pane img:first-child').attr('src','./../assets/img/truck.png');
     }
 
     getLocation();
 
+    if(sessionStorage.getItem('total_time')){
+        $('.done').click();
+    }
 
 
 </script>
+<script src='../maps/js/turf.min.js'></script>
 <?php $pdo->close(); ?>
 </body>
 </html>

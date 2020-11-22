@@ -11,8 +11,8 @@
 
   $conn = $pdo->open();
 
-    $stmt = $conn->prepare("SELECT COUNT(*) AS num FROM booking where booking_status=1 AND driver_name=:email");
-    $stmt->execute(['email'=>$admin['email']]);
+    $stmt = $conn->prepare("SELECT COUNT(*) AS num FROM booking where booking_status=1 AND driver_id=:driver_id");
+    $stmt->execute(['driver_id'=>$_SESSION['driver']]);
     $rows = $stmt->fetch();
 
 
@@ -80,15 +80,18 @@
 
                   try{
 
-                      $stmt = $conn->prepare("SELECT * FROM booking where booking_status=0 ");
+                      $stmt = $conn->prepare("SELECT * FROM booking,customer where booking_status=0 AND booking.cust_id=customer.id ");
                       $stmt->execute();
 
                       foreach($stmt as $row){
 
+                          if ($row['payment_type'] !='cash'){
+                              $row['payment_type']='Card';
+                          }
                           echo "
                           <tr>
                             <td>".$row['payment_type']."</td>
-                            <td>".$row['customer_name']."</td>
+                            <td>".$row['firstname']." ".$row['lastname']."</td>
                             <td>".$row['start_address']."</td>
                             <td>".$row['end_address']."</td>
                             <td><button id=".$row['book_id']." class='btn btn-warning view-ride'><i class='fa fa-eye'></i> View</button></td>
@@ -131,29 +134,57 @@
 
     function getRow(id){
 
+        $('.book_id').val(id);
         $.ajax({
             type: 'POST',
             url: 'rides_row.php',
             data: {id:id},
             dataType: 'json',
             success: function(response){
-                $('#book_id').val(response.book_id);
-                $('.fullname').html('Pick-Up Address: '+response.start_address+'<br/>Destination Address: '+response.end_address);
 
                 var setAdr = response.coordinates;
-                setAdr = setAdr.substr(0,setAdr.indexOf('|'));
-                var latitude = setAdr.substr(0, setAdr.indexOf(','));
-                var longitude = setAdr.replace(latitude, '');
+                var first = setAdr.substr(0,setAdr.indexOf('|'));
+                var latitude = first.substr(0, first.indexOf(','));
+                var longitude = first.replace(latitude, '');
                 longitude = longitude.replace(',', '');
-                console.log(latitude);
-                console.log(longitude);
 
-                $('#maps-view').attr('src','https://maps.google.com/maps?q='+latitude+','+longitude+'&z=15&output=embed');
+                setAdr= setAdr.replace(setAdr.substr(0,setAdr.indexOf('|')+1),'');
+                var latitude1 = setAdr.substr(0, setAdr.indexOf(','));
+                var longitude1 = setAdr.replace(latitude1, '');
+                longitude1 = longitude1.replace(',', '');
+
+                var distance = getDistance([latitude,longitude],[latitude1,longitude1]);
+                var p_type = response.payment_type;
+                if (p_type !='cash'){
+                    p_type='Card';
+                }
+
+                $('.book-div').html(
+                    '<strong>From : <i>'+response.start_address+'</i></strong><br/>'+
+                    '<strong>To : <i>'+response.end_address+'</i></strong><br/>'+
+                    '<strong>Distance : <i>'+distance+' km</i></strong><br/>'+
+                    '<strong>Payment Type : <i>'+p_type+'</i></strong><br/>'
+                );
 
             }
         });
     }
+
+    function getDistance(dFrom,dTo){
+
+        var from = turf.point([dFrom[0],dFrom[1]]);
+        var to = turf.point([dTo[0], dTo[1]]);
+        var options = {units: 'kilometers'};
+
+        var distance = turf.distance(from, to, options);
+
+        distance= distance+0.45;
+        distance = distance.toFixed(1);
+
+        return distance;
+    }
 </script>
+<script src='../maps/js/turf.min.js'></script>
 <!-- Chart Data -->
 
 <!-- End Chart Data -->

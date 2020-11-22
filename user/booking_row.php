@@ -2,10 +2,10 @@
 	include 'includes/session.php';
 $conn = $pdo->open();
 if(isset($_POST['id_check'])){
-    $id = $admin['email'];
+    $id = $admin['id'];
 
-    $stmt = $conn->prepare("SELECT * FROM booking WHERE customer_name=:customer_name AND booking_status=1");
-    $stmt->execute(['customer_name'=>$id]);
+    $stmt = $conn->prepare("SELECT * FROM booking WHERE cust_id=:cust_id AND booking_status=1");
+    $stmt->execute(['cust_id'=>$id]);
     $row = $stmt->fetch();
 
     echo json_encode($row);
@@ -105,8 +105,8 @@ if(isset($_POST['names_bal'])){
 
     $image = $_POST['names_bal'];
 
-    $stmts = $conn->prepare("SELECT * FROM type");
-    $stmts->execute();
+    $stmts = $conn->prepare("SELECT * FROM type WHERE image=:image");
+    $stmts->execute(['image'=>$image]);
     $row = $stmts->fetch();
 
     echo json_encode($row);
@@ -137,7 +137,7 @@ if(isset($_POST['finish_id'])){
 
     $interval = date_diff($date_a,$date_b);
 
-    $row = array('total_time'=> $interval->format('%h:%i:%s'));
+    $row = array('total_time'=>$interval->format('%h:%i:%s'));
     echo json_encode($row);
 }
 

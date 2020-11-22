@@ -9,8 +9,8 @@ include 'includes/format.php';
         $year = $_GET['year'];
     }
 
-$stmt = $conn->prepare("SELECT COUNT(*) AS num FROM booking where booking_status=1 AND customer_name=:email");
-$stmt->execute(['email'=>$admin['email']]);
+$stmt = $conn->prepare("SELECT COUNT(*) AS num FROM booking where booking_status=1 AND cust_id =:id");
+$stmt->execute(['id'=>$admin['id']]);
 $rows = $stmt->fetch();
 
 
@@ -67,10 +67,10 @@ if($rows['num']>0){
 
                 <?php
                 try{
-                    $email = $admin['email'];
+                    $id = $admin['id'];
                     $requested = null;
-                    $stmt = $conn->prepare("SELECT booking_status FROM booking WHERE customer_name =:email AND booking_status=0");
-                    $stmt->execute(['email'=>$email]);
+                    $stmt = $conn->prepare("SELECT booking_status FROM booking WHERE cust_id =:id AND booking_status=0");
+                    $stmt->execute(['id'=>$id]);
                     $row = $stmt->fetch();
                     $requested = $row['booking_status'];
 
@@ -87,7 +87,7 @@ if($rows['num']>0){
                 <div class="row">
                     <div class="col-lg-6 col-xs-6 adjust">
                         <!-- small box -->
-                        <form id="book-form" class="form" method="POST" action="handle_requests.phps" onsubmit="return request_confirmed();">
+                        <form id="book-form" class="form" method="POST" action="handle_requests.php" onsubmit="return request_confirmed();">
                             <div class="inputContainer">
                                 <i class="fa fa-money fa-2x icon"> </i>
 
@@ -145,7 +145,9 @@ if($rows['num']>0){
                                 <img name="vehicles" width="250" hidden>
                             </div>
                             <br/>
-
+                            
+                        <input class="trip-distance" hidden>
+                        <input name="cord" hidden> 
 
                         <strong class="error-adr" style="color: red"></strong><br/>
                         <div class="inputContainer">
@@ -164,22 +166,19 @@ if($rows['num']>0){
                         </form>
                         <br/>
                         
-                        <input class="trip-distance" hidden>
-                        <input name="cord" hidden> 
+                      
 
                     </input>
                 ';
                 }
                 else{
                     echo '
-                      <h3>Please wait while we look for your driver <i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i>
+                      <h3 class="waiting">Please wait while we look for your driver <i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i>
                         <span class="sr-only">Loading...</span></h3>
                       ';
                 }
                 ?>
 
-                <button onclick="getMe()">asas</button>
-                    <!-- ./col -->
                 </div>
                 <br/>
                 <!-- /.row -->
@@ -270,62 +269,7 @@ if($rows['num']>0){
         </div>
     </div>
 </div>
-    <!-- End Chart Data -->
-<script>
-    function selectVehicle(name){
-        $('img[name=vehicles]').attr('src','./../assets/img/vehicles/'+name);
-        $('img[name=vehicles]').show();
-    }
 
-    function selectCard(name){
-
-        if(name =='card')
-        {
-            $('#addcard').modal('show');
-        }
-    }
-    function setBranch(){
-
-        $('#branch').val($('#bank option:selected').attr('id'));
-        // $('#branch').attr('disabled','disabled');
-    }
-
-    function validateCard(){
-        if($('#card-error').html !='' ){
-            $('#card-number').focus();
-            return false;
-        }
-        return true;
-    }
-
-    function getMe(){
-
-        var name =     $('select[name=type]').val();
-
-        $.ajax({
-            type: 'POST',
-            url: 'booking_row.php',
-            data: {names_bal:name},
-            dataType: 'json',
-            success: function(response){
-
-                console.log(response);
-                // var base_price = response.base_price;
-                // var price_per_km  = response.price_per_km;
-                // var total = Math.floor(base_price + (price_per_km*distance));
-                //
-                // $('.book-div').html(
-                //     '<strong>From : <i>'+from+'</i></strong><br/>'+
-                //     '<strong>To : <i>'+to+'</i></strong><br/>'+
-                //     '<strong>Distance : <i>'+distance+'</i></strong><br/>'+
-                //     '<strong>Payment Type : <i>'+payment+'</i></strong><br/>'+
-                //     '<strong>Vehicle Type : <i>'+type+'</i></strong><br/>'+
-                //     '<strong>Total Amount : <i>'+total+'</i></strong><br/>'+
-            );
-        }
-    });
-    }
-</script>
 
 <?php $pdo->close(); ?>
 <?php include 'includes/scripts.php'; ?>
@@ -353,6 +297,10 @@ if($rows['num']>0){
 <script type="application/javascript">
 
 
+if ($('.waiting').is(':visible')){
+
+    $('#map').hide();
+}
 
     var myVar = setInterval(checkStatus, 5000);
 
@@ -392,7 +340,6 @@ if($rows['num']>0){
         });
     }
 
-
     function requestBalance(){
 
         var from =$('input[name=start]').val();
@@ -401,37 +348,69 @@ if($rows['num']>0){
         var name =     $('select[name=type]').val();
         var distance = $('.trip-distance').val();
 
+
         $.ajax({
             type: 'POST',
             url: 'booking_row.php',
-            data: {name_bal:name},
+            data: {names_bal:name},
             dataType: 'json',
             success: function(response){
 
-                console.log(response);
-                // var base_price = response.base_price;
-                // var price_per_km  = response.price_per_km;
-                // var total = Math.floor(base_price + (price_per_km*distance));
-                //
-                // $('.book-div').html(
-                //     '<strong>From : <i>'+from+'</i></strong><br/>'+
-                //     '<strong>To : <i>'+to+'</i></strong><br/>'+
-                //     '<strong>Distance : <i>'+distance+'</i></strong><br/>'+
-                //     '<strong>Payment Type : <i>'+payment+'</i></strong><br/>'+
-                //     '<strong>Vehicle Type : <i>'+type+'</i></strong><br/>'+
-                //     '<strong>Total Amount : <i>'+total+'</i></strong><br/>'+
+                var base_price = response.base_price;
+                var price_per_km  = response.price_per_km;
+                var total;
+                if(distance < 1){
+                    total = Math.floor(base_price);
+                }else{
+                    total = Math.floor(parseFloat(base_price) + parseFloat((price_per_km*distance)));
+                }
+
+                $('.book-div').html(
+                    '<strong>From : <i>'+from+'</i></strong><br/>'+
+                    '<strong>To : <i>'+to+'</i></strong><br/>'+
+                    '<strong>Distance : <i>'+distance+' km</i></strong><br/>'+
+                    '<strong>Payment Type : <i>'+payment+'</i></strong><br/>'+
+                    '<strong>Vehicle Type : <i>'+response.name+'</i></strong><br/>'+
+                    '<strong>Total Amount : <i style="color: red"> R'+total+'</i></strong><br/>'
                 );
             }
         });
 
-        $('#booking-confirm').modal('show');
 
+        $('#booking-confirm').modal('show');
     }
 
     $('.send-form-to').on('click', function (e){
         $('#book-form').removeAttr('onsubmit');
         $('#book-form').submit();
     });
+
+    function selectVehicle(name){
+        $('img[name=vehicles]').attr('src','./../assets/img/vehicles/'+name);
+        $('img[name=vehicles]').show();
+    }
+
+    function selectCard(name){
+
+        if(name =='card')
+        {
+            $('#addcard').modal('show');
+        }
+    }
+    function setBranch(){
+
+        $('#branch').val($('#bank option:selected').attr('id'));
+        // $('#branch').attr('disabled','disabled');
+    }
+
+    function validateCard(){
+        if($('#card-error').html !='' ){
+            $('#card-number').focus();
+            return false;
+        }
+        return true;
+    }
+
 
 </script>
 

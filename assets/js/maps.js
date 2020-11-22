@@ -118,7 +118,6 @@ function request_confirmed(){
     }
 
     requestBalance();
-   // $('#booking-confirm').modal('show');
     return false;
 }
 function getDistance(dFrom,dTo){
