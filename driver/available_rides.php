@@ -266,6 +266,8 @@ function checkStatus(){
             if(response.num !== $('#example1_info').text()[18]){
                // $('.rides-list').load('.rides-list');
                window.location.reload();
+                //$('.content-wrapper').load(document.URL +  ' .content-wrapper');
+
             }
 
         }

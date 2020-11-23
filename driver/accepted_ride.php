@@ -111,13 +111,7 @@ if($rows['num']>0){
                         <strong><i>From: <?php echo $cName['start_address']?></i></strong><br/>
                         <strong><i>To: <?php echo $cName['end_address']?></i></strong><br/>
                         <strong class="duration"></strong><br/>
-                        <span class="total">
-                            <?php
-                            $stmt = $conn->prepare("SELECT * FROM invoice WHERE driver_id=:id");
-                            $stmt->execute(['id'=>$admin['id']]);
-                            $row = $stmt->fetch();
-                            echo 'Total Amount: R'. $row['amount'];
-                            ?></span><br/>
+                        <span class="total-amount"></span><br/>
                         <button class="btn btn-success done" onclick="clearSession();"><i class="fa fa-check-circle-o"></i> Done</button>
 
                     </span>
@@ -208,6 +202,7 @@ if($rows['num']>0){
                 success: function(response){
 
                     if(response.booking_status ==4){
+                        $('#mm').hide();
                         $('#mm3').html('<h3 style="color: red">Ride Cancelled, Redirecting to Available Rides <i class="fa fa-spinner fa-spin"></i></h3>');
                         setTimeout(function (e){
                             location='available_rides.php';
@@ -354,9 +349,10 @@ if($rows['num']>0){
             dataType: 'json',
             success: function(response){
 
+
             }
         });
-
+        $('.total-amount').html('Total Amount: R'+total.amount);
     }
 
     function getDistance(dFrom,dTo){

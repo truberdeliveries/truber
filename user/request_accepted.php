@@ -101,9 +101,9 @@ if($rows['num']>0){
                         <strong><i>From: <?php echo $drName['start_address']?></i></strong><br/>
                         <strong><i>To: <?php echo $drName['end_address']?></i></strong><br/>
                         <strong class="duration"></strong><br/>
-                        <span class="total-amount">
+                        <span id="total-amount" class="total-amount">
                             <?php
-                            $stmt = $conn->prepare("SELECT * FROM invoice WHERE customer_id=:id");
+                            $stmt = $conn->prepare("SELECT * FROM invoice WHERE customer_id=:id ORDER BY id DESC ");
                             $stmt->execute(['id'=>$admin['id']]);
                             $row = $stmt->fetch();
                             echo 'Total Amount: R'. $row['amount'];
@@ -211,6 +211,7 @@ if($rows['num']>0){
     }
 
     function finishedRide(id){
+        $('#total-amount').load(document.URL +  ' #total-amount');
         $.ajax({
             type: 'POST',
             url: 'booking_row.php',

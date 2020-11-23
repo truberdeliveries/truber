@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2020 at 01:59 PM
--- Server version: 10.3.15-MariaDB
--- PHP Version: 7.1.30
+-- Generation Time: Nov 23, 2020 at 09:22 AM
+-- Server version: 10.4.16-MariaDB
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -48,21 +47,6 @@ INSERT INTO `administrator` (`id`, `firstname`, `lastname`, `email`, `mobile`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bill`
---
-
-CREATE TABLE `bill` (
-  `id` int(11) NOT NULL,
-  `type` varchar(100) NOT NULL,
-  `amount` double NOT NULL,
-  `date_payed` date NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  `invoice_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `booking`
 --
 
@@ -74,20 +58,13 @@ CREATE TABLE `booking` (
   `end_address` varchar(500) NOT NULL,
   `coordinates` varchar(255) NOT NULL,
   `date` date NOT NULL,
-  `customer_name` varchar(255) NOT NULL,
-  `driver_name` varchar(255) NOT NULL,
+  `cust_id` varchar(255) NOT NULL,
+  `driver_id` varchar(255) NOT NULL,
   `payment_type` varchar(50) NOT NULL,
   `vehicle_type` varchar(255) NOT NULL,
-  `booking_status` int(11) NOT NULL
+  `booking_status` int(11) NOT NULL,
+  `driver_coord` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `booking`
---
-
-INSERT INTO `booking` (`book_id`, `start_time`, `end_time`, `start_address`, `end_address`, `coordinates`, `date`, `customer_name`, `driver_name`, `payment_type`, `vehicle_type`, `booking_status`) VALUES
-(14, '16:24:29', '17:03:19', 'Drienovec 477/477, Drienovec, Slovakia', 'Rue Romani, Morocco', '48.609158,20.952837|34.672731,-1.883603', '2020-11-04', 'gd@gmail.com', 'goldwin@gmail.com', 'cash', '8ton.png', 3),
-(15, '17:12:11', '17:13:03', '477 Sisulu Street, Tshwane, South Africa', 'Menlyn Park, Tshwane, South Africa', '-25.754264,28.195877|-25.76774,28.27503', '2020-11-04', 'gd@gmail.com', 'goldwin@gmail.com', 'cash', '8ton.png', 3);
 
 -- --------------------------------------------------------
 
@@ -124,24 +101,24 @@ CREATE TABLE `customer` (
   `email` varchar(100) NOT NULL,
   `mobile` varchar(20) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `date_created` date NOT NULL
+  `date_created` date NOT NULL,
+  `photo` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `firstname`, `lastname`, `email`, `mobile`, `password`, `date_created`) VALUES
-(2, 'George', 'Mahlangu', 'given@gmail.com', '0823207253', 'password', '2020-02-25'),
-(5, 'Kabelo', 'Letsoalo', 'kabelo2@gmail.com', '0715268899', 'password', '2020-02-26'),
-(6, 'fana', 'bila', 'gd@gmail.comzz', '', '12345', '2020-10-25'),
-(7, 'll', 'kk', 'gda@gmail.com', '0800000000', '1234@Abc', '2020-10-25'),
-(8, 'jj', 'j', 'gwwd@gmail.com', '0800000000', '1234@Abcd', '2020-10-25'),
-(9, 'k', 'kk', 'gda@gmail.comk', '0800000000', '1234@Abc', '2020-10-25'),
-(11, 'll', 'jn', 'gdss@gmail.com', '0800000000', '1234@Abc', '2020-10-25'),
-(12, 'kwsss', 'jn', 'gd@gmail.com', '', '12345', '2020-10-25'),
-(13, 'll', 'mm', 'gd@gmail.comw', '', '12345', '2020-10-25'),
-(14, 'rambo', 'john', 'gold@gmail.com', '0831234566', '1234@Abc', '2020-10-27');
+INSERT INTO `customer` (`id`, `firstname`, `lastname`, `email`, `mobile`, `password`, `date_created`, `photo`) VALUES
+(2, 'George', 'Mahlangu', 'given@gmail.com', '0823207253', 'password', '2020-02-25', ''),
+(5, 'Kabelo', 'Letsoalo', 'kabelo2@gmail.com', '0715268899', 'password', '2020-02-26', ''),
+(6, 'fana', 'bila', 'gd@gmail.comzz', '', '12345', '2020-10-25', ''),
+(7, 'll', 'kk', 'gda@gmail.com', '0800000000', '1234@Abc', '2020-10-25', ''),
+(8, 'jj', 'j', 'goldwinfana5@gmail.com', '0800000000', '1234@Abcd', '2020-10-25', ''),
+(9, 'k', 'kk', 'gda@gmail.comk', '0800000000', '1234@Abc', '2020-10-25', ''),
+(11, 'll', 'jn', 'gdss@gmail.com', '0800000000', '1234@Abc', '2020-10-25', ''),
+(12, 'beee', 'beees', 'gd@gmail.com', '0617235213', '12345', '2020-10-25', ''),
+(14, 'rambo', 'john', 'gold@gmail.com', '0831234566', '1234@Abc', '2020-10-27', '');
 
 -- --------------------------------------------------------
 
@@ -156,16 +133,17 @@ CREATE TABLE `driver` (
   `email` varchar(100) NOT NULL,
   `mobile` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `date_registered` date NOT NULL
+  `date_registered` date NOT NULL,
+  `photo` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `driver`
 --
 
-INSERT INTO `driver` (`id`, `firstname`, `lastname`, `email`, `mobile`, `password`, `date_registered`) VALUES
-(2, 'Erick', 'Gumede', 'sipho@gmail.com', '0856521123', 'password', '2020-02-25'),
-(5, 'fana', 'john', 'goldwin@gmail.com', '0610123456', '1234@Abc', '2020-10-31');
+INSERT INTO `driver` (`id`, `firstname`, `lastname`, `email`, `mobile`, `password`, `date_registered`, `photo`) VALUES
+(2, 'Erick', 'Gumede', 'sipho@gmail.com', '0856521123', 'password', '2020-02-25', ''),
+(5, 'fana', 'john', 'goldwin@gmail.com', '0610123456', '1234@Abc', '2020-10-31', '');
 
 -- --------------------------------------------------------
 
@@ -180,8 +158,30 @@ CREATE TABLE `invoice` (
   `driver_id` int(11) NOT NULL,
   `amount` double NOT NULL,
   `distance_km` double NOT NULL,
-  `address` varchar(100) NOT NULL
+  `vehicle_type` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status`
+--
+
+CREATE TABLE `status` (
+  `id` int(11) NOT NULL,
+  `name` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `status`
+--
+
+INSERT INTO `status` (`id`, `name`) VALUES
+(0, 'pending'),
+(1, 'accepted'),
+(2, 'picked'),
+(3, 'finished'),
+(4, 'cancelled');
 
 -- --------------------------------------------------------
 
@@ -192,6 +192,8 @@ CREATE TABLE `invoice` (
 CREATE TABLE `type` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
+  `base_price` int(11) NOT NULL,
+  `price_per_km` int(11) NOT NULL,
   `image` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -199,12 +201,12 @@ CREATE TABLE `type` (
 -- Dumping data for table `type`
 --
 
-INSERT INTO `type` (`id`, `name`, `image`) VALUES
-(0, 'Mini Van', 'minivan.png'),
-(1, '1 Ton', '1ton.png'),
-(2, '1.5 Ton', '1.5ton.png'),
-(3, '4 Ton', '4ton.png'),
-(4, '8 Ton', '8ton.png');
+INSERT INTO `type` (`id`, `name`, `base_price`, `price_per_km`, `image`) VALUES
+(0, 'Mini Van', 230, 16, 'minivan.png'),
+(1, '1 Ton', 374, 23, '1ton.png'),
+(2, '1.5 Ton', 460, 28, '1.5ton.png'),
+(3, '4 Ton', 2300, 46, '4ton.png'),
+(4, '8 Ton', 4600, 54, '8ton.png');
 
 -- --------------------------------------------------------
 
@@ -228,12 +230,6 @@ CREATE TABLE `vehicle` (
 -- Indexes for table `administrator`
 --
 ALTER TABLE `administrator`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `bill`
---
-ALTER TABLE `bill`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -286,16 +282,10 @@ ALTER TABLE `administrator`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `bill`
---
-ALTER TABLE `bill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `customer`

@@ -18,15 +18,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1ad21645-7334-41b1-a942-75d6cd024b1c" name="Default Changelist" comment="save all files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/maps.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/maps.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/driver/accepted_ride.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/accepted_ride.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/driver/available_rides.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/available_rides.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/rides/rides_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/rides/rides_modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/rides_row.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/rides_row.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/driver/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/driver/test.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/booking_row.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/booking_row.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/handle_requests.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/handle_requests.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/request.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/request.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/request_accepted.php" beforeDir="false" afterPath="$PROJECT_DIR$/user/request_accepted.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,6 +92,7 @@
       <workItem from="1605242757445" duration="18257000" />
       <workItem from="1605473409446" duration="5059000" />
       <workItem from="1605620137538" duration="40530000" />
+      <workItem from="1606084529194" duration="6093000" />
     </task>
     <task id="LOCAL-00001" summary="filr">
       <created>1603690906013</created>
