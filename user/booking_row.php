@@ -1,10 +1,10 @@
-<?php 
-	include 'includes/session.php';
+<?php
+include 'includes/session.php';
 $conn = $pdo->open();
 if(isset($_POST['id_check'])){
     $id = $admin['id'];
 
-    $stmt = $conn->prepare("SELECT * FROM booking WHERE cust_id=:cust_id AND booking_status=1");
+    $stmt = $conn->prepare("SELECT * FROM booking WHERE cust_id=:cust_id AND booking_status IN (1,2)");
     $stmt->execute(['cust_id'=>$id]);
     $row = $stmt->fetch();
 
@@ -103,10 +103,10 @@ if(isset($_POST['check_card'])){
 
 if(isset($_POST['names_bal'])){
 
-    $image = $_POST['names_bal'];
+    $name = $_POST['names_bal'];
 
-    $stmts = $conn->prepare("SELECT * FROM type WHERE image=:image");
-    $stmts->execute(['image'=>$image]);
+    $stmts = $conn->prepare("SELECT * FROM type WHERE name=:name");
+    $stmts->execute(['name'=>$name]);
     $row = $stmts->fetch();
 
     echo json_encode($row);
@@ -115,9 +115,15 @@ if(isset($_POST['names_bal'])){
 if(isset($_POST['trip_id'])){
 
     $book_id = $_POST['trip_id'];
+    $reasons = $_POST['reason'];
 
+    echo $book_id;
+    echo $reasons;
     $stmt = $conn->prepare("UPDATE booking SET booking_status=4 WHERE book_id=:book_id");
     $stmt->execute(['book_id'=>$book_id]);
+
+    $stmt = $conn->prepare("INSERT INTO reason VALUES(:matter_id,:reasons)");
+    $stmt->execute(['matter_id'=>$book_id,'reasons'=>$reasons]);
 
     header('location: home.php');
 }

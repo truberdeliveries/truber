@@ -44,7 +44,13 @@
                     	<input type="text" class="form-control" id="lastname" name="mobile" value="<?php echo $admin['mobile']; ?>" required>
                   	</div>
                 </div>
-				
+                    <div class="form-group">
+                        <label for="photo" class="col-sm-3 control-label">Photo</label>
+
+                        <div class="col-sm-9">
+                            <input type="file" id="photo" name="photo" required>
+                        </div>
+                    </div>
                 <hr>
                 <div class="form-group">
                     <label for="curr_password" class="col-sm-3 control-label">Current Password:</label>

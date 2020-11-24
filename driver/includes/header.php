@@ -84,5 +84,27 @@
       .leaflet-routing-alt{
           display: none;
       }
+        .adjust{
+            z-index: 9;
+            position: relative;
+            background: #ecf0f5;
+            padding: 40px;
+        }
+        @media (max-width: 1200px) {
+            .adjust{
+                width: 100% !important;
+                padding: 2px;
+            }
+
+            form .fa{
+                font-size: larger;
+            }
+        }
+        .face1, .face2{
+            z-index: 9;
+            position: relative;
+            border: none;
+            font-weight: bolder;
+        }
   	</style>
 </head>

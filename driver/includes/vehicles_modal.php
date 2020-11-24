@@ -24,11 +24,11 @@
                     <div class="col-sm-9">
                         <select name="type" id="type" class="form-control" required>
                             <option selected disabled>Select Vehicle type</option>
-                            <option value="Mini Van">Mini Van</option>
-                            <option value="1 Ton">1 Ton</option>
-                            <option value="1.5 Ton">1.5 Ton</option>
-                            <option value="4 Ton">4 Ton</option>
-                            <option value="8 Ton">8 Ton</option>
+                            <option value="MiniVan">Mini Van</option>
+                            <option value="1_Ton">1 Ton</option>
+                            <option value="1.5_Ton">1.5 Ton</option>
+                            <option value="4_Ton">4 Ton</option>
+                            <option value="8_Ton">8 Ton</option>
                         </select>
                     </div>
                 </div>
@@ -46,10 +46,10 @@
                           <input type="text" class="form-control" id="model" name="model" required>
                       </div>
                   </div>
-                <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Password</label>
-
-                </div>
+<!--                <div class="form-group">-->
+<!--                    <label for="password" class="col-sm-3 control-label">Password</label>-->
+<!---->
+<!--                </div>-->
               
             </div>
             <div class="modal-footer">

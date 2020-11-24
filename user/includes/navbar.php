@@ -20,7 +20,7 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="<?php echo (!empty($admin['photo'])) ? '../images/'.$admin['photo'] : '../images/profile.png'; ?>" class="user-image" >
+            <img src="<?php echo (!empty($admin['photo'])) ? '../assets/img/photos/'.$admin['photo'] : '../images/profile.png'; ?>" class="user-image" >
             <span class="hidden-xs"><?php echo $admin['firstname'].' '.$admin['lastname']; ?><i>  [ Customer ]</i></span>
           </a>
           <ul class="dropdown-menu">

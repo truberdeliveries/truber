@@ -129,7 +129,12 @@
             }
         }
 
-
+        .face1, .face2{
+            z-index: 9;
+            position: relative;
+            border: none;
+            font-weight: bolder;
+        }
 
   	</style>
 </head>

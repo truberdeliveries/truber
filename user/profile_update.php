@@ -18,20 +18,58 @@
 		$lastname = $_POST['lastname'];
 		$mobile = $_POST['mobile'];
 
-//
-//        $photo = $_FILES['photo']['name'];
-//        $target_dir = "assets/";
-//        $target_file = $target_dir . basename($photo);
-//
-//        // Select file type
-//        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-//
-//        // Check extension
-//        $allowTypes = array('jpg','png','jpeg','gif');
-//        if(!in_array($imageFileType, $allowTypes)){
-//            $_SESSION['error'] = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
-//            header('location:'.$return);
-//        }
+        $photo = $_FILES['photo']['name'];
+
+        $target_dir = "C:/xampp/htdocs/Truber/assets/img/photos/";
+        $target_file = $target_dir . basename($_FILES["photo"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+// Check if image file is a actual image or fake image
+        if(isset($_POST["submit"])) {
+            $check = getimagesize($_FILES["photo"]["tmp_name"]);
+            if($check !== false) {
+                $uploadOk = 1;
+            } else {
+                $_SESSION['error'] = "File is not an image.";
+                $uploadOk = 0;
+                header('location:'.$return);
+            }
+        }
+
+// Check if file already exists
+        if (file_exists($target_file)) {
+            $_SESSION['error'] = "Sorry, file already exists.";
+            $uploadOk = 0;
+            header('location:'.$return);
+        }
+
+// Check file size
+        if ($_FILES["photo"]["size"] > 500000) {
+            $_SESSION['error'] = "Sorry, your file is too large.";
+            $uploadOk = 0;
+            header('location:'.$return);
+        }
+
+// Allow certain file formats
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif" ) {
+            $_SESSION['error'] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+            header('location:'.$return);
+        }
+// Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            $_SESSION['error'] = "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
+                echo "The file ". htmlspecialchars( basename( $_FILES["photo"]["name"])). " has been uploaded.";
+            } else {
+                $_SESSION['error'] = "Sorry, there was an error uploading your file.";
+                header('location:'.$return);
+            }
+        }
 
 
         if($curr_password == $admin['password']){
@@ -53,11 +91,9 @@
                     $_SESSION['error'] = 'Email already exits';
                 }
                 else {
-                    $stmt = $conn->prepare("UPDATE customer SET email=:email, password=:password, firstname=:firstname, lastname=:lastname, mobile=:mobile WHERE id=:id");
-                    $stmt->execute(['email' => $email, 'password' => $password, 'firstname' => $firstname, 'lastname' => $lastname, 'mobile' => $mobile, 'id' => $admin['id']]);
+                    $stmt = $conn->prepare("UPDATE customer SET email=:email, password=:password, firstname=:firstname, lastname=:lastname, mobile=:mobile,photo=:photo WHERE id=:id");
+                    $stmt->execute(['email' => $email, 'password' => $password, 'firstname' => $firstname, 'lastname' => $lastname, 'mobile' => $mobile, 'id' => $admin['id'],'photo'=>$photo]);
 
-                    // Upload file
-                    //move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$photo);
                     $_SESSION['success'] = 'Account updated successfully';
                 }
 			}

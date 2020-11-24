@@ -18,6 +18,7 @@
       <li><a href="home.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
       <li class="header">MANAGE</li>
        <li><a href="#profile" data-toggle="modal"><i class="fa fa-user"></i> <span>Update Profile</span></a></li>
+        <li><a href="./history.php"><i class="fa fa-search-plus"></i> <span>View Rides </span></a></li>
 
        <li><a href="users_delete.php" onclick="return confirm('Are you sure you wish to delete this account?')"><i class="fa fa-trash"></i> <span>DELETE ACCOUNT</span></a></li>
     </ul>

@@ -17,7 +17,7 @@
 
 
     if($rows['num']>0){
-        header('location: accepted_ride.php');
+       // header('location: accepted_ride.php');
     }
 ?>
 <?php include 'includes/header.php'; ?>
@@ -80,8 +80,10 @@
 
                   try{
 
-                      $stmt = $conn->prepare("SELECT * FROM booking,customer where booking_status=0 AND booking.cust_id=customer.id ");
-                      $stmt->execute();
+                      $stmt = $conn->prepare("SELECT * FROM booking,customer,vehicle where booking_status=0 
+                                                       AND booking.cust_id=customer.id AND vehicle.type=booking.vehicle_type 
+                                                       AND vehicle.driver_id=:id ");
+                      $stmt->execute(['id'=>$admin['id']]);
 
                       foreach($stmt as $row){
 
@@ -262,12 +264,8 @@ function checkStatus(){
         data: {},
         dataType: 'json',
         success: function(response){
-          //  console.log(response.num +'--'+$('#example1_info').text()[18])
             if(response.num !== $('#example1_info').text()[18]){
-               // $('.rides-list').load('.rides-list');
                window.location.reload();
-                //$('.content-wrapper').load(document.URL +  ' .content-wrapper');
-
             }
 
         }

@@ -12,13 +12,13 @@ if(isset($_GET['year'])){
 
 $conn = $pdo->open();
 
-$stmt = $conn->prepare("SELECT COUNT(*) AS num FROM booking where booking_status IN (3,4) AND driver_id=:driver_id");
+$stmt = $conn->prepare("SELECT COUNT(*) AS num FROM booking where booking_status IN (1,2) AND driver_id=:driver_id");
 $stmt->execute(['driver_id'=>$admin['id']]);
 $rows = $stmt->fetch();
 
 
 if($rows['num']>0){
-    header('location: available_rides.php');
+   // header('location: available_rides.php');
 }
 ?>
 <?php include 'includes/header.php'; ?>
@@ -50,7 +50,7 @@ if($rows['num']>0){
         </section>
 
         <!-- Main content -->
-        <section class="content" style="position: absolute;background: #ecf0f5;z-index: 9">
+        <section class="content" style="position: relative;z-index: 9;">
             <?php
             if(isset($_SESSION['error'])){
                 echo "
@@ -75,19 +75,25 @@ if($rows['num']>0){
             ?>
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-lg-13 " style="padding: 10px;">
+                <button class="face1" onclick="closeFace();" style=""><< Hide</button>
+                <button class="face2" onclick="openFace();" style="z-index: 9;position: relative;border: none" hidden>Show >></button>
+                <div class="col-lg-6 col-xs-6 adjust" >
 
-                    <img src="./../images/profile.png" width="300px" height="300px">
+
                     <!-- small box -->
                     <?php
                     try{
-                        $stmt = $conn->prepare("SELECT * FROM booking WHERE driver_id=:driver_id AND booking_status=1");
+                        $stmt = $conn->prepare("SELECT * FROM booking WHERE driver_id=:driver_id AND booking_status IN (1,2)");
                         $stmt->execute(['driver_id'=>$_SESSION['driver']]);
                         $cName = $stmt->fetch();
 
                         $stmt = $conn->prepare("SELECT * FROM customer WHERE id=:id");
                         $stmt->execute(['id'=>$cName['cust_id']]);
                         $row = $stmt->fetch();
+
+                        $photo =(!empty($row['photo'])) ? './assets/img/photos/'.$row['photo'] : './../images/profile.png';
+
+                        echo "<img src='.$photo.' width='300px' height='300px'>";
 
                         echo "<h2 style='color: green'>Customer name is ".$row['firstname'].' '.$row['lastname']."</h2>";
 
@@ -423,6 +429,17 @@ if($rows['num']>0){
         $('.done').click();
     }
 
+    function openFace(){
+        $('.adjust').fadeIn(600);
+        $('.face2').hide();
+        $('.face1').show();
+    }
+
+    function closeFace(){
+        $('.adjust').fadeOut(100);
+        $('.face1').hide();
+        $('.face2').show();
+    }
 
 </script>
 <script src='../maps/js/turf.min.js'></script>

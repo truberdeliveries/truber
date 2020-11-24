@@ -9,7 +9,7 @@ include 'includes/format.php';
         $year = $_GET['year'];
     }
 
-$stmt = $conn->prepare("SELECT COUNT(*) AS num FROM booking where booking_status=1 AND cust_id =:id");
+$stmt = $conn->prepare("SELECT COUNT(*) AS num FROM booking where booking_status IN (1,2) AND cust_id =:id");
 $stmt->execute(['id'=>$admin['id']]);
 $rows = $stmt->fetch();
 
@@ -85,7 +85,10 @@ if($rows['num']>0){
                 echo '
 
                 <div class="row">
+                <button class="face1" onclick="closeFace();" style="z-index: 9;position: relative;border: none"><< Hide</button>
+                <button class="face2" onclick="openFace();" style="z-index: 9;position: relative;border: none" hidden>Show >></button>
                     <div class="col-lg-6 col-xs-6 adjust">
+                    
                         <!-- small box -->
                         <form id="book-form" class="form" method="POST" action="handle_requests.php" onsubmit="return request_confirmed();">
                             <div class="inputContainer">
@@ -106,7 +109,10 @@ if($rows['num']>0){
                                         }else{
                                             foreach($stmts as $row){
 
-                                                echo "<option style='background:lightgrey' value=".$row['cardnumber'].">".$row['cardnumber']."</option>";
+                                                $count = $row['cardnumber'];
+                                                $new = substr('****************',0,strlen(substr($count,0,-3))).substr_replace($count,'',0,-3);
+
+                                                echo "<option style='background:lightgrey' value=".$row['cardnumber'].">".substr($row['bankname'],0,3)." ".$new."</option>";
                                             }
                                             echo' <option value="card"></i>Add New Card</option>';
                                         }
@@ -124,7 +130,7 @@ if($rows['num']>0){
                             <div class="inputContainer">
                                 <i class="fa fa-cab fa-2x icon"> </i>
 
-                                <select class="form-control Field" style="text-align-last:center;" name="type" onchange=" selectVehicle(this.value);" required >
+                                <select class="form-control Field" style="text-align-last:center;" name="type" onchange=" selectVehicle();" required >
                                     <option value="" selected disabled>Choose Vehicle Type</option>
                    ';
 
@@ -133,7 +139,7 @@ if($rows['num']>0){
                                         $stmt->execute();
                                         foreach($stmt as $row){
 
-                                            echo "<option id=".$row['id']." value=".$row['image'].">".$row['name']."</option>";
+                                            echo "<option id=".$row['id']." class=".$row['image']." value=".$row['name'].">".str_replace('_',' ',$row['name'])."</option>";
                                         }
                                     }
                                     catch(PDOException $e){
@@ -296,7 +302,6 @@ if($rows['num']>0){
 
 <script type="application/javascript">
 
-
 if ($('.waiting').is(':visible')){
 
     $('#map').hide();
@@ -359,6 +364,10 @@ if ($('.waiting').is(':visible')){
                 var base_price = response.base_price;
                 var price_per_km  = response.price_per_km;
                 var total;
+
+                if (payment !='cash'){
+                    payment='card';
+                }
                 if(distance < 1){
                     total = Math.floor(base_price);
                 }else{
@@ -385,7 +394,8 @@ if ($('.waiting').is(':visible')){
         $('#book-form').submit();
     });
 
-    function selectVehicle(name){
+    function selectVehicle(){
+        var name = $('select[name=type] :selected').attr('class');
         $('img[name=vehicles]').attr('src','./../assets/img/vehicles/'+name);
         $('img[name=vehicles]').show();
     }
@@ -395,6 +405,7 @@ if ($('.waiting').is(':visible')){
         if(name =='card')
         {
             $('#addcard').modal('show');
+            $('select[name=payment]').val('');
         }
     }
     function setBranch(){
@@ -404,14 +415,28 @@ if ($('.waiting').is(':visible')){
     }
 
     function validateCard(){
-        if($('#card-error').html !='' ){
+        if($('#card-error').html() !=''){
             $('#card-number').focus();
+            return false;
+        }
+        if($('#card-number').html() =='Add New Card'){
+            $('#card-number').html('');
             return false;
         }
         return true;
     }
 
+    function openFace(){
+        $('.adjust').fadeIn(600);
+        $('.face2').hide();
+        $('.face1').show();
+    }
 
+    function closeFace(){
+        $('.adjust').fadeOut(100);
+        $('.face1').hide();
+        $('.face2').show();
+    }
 </script>
 
 <script src="./../assets/js/maps.js"></script>

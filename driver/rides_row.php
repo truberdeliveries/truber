@@ -23,16 +23,17 @@ if(isset($_POST['totals'])){
 
 if(isset($_POST['invoice'])){
 
+    $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $invoice_id = 'Trub#'.substr(str_shuffle($permitted_chars), 0, 6);
     $customer_id = $_POST['customer_id'];
     $driver_id = $_POST['driver_id'];
     $amount = $_POST['amount'];
     $distance = $_POST['distance'];
     $vehicle_type = $_POST['vehicle_type'];
-    $date_created = date('Y-m-d');
+    $date_created = date('Y-m-d H:i:s');
 
-    $stmt = $conn->prepare("INSERT INTO invoice(date_created,customer_id,driver_id,amount,distance_km,vehicle_type) 
-                                     VALUES (:date_created,:customer_id,:driver_id,:amount,:distance_km,:vehicle_type)");
-    $stmt->execute(['customer_id'=>$customer_id,'driver_id'=>$driver_id,'amount'=>$amount,'distance_km'=>$distance,'date_created'=>$date_created,'vehicle_type'=>$vehicle_type]);
+    $stmt = $conn->prepare("INSERT INTO invoice VALUES (:invoice_id,:date_created,:customer_id,:driver_id,:amount,:distance_km,:vehicle_type)");
+    $stmt->execute(['invoice_id'=>$invoice_id,'customer_id'=>$customer_id,'driver_id'=>$driver_id,'amount'=>$amount,'distance_km'=>$distance,'date_created'=>$date_created,'vehicle_type'=>$vehicle_type]);
 
     header('location: '.$_SERVER['HTTP_REFERER']);
 }
@@ -63,7 +64,7 @@ if(isset($_POST['pick_up'])){
     $start_time = date('H:i:s');
 
 
-    $stmt = $conn->prepare("UPDATE booking SET start_time=:start_time WHERE book_id=:book_id");
+    $stmt = $conn->prepare("UPDATE booking SET start_time=:start_time,booking_status=2 WHERE book_id=:book_id");
     $stmt->execute(['start_time'=>$start_time,'book_id'=>$book_id]);
 
     $stmts = $conn->prepare("SELECT start_time FROM booking WHERE book_id=:book_id");

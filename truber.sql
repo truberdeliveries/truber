@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2020 at 09:22 AM
+-- Generation Time: Nov 24, 2020 at 02:19 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -66,6 +66,13 @@ CREATE TABLE `booking` (
   `driver_coord` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`book_id`, `start_time`, `end_time`, `start_address`, `end_address`, `coordinates`, `date`, `cust_id`, `driver_id`, `payment_type`, `vehicle_type`, `booking_status`, `driver_coord`) VALUES
+(4, '00:00:00', '00:00:00', '3781/34 Sisulu Street, Tembisa, South Africa', 'Tembisa, South Africa', '-26.046172,28.186128|-26.008881,28.21233', '2020-11-24', '6', '4', '1234567890', '1_Ton', 4, '');
+
 -- --------------------------------------------------------
 
 --
@@ -85,8 +92,8 @@ CREATE TABLE `card` (
 --
 
 INSERT INTO `card` (`id`, `bankname`, `cardnumber`, `branch`, `date_created`) VALUES
-(12, 'capitec', '5554454545', '470010', '2020-11-04'),
-(12, 'capitec', '55544545453', '470010', '2020-11-04');
+(6, 'standard-bank', '1234567890', '051001', '2020-11-23'),
+(6, 'nedbank', '1234567890', '198765', '2020-11-23');
 
 -- --------------------------------------------------------
 
@@ -102,7 +109,7 @@ CREATE TABLE `customer` (
   `mobile` varchar(20) NOT NULL,
   `password` varchar(100) NOT NULL,
   `date_created` date NOT NULL,
-  `photo` longblob NOT NULL
+  `photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -112,7 +119,7 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`id`, `firstname`, `lastname`, `email`, `mobile`, `password`, `date_created`, `photo`) VALUES
 (2, 'George', 'Mahlangu', 'given@gmail.com', '0823207253', 'password', '2020-02-25', ''),
 (5, 'Kabelo', 'Letsoalo', 'kabelo2@gmail.com', '0715268899', 'password', '2020-02-26', ''),
-(6, 'fana', 'bila', 'gd@gmail.comzz', '', '12345', '2020-10-25', ''),
+(6, 'fana', 'bila', 'gd@gmail.comzz', '0822222222', '12345', '2020-10-25', 'test.jpg'),
 (7, 'll', 'kk', 'gda@gmail.com', '0800000000', '1234@Abc', '2020-10-25', ''),
 (8, 'jj', 'j', 'goldwinfana5@gmail.com', '0800000000', '1234@Abcd', '2020-10-25', ''),
 (9, 'k', 'kk', 'gda@gmail.comk', '0800000000', '1234@Abc', '2020-10-25', ''),
@@ -134,7 +141,7 @@ CREATE TABLE `driver` (
   `mobile` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
   `date_registered` date NOT NULL,
-  `photo` longblob NOT NULL
+  `photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -142,7 +149,7 @@ CREATE TABLE `driver` (
 --
 
 INSERT INTO `driver` (`id`, `firstname`, `lastname`, `email`, `mobile`, `password`, `date_registered`, `photo`) VALUES
-(2, 'Erick', 'Gumede', 'sipho@gmail.com', '0856521123', 'password', '2020-02-25', ''),
+(2, 'Erick', 'Gumede', 'sipho@gmail.com', '0856521123', 'password', '2020-02-25', 'truck.jpg'),
 (5, 'fana', 'john', 'goldwin@gmail.com', '0610123456', '1234@Abc', '2020-10-31', '');
 
 -- --------------------------------------------------------
@@ -152,14 +159,39 @@ INSERT INTO `driver` (`id`, `firstname`, `lastname`, `email`, `mobile`, `passwor
 --
 
 CREATE TABLE `invoice` (
-  `id` int(11) NOT NULL,
-  `date_created` date NOT NULL,
+  `invoice_id` varchar(30) NOT NULL,
+  `date_created` timestamp NULL DEFAULT current_timestamp(),
   `customer_id` int(11) NOT NULL,
   `driver_id` int(11) NOT NULL,
   `amount` double NOT NULL,
   `distance_km` double NOT NULL,
   `vehicle_type` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `invoice`
+--
+
+INSERT INTO `invoice` (`invoice_id`, `date_created`, `customer_id`, `driver_id`, `amount`, `distance_km`, `vehicle_type`) VALUES
+('Trub#GihC9v', '2020-11-24 10:03:52', 6, 2, 282, 3.3, 'Mini Van');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reason`
+--
+
+CREATE TABLE `reason` (
+  `matter_id` int(11) NOT NULL,
+  `reasons` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `reason`
+--
+
+INSERT INTO `reason` (`matter_id`, `reasons`) VALUES
+(4, 'Driver asked me to cancel.');
 
 -- --------------------------------------------------------
 
@@ -202,11 +234,11 @@ CREATE TABLE `type` (
 --
 
 INSERT INTO `type` (`id`, `name`, `base_price`, `price_per_km`, `image`) VALUES
-(0, 'Mini Van', 230, 16, 'minivan.png'),
-(1, '1 Ton', 374, 23, '1ton.png'),
-(2, '1.5 Ton', 460, 28, '1.5ton.png'),
-(3, '4 Ton', 2300, 46, '4ton.png'),
-(4, '8 Ton', 4600, 54, '8ton.png');
+(0, 'MiniVan', 230, 16, 'minivan.png'),
+(1, '1_Ton', 374, 23, '1ton.png'),
+(2, '1.5_Ton', 460, 28, '1.5ton.png'),
+(3, '4_Ton', 2300, 46, '4ton.png'),
+(4, '8_Ton', 4600, 54, '8ton.png');
 
 -- --------------------------------------------------------
 
@@ -219,8 +251,16 @@ CREATE TABLE `vehicle` (
   `reg_number` varchar(20) NOT NULL,
   `type` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
+  `model` varchar(255) NOT NULL,
   `driver_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vehicle`
+--
+
+INSERT INTO `vehicle` (`id`, `reg_number`, `type`, `name`, `model`, `driver_id`) VALUES
+(1, '213r4234r3f', 'MiniVan', 'Hondai', '2018', 2);
 
 --
 -- Indexes for dumped tables
@@ -254,7 +294,7 @@ ALTER TABLE `driver`
 -- Indexes for table `invoice`
 --
 ALTER TABLE `invoice`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`invoice_id`);
 
 --
 -- Indexes for table `type`
@@ -285,7 +325,7 @@ ALTER TABLE `administrator`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -300,16 +340,10 @@ ALTER TABLE `driver`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `invoice`
---
-ALTER TABLE `invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `vehicle`
 --
 ALTER TABLE `vehicle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

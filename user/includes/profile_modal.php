@@ -41,7 +41,7 @@
                   	<label for="lastname" class="col-sm-3 control-label">mobile</label>
 
                   	<div class="col-sm-9">
-                    	<input type="text" class="form-control" id="lastname" name="mobile" value="<?php echo $admin['mobile']; ?>" required>
+                    	<input type="text" class="form-control" name="mobile" value="<?php echo $admin['mobile']; ?>" required>
                   	</div>
                 </div>
 
@@ -54,19 +54,20 @@
                 </div>
 
                 <hr>
-<!--                <div class="form-group" hidden>-->
-<!--                    <label for="curr_password" class="col-sm-3 control-label">Current Password:</label>-->
-<!---->
-<!--                    <div class="col-sm-9">-->
-<!--                      <input type="password" class="form-control" id="curr_password" name="curr_password" placeholder="input current password to save changes" required>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div class="form-group">
+                    <label for="curr_password" class="col-sm-3 control-label">Current Password:</label>
+
+                    <div class="col-sm-9">
+                      <input type="password" class="form-control" id="curr_password" name="curr_password" placeholder="input current password to save changes" required>
+                    </div>
+                </div>
           	</div>
           	<div class="modal-footer">
             	<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-            	<button type="submit" class="btn btn-success btn-flat" name="save"><i class="fa fa-check-square-o"></i> Save</button>
+            	<button  type="submit" class="btn btn-success btn-flat" name="save"><i class="fa fa-check-square-o"></i> Save</button>
             	</form>
           	</div>
         </div>
     </div>
 </div>
+

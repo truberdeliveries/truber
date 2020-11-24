@@ -17,7 +17,7 @@ $rows = $stmt->fetch();
 
 
 if($rows['num']>0){
-    header('location: home.php');
+    //header('location: home.php');
 }
 ?>
 <?php include 'includes/header.php'; ?>
@@ -42,7 +42,7 @@ if($rows['num']>0){
         </section>
 
         <!-- Main content -->
-        <section class="content" style="padding-top: 0;">
+        <section class="content" style="">
             <?php
             if(isset($_SESSION['error'])){
                 echo "
@@ -66,35 +66,43 @@ if($rows['num']>0){
             }
             ?>
 
-            <!-- Small boxes (Stat box) -->
-            <div class="row adjust" style="width: fit-content;">
-                <div class="detail-head">
-<!--                    <button onclick="$('.adjust').">Hide</button>-->
-                    <img src="files/images/drive.png" width="300px" height="300px">
+            <div class="row">
+                <button class="face1" onclick="closeFace();" style="z-index: 9;position: relative;border: none"><< Hide</button>
+                <button class="face2" onclick="openFace();" style="z-index: 9;position: relative;border: none" hidden>Show >></button>
+                <div class="col-lg-6 col-xs-6 adjust">
+
                     <!-- small box -->
                     <?php
                     try{
-                        $stmt = $conn->prepare("SELECT * FROM booking WHERE booking_status=1 AND cust_id=:cust_id ");
+                        $stmt = $conn->prepare("SELECT * FROM booking WHERE booking_status IN (1,2) AND cust_id=:cust_id ");
                         $stmt->execute(['cust_id'=>$admin['id']]);
                         $drName = $stmt->fetch();
 
-                        $stmt = $conn->prepare("SELECT firstname,lastname,mobile FROM driver WHERE id=:driver_id");
+                        $stmt = $conn->prepare("SELECT * FROM driver WHERE id=:driver_id");
                         $stmt->execute(['driver_id'=>$drName['driver_id']]);
                         $row = $stmt->fetch();
 
-                        echo "<h2 style='color: green'> Your driver is ".$row['firstname'].' '.$row['lastname']."</h2>";
+                        $photo =(!empty($row['photo'])) ? './assets/img/photos/'.$row['photo'] : './../images/profile.png';
+
+                        echo "<img src='.$photo.' width='300px' height='300px'>";
+
+                        echo "<h2 style='color: green'> Your driver is ".$row['firstname']." ".$row['lastname']."</h2>";
+
 
 
                     }
                     catch(PDOException $e){
                         echo $e->getMessage();
                     }
+
                     ?>
+
                     <span id="mm">
                     <h3><strong id="ride-status" style="color: orange">Driver Is Heading Your Way ...</strong></h3><br/>
                     <button class="btn btn-primary" onclick="location.href='tel: <?php echo $row['mobile']?>'"><i class="fa fa-phone"></i>  Call</button>
                     <button class="btn btn-danger" id="<?php echo $drName['book_id']?>" ><i class="fa fa-close"></i>  Cancel</button>
                     <button class="look-up" id="<?php echo $drName['book_id']?>"  style="display: none">stats</button>
+                        <input type="hidden" id="looks" value="<?php echo $drName['book_id']?>">
                     </span>
                     <span id="mm2">
                         <u><h3><i>Ride History</i></h3></u>
@@ -103,10 +111,16 @@ if($rows['num']>0){
                         <strong class="duration"></strong><br/>
                         <span id="total-amount" class="total-amount">
                             <?php
-                            $stmt = $conn->prepare("SELECT * FROM invoice WHERE customer_id=:id ORDER BY id DESC ");
-                            $stmt->execute(['id'=>$admin['id']]);
-                            $row = $stmt->fetch();
-                            echo 'Total Amount: R'. $row['amount'];
+
+                            try{
+                                $stmt = $conn->prepare("SELECT * FROM invoice WHERE customer_id=:id ORDER BY date_created DESC ");
+                                $stmt->execute(['id'=>$admin['id']]);
+                                $row = $stmt->fetch();
+                                echo 'Total Amount: R'. $row['amount'];
+                            }
+                            catch(PDOException $e){
+                                echo $e->getMessage();
+                            }
                             ?>
                         </span><br/>
                         <button class="btn btn-success done" onclick="clearSession();"><i class="fa fa-check-circle-o"></i> Done</button>
@@ -173,6 +187,7 @@ if($rows['num']>0){
         });
 
         $(document).on('click', '.look-up', function(e) {
+
             $.ajax({
                 type: 'POST',
                 url: 'booking_row.php',
@@ -187,7 +202,7 @@ if($rows['num']>0){
                             location='home.php';
                         },5000);
                     }
-                    if(response.start_time !== '00:00:00'){
+                    if(response.booking_status == 2){
                         $('#ride-status').html('Driving To Destination ...');
                         $('.btn-danger').hide();
                         sessionStorage.setItem('start_time',1);
@@ -298,6 +313,17 @@ if($rows['num']>0){
          $('.done').click();
     }
 
+    function openFace(){
+        $('.adjust').fadeIn(600);
+        $('.face2').hide();
+        $('.face1').show();
+    }
+
+    function closeFace(){
+        $('.adjust').fadeOut(100);
+        $('.face1').hide();
+        $('.face2').show();
+    }
 </script>
 <!-- Chart Data -->
 
