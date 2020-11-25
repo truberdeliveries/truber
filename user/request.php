@@ -277,6 +277,43 @@ if($rows['num']>0){
 </div>
 
 
+<div class="modal fade" id="waiting-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Cancel Or Keep Trying <i class="fa fa-hand-o-up"></i>...</b></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="POST" action="./booking_row.php">
+                    <input name="reason" value="No drivers available" hidden>
+                <div class="text-center">
+                    <h2 class="">Unfortunately There are No Driver's Active, <span style="color: orange"> Try Again</span> Or <span style="color: red">Cancel</span></h2>
+                </div>
+                <?php
+                try{
+                    $stmt = $conn->prepare("SELECT * FROM booking WHERE booking_status=0 AND cust_id=:cust_id ");
+                    $stmt->execute(['cust_id'=>$admin['id']]);
+                    $drName = $stmt->fetch();
+                }
+                catch(PDOException $e){
+                    echo $e->getMessage();
+                }
+
+                ?>
+                    <input name="trip_id" id="trip_id" value="<?php echo $drName['book_id']?>" hidden>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning btn-flat pull-left" data-dismiss="modal"><i class="fa fa-refresh"></i> Try Again</button>
+                <button type="submit" class="btn btn-danger" ><i class="fa fa-close"></i>  Cancel</button>
+
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <?php $pdo->close(); ?>
 <?php include 'includes/scripts.php'; ?>
 
@@ -323,6 +360,20 @@ if ($('.waiting').is(':visible')){
         });
     }
 
+    var myVars = setInterval(requestTimeOut, 10000);
+
+    function requestTimeOut(){
+
+        if ($('#waiting-modal').is(':hidden')){
+
+            if ($('.waiting').is(':visible')){
+
+                $('#waiting-modal').modal('show');
+            }
+        }
+
+
+    }
 
     function enterCard(){
 
