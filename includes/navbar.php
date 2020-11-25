@@ -15,7 +15,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="register_driver.php">Register Driver</a>
-                        <a class="dropdown-item" href="register.php">Register User</a>
+                        <a class="dropdown-item" href="register.php">Register Customer</a>
                         </div>
                     </li>
                     <li class="nav-item" role="presentation"></li>
