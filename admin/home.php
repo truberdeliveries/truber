@@ -95,7 +95,7 @@
             <div class="icon">
               <i class="fa fa-users"></i>
             </div>
-            <a href="users.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="drivers.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
