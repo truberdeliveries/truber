@@ -69,7 +69,7 @@
                 echo "<h3>".$urow['numrows']."</h3>";
               ?>
              
-              <p>Number of Users</p>
+              <p>Number of Customers</p>
             </div>
             <div class="icon">
               <i class="fa fa-users"></i>
