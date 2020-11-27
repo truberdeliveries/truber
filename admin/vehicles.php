@@ -100,7 +100,7 @@
 
     </div>
     <?php include 'includes/footer.php'; ?>
-    <?php include 'includes/users_modal.php'; ?>
+    <?php include 'includes/vehicles_modal.php'; ?>
 
 </div>
 <!-- ./wrapper -->
@@ -122,7 +122,7 @@
             e.preventDefault();
             $('#edit').modal('show');
             var id = e.target.parentNode.id;
-            getRow(id);
+            getEdit(id);
         });
 
         $(document).on('click', '.delete', function(e){
@@ -146,21 +146,39 @@
 
     });
 
+
     function getRow(id){
+
         $.ajax({
             type: 'POST',
             url: 'vehicle_row.php',
-            data: {id:id},
+            data: {v_id:id},
             dataType: 'json',
             success: function(response){
-                $('.userid').val(response.id);
-                $('#edit_email').val(response.email);
-                $('#edit_password').val(response.password);
-                $('#edit_firstname').val(response.firstname);
-                $('#edit_lastname').val(response.lastname);
-                $('#edit_address').val(response.address);
-                $('#edit_mobile').val(response.mobile_info);
-                $('.fullname').html('Owner: M.r '+response.lastname+'<br/>Reg No: '+response.reg_number);
+                $('.delete-id').val(response.id);
+                $('.vehicle_details').html(
+                    '<span>Reg No : '+response.reg_number+'</span><br/>'+
+                    '<span>Vehicle Type : '+response.type+'</span><br/>'+
+                    '<span>Vehicle Name : '+response.name+'</span><br/>'+
+                    '<span>Model : '+response.model+'</span><br/>'
+                );
+            }
+        });
+    }
+
+    function getEdit(id){
+
+        $.ajax({
+            type: 'POST',
+            url: 'vehicle_row.php',
+            data: {v_id:id},
+            dataType: 'json',
+            success: function(response){
+                $('#edit-id').val(response.id);
+                $('#reg_number').val(response.reg_number);
+                $('#edit-type').val(response.type);
+                $('#edit-name').val(response.name);
+                $('#edit-model').val(response.model);
             }
         });
     }

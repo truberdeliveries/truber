@@ -48,8 +48,8 @@
                     <div class="box">
                         <div class="box-header with-border">
 
-                            <div class="pull-right">
-
+                            <div class="text-center">
+<!--                                <button> Add New Vehicle</button>-->
                             </div>
                         </div>
                         <div class="box-body">
@@ -66,8 +66,8 @@
                                 $conn = $pdo->open();
 
                                 try{
-                                    $stmt = $conn->prepare("SELECT * FROM vehicle ");
-                                    $stmt->execute();
+                                    $stmt = $conn->prepare("SELECT * FROM vehicle WHERE driver_id=:id");
+                                    $stmt->execute(['id'=>$admin['id']]);
                                     foreach($stmt as $row){
 
                                         echo "
@@ -77,7 +77,7 @@
                             <td>".$row['type']."</td>
                             <td>".$row['name']."</td>
                             <td>".$row['model']."</td>
-                            <td id=".$row['id']."><i class='fa fa-plus-square addnew'></i><i class='fa fa-edit edit'></i><i class='fa fa-trash-o delete'></i></td>
+                            <td id=".$row['id']."><i class='fa fa-edit btn-warning edit' style='padding: 5px'></i><i class='fa fa-trash-o btn-danger delete' style='padding: 5px'></i></td>
                          
                           </tr>
                         ";
@@ -99,7 +99,7 @@
 
     </div>
     <?php include 'includes/footer.php'; ?>
-    <?php include 'includes/users_modal.php'; ?>
+    <?php include 'includes/vehicles_modal.php'; ?>
 
 </div>
 <!-- ./wrapper -->
@@ -109,24 +109,18 @@
 
     $(function(){
 
-        $(document).on('click', '.addnew', function(e){
-
-            e.preventDefault();
-            $('#addnew').modal('show');
-            var id = e.target.parentNode.id;
-            getRow(id);
-        });
 
         $(document).on('click', '.edit', function(e){
             e.preventDefault();
             $('#edit').modal('show');
             var id = e.target.parentNode.id;
-            getRow(id);
+            getEdit(id);
         });
 
         $(document).on('click', '.delete', function(e){
             e.preventDefault();
             $('#delete').modal('show');
+
             var id = e.target.parentNode.id;
             getRow(id);
         });
@@ -149,17 +143,34 @@
         $.ajax({
             type: 'POST',
             url: 'users_row.php',
-            data: {id:id},
+            data: {v_id:id},
             dataType: 'json',
             success: function(response){
-                $('.userid').val(response.id);
-                $('#edit_email').val(response.email);
-                $('#edit_password').val(response.password);
-                $('#edit_firstname').val(response.firstname);
-                $('#edit_lastname').val(response.lastname);
-                $('#edit_address').val(response.address);
-                $('#edit_mobile').val(response.mobile_info);
-                $('.fullname').html(response.firstname+' '+response.lastname);
+                $('.delete-id').val(response.id);
+                $('.vehicle_details').html(
+                    '<span>Reg No : '+response.reg_number+'</span><br/>'+
+                    '<span>Vehicle Type : '+response.type+'</span><br/>'+
+                    '<span>Vehicle Name : '+response.name+'</span><br/>'+
+                    '<span>Model : '+response.model+'</span><br/>'
+                );
+            }
+        });
+    }
+
+    function getEdit(id){
+
+        $.ajax({
+            type: 'POST',
+            url: 'users_row.php',
+            data: {v_id:id},
+            dataType: 'json',
+            success: function(response){
+                console.log(response);
+                 $('#edit-id').val(response.id);
+                 $('#reg_number').val(response.reg_number);
+                 $('#edit-type').val(response.type);
+                $('#edit-name').val(response.name);
+                $('#edit-model').val(response.model);
             }
         });
     }

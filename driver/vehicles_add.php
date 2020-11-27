@@ -1,7 +1,7 @@
 <?php
 	include 'includes/session.php';
 
-	if(isset($_POST['add'])){
+	if(isset($_POST['reg_number'])){
 
         $reg_number = $_POST['reg_number'];
         $type = $_POST['type'];
@@ -11,8 +11,8 @@
 
 		$conn = $pdo->open();
 
-		$stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM vehicle WHERE id=:id");
-		$stmt->execute(['id'=>$admin['id']]);
+		$stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM vehicle WHERE reg_number=:reg_number AND driver_id=:id");
+		$stmt->execute(['id'=>$admin['id'],'reg_number'=>$reg_number]);
 		$row = $stmt->fetch();
 
 		if($row['numrows'] > 0){
