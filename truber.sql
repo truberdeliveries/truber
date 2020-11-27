@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2020 at 02:19 PM
+-- Generation Time: Nov 27, 2020 at 11:40 AM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -71,7 +71,8 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`book_id`, `start_time`, `end_time`, `start_address`, `end_address`, `coordinates`, `date`, `cust_id`, `driver_id`, `payment_type`, `vehicle_type`, `booking_status`, `driver_coord`) VALUES
-(4, '00:00:00', '00:00:00', '3781/34 Sisulu Street, Tembisa, South Africa', 'Tembisa, South Africa', '-26.046172,28.186128|-26.008881,28.21233', '2020-11-24', '6', '4', '1234567890', '1_Ton', 4, '');
+(4, '00:00:00', '00:00:00', '3781/34 Sisulu Street, Tembisa, South Africa', 'Tembisa, South Africa', '-26.046172,28.186128|-26.008881,28.21233', '2020-11-24', '6', '4', '1234567890', '1_Ton', 4, ''),
+(5, '00:00:00', '00:00:00', '477 Sisulu Street, Tshwane, South Africa', 'Sisulu Street, Tshwane, South Africa', '-25.754264,28.195877|-25.73731,28.19775', '2020-11-25', '6', '', '1234567890', '8_Ton', 4, '');
 
 -- --------------------------------------------------------
 
@@ -123,7 +124,6 @@ INSERT INTO `customer` (`id`, `firstname`, `lastname`, `email`, `mobile`, `passw
 (7, 'll', 'kk', 'gda@gmail.com', '0800000000', '1234@Abc', '2020-10-25', ''),
 (8, 'jj', 'j', 'goldwinfana5@gmail.com', '0800000000', '1234@Abcd', '2020-10-25', ''),
 (9, 'k', 'kk', 'gda@gmail.comk', '0800000000', '1234@Abc', '2020-10-25', ''),
-(11, 'll', 'jn', 'gdss@gmail.com', '0800000000', '1234@Abc', '2020-10-25', ''),
 (12, 'beee', 'beees', 'gd@gmail.com', '0617235213', '12345', '2020-10-25', ''),
 (14, 'rambo', 'john', 'gold@gmail.com', '0831234566', '1234@Abc', '2020-10-27', '');
 
@@ -178,24 +178,6 @@ INSERT INTO `invoice` (`invoice_id`, `date_created`, `customer_id`, `driver_id`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reason`
---
-
-CREATE TABLE `reason` (
-  `matter_id` int(11) NOT NULL,
-  `reasons` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `reason`
---
-
-INSERT INTO `reason` (`matter_id`, `reasons`) VALUES
-(4, 'Driver asked me to cancel.');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `status`
 --
 
@@ -218,31 +200,6 @@ INSERT INTO `status` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `type`
---
-
-CREATE TABLE `type` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `base_price` int(11) NOT NULL,
-  `price_per_km` int(11) NOT NULL,
-  `image` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `type`
---
-
-INSERT INTO `type` (`id`, `name`, `base_price`, `price_per_km`, `image`) VALUES
-(0, 'MiniVan', 230, 16, 'minivan.png'),
-(1, '1_Ton', 374, 23, '1ton.png'),
-(2, '1.5_Ton', 460, 28, '1.5ton.png'),
-(3, '4_Ton', 2300, 46, '4ton.png'),
-(4, '8_Ton', 4600, 54, '8ton.png');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `vehicle`
 --
 
@@ -261,6 +218,31 @@ CREATE TABLE `vehicle` (
 
 INSERT INTO `vehicle` (`id`, `reg_number`, `type`, `name`, `model`, `driver_id`) VALUES
 (1, '213r4234r3f', 'MiniVan', 'Hondai', '2018', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicle_type`
+--
+
+CREATE TABLE `vehicle_type` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `base_price` int(11) NOT NULL,
+  `price_per_km` int(11) NOT NULL,
+  `image` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vehicle_type`
+--
+
+INSERT INTO `vehicle_type` (`id`, `name`, `base_price`, `price_per_km`, `image`) VALUES
+(0, 'MiniVan', 230, 16, 'minivan.png'),
+(1, '1_Ton', 374, 23, '1ton.png'),
+(2, '1.5_Ton', 460, 28, '1.5ton.png'),
+(3, '4_Ton', 2300, 46, '4ton.png'),
+(4, '8_Ton', 4600, 54, '8ton.png');
 
 --
 -- Indexes for dumped tables
@@ -297,19 +279,19 @@ ALTER TABLE `invoice`
   ADD PRIMARY KEY (`invoice_id`);
 
 --
--- Indexes for table `type`
---
-ALTER TABLE `type`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
 -- Indexes for table `vehicle`
 --
 ALTER TABLE `vehicle`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`),
   ADD UNIQUE KEY `reg_number` (`reg_number`);
+
+--
+-- Indexes for table `vehicle_type`
+--
+ALTER TABLE `vehicle_type`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -325,7 +307,7 @@ ALTER TABLE `administrator`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -343,7 +325,7 @@ ALTER TABLE `driver`
 -- AUTO_INCREMENT for table `vehicle`
 --
 ALTER TABLE `vehicle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

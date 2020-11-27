@@ -135,7 +135,7 @@ if($rows['num']>0){
                    ';
 
                                     try{
-                                        $stmt = $conn->prepare("SELECT * FROM type ");
+                                        $stmt = $conn->prepare("SELECT * FROM vehicle_type ");
                                         $stmt->execute();
                                         foreach($stmt as $row){
 

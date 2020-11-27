@@ -105,7 +105,7 @@ if(isset($_POST['names_bal'])){
 
     $name = $_POST['names_bal'];
 
-    $stmts = $conn->prepare("SELECT * FROM type WHERE name=:name");
+    $stmts = $conn->prepare("SELECT * FROM vehicle_type WHERE name=:name");
     $stmts->execute(['name'=>$name]);
     $row = $stmts->fetch();
 
@@ -122,8 +122,8 @@ if(isset($_POST['trip_id'])){
     $stmt = $conn->prepare("UPDATE booking SET booking_status=4 WHERE book_id=:book_id");
     $stmt->execute(['book_id'=>$book_id]);
 
-    $stmt = $conn->prepare("INSERT INTO reason VALUES(:matter_id,:reasons)");
-    $stmt->execute(['matter_id'=>$book_id,'reasons'=>$reasons]);
+    // $stmt = $conn->prepare("INSERT INTO reason VALUES(:matter_id,:reasons)");
+    // $stmt->execute(['matter_id'=>$book_id,'reasons'=>$reasons]);
 
     header('location: home.php');
 }

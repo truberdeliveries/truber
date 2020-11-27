@@ -14,7 +14,7 @@ if(isset($_POST['id'])){
 if(isset($_POST['totals'])){
     $id = $_POST['totals'];
 
-    $stmt = $conn->prepare("SELECT * FROM booking,type WHERE booking.book_id=:id AND booking.booking_status=3 AND type.image=booking.vehicle_type");
+    $stmt = $conn->prepare("SELECT * FROM booking,vehicle_type WHERE booking.book_id=:id AND booking.booking_status=3 AND type.image=booking.vehicle_type");
     $stmt->execute(['id'=>$id]);
     $row = $stmt->fetch();
 
