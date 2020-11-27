@@ -17,7 +17,7 @@
       <li class="header">WELCOME</li>
       <li><a href="home.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
       <li class="header">MANAGE</li>
-      <li><a href="users.php"><i class="fa fa-users"></i> <span>Users</span></a></li>
+      <li><a href="users.php"><i class="fa fa-users"></i> <span>Customers</span></a></li>
       <li><a href="drivers.php"><i class="fa fa-users"></i> <span>Drivers</span></a></li>
       <li><a href="vehicles.php"><i class="fa fa-car"></i> <span>Vehicles</span></a></li>
         <li><a href="reports.php"><i class="fa fa-file"></i> <span>Reports</span></a></li>
