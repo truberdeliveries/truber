@@ -21,7 +21,7 @@
 		else{
 			$now = date('Y-m-d');
 			try{
-				$stmt = $conn->prepare("INSERT INTO vehicle (reg_number, type, name,model, driver_id) VALUES (  :reg_number, :type, :name, :driver_id, :model)");
+				$stmt = $conn->prepare("INSERT INTO vehicle (reg_number, type, name,model, driver_id) VALUES (  :reg_number, :type, :name,:model, :driver_id)");
 				$stmt->execute(['reg_number'=>$reg_number, 'type'=>$type, 'name'=>$name, 'model'=>$model,'driver_id'=>$admin['id']]);
 				$_SESSION['success'] = 'Vehicle added successfully';
 

@@ -138,7 +138,8 @@
                   </div>
                   <br/>
                   <span class="date-error"></span><br/>
-                  <input type="button" name="generate" class="btn btn-success" value="Generate Report" onclick="generateRep()">
+                  <button name="generate" class="btn btn-success" onclick="generateRep()"><i class="fa fa-gears"></i> Generate Report</button>
+                  <button name="download" class="btn btn-warning" onclick=""><i class="fa fa-download"></i> Download Report</button>
               </div>
 <!--              -->
             <div id="drivers-report" class="box-body">

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Home - Truber</title>
-    <meta name="description" content="The system will allow the user to register online, then the information of the user will be validated. After registration the user will be allowed to login into the system. The user will then be allowed to choose the kind of truck she/he want to use, then the user will be required to enter the current location of his/her staff and destination location.">
+    <meta name="description" content="The system will allow the customer to register online, then the information of the customer will be validated. After registration the customer will be allowed to login into the system. The customer will then be allowed to choose the kind of truck she/he want to use, then the customer will be required to enter the current location of his/her staff and destination location.">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
@@ -40,8 +40,8 @@
             <div class="row text-center">
                 <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i></span>
                     <h4 class="section-heading">E-System</h4>
-                    <p class="text-muted">The system will calculate the amount due based on the distance, the load and type of truck the user chose. The user will have the opportunity to decline or accept the price. If the user accept price, the system will give options for
-                        payments. After payment confirmation the user will be able to track his/her staff up until the destination location.</p>
+                    <p class="text-muted">The system will calculate the amount due based on the distance, the load and type of truck the customer chose. The customer will have the opportunity to decline or accept the price. If the customer accept price, the system will give options for
+                        payments. After payment confirmation the customer will be able to track his/her staff up until the destination location.</p>
                 </div>
                 <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-laptop fa-stack-1x fa-inverse"></i></span>
                     <h4 class="section-heading">Responsive Design</h4>
@@ -59,7 +59,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="text-uppercase">About</h2>
-                    <h3 class="text-muted section-subheading"><em>The system will allow the user to register online, then the information of the user will be validated. After registration the user will be allowed to login into the system. The user will then be allowed to choose the kind of truck she/he want to use, then the user will be required to enter the current location of his/her staff and destination location.</em></h3>
+                    <h3 class="text-muted section-subheading"><em>The system will allow the customer to register online, then the information of the customer will be validated. After registration the customer will be allowed to login into the system. The customer will then be allowed to choose the kind of truck she/he want to use, then the customer will be required to enter the current location of his/her staff and destination location.</em></h3>
                 </div>
             </div>
         </div>

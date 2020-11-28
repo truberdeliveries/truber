@@ -83,7 +83,7 @@ if(isset($_POST['driver_id'])){
     else{
         $now = date('Y-m-d');
         try{
-            $stmt = $conn->prepare("INSERT INTO vehicle (reg_number, type, name,model, driver_id) VALUES (  :reg_number, :type, :name, :driver_id, :model)");
+            $stmt = $conn->prepare("INSERT INTO vehicle (reg_number, type, name,model, driver_id) VALUES (  :reg_number, :type, :name,:model, :driver_id)");
             $stmt->execute(['reg_number'=>$reg_number, 'type'=>$type, 'name'=>$name, 'model'=>$model,'driver_id'=>$driver_id]);
             $_SESSION['success'] = 'Vehicle added successfully';
             header('location: '.$_SERVER['HTTP_REFERER']);
